@@ -1,19 +1,11 @@
-import { Button, Grid, InputAdornment, Paper, styled, TextField, Typography } from '@mui/material';
+import { Button, Grid, InputAdornment, TextField, Typography } from '@mui/material';
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import ElementLink from '../../components/elementLink/elementLink';
 import LoginWrapper from '../../components/loginWrapper/loginWrapper';
 
-const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-  ...theme.typography.body2,
-  padding: theme.spacing(1),
-  textAlign: 'center',
-  color: theme.palette.text.secondary,
-}));
-
-const SignIn = () => {
+const SignUp = () => {
   return (
     <LoginWrapper>
       <>
@@ -21,8 +13,8 @@ const SignIn = () => {
           sx={{
             color: '#FFDE00',
             fontSize: {
-              xs: 35,
-              md: 50
+              xs: 30,
+              md: 38
             },
             fontWeight: 'bold',
             textTransform: 'uppercase',
@@ -30,7 +22,7 @@ const SignIn = () => {
             WebkitTextStrokeWidth: '1.5px',
           }}
         >
-          Pokedex
+          Sign Up to Pokedex
         </Typography>
 
         <Grid
@@ -43,8 +35,8 @@ const SignIn = () => {
               color: '#263238',
               textAlign: 'center',
               marginLeft: {
-                xs: '7rem',
-                md: '11rem'
+                xs: '16rem',
+                md: '22rem'
               },
               fontStyle: 'italic',
               fontWeight: 100,
@@ -118,6 +110,30 @@ const SignIn = () => {
 
           />
 
+          <TextField
+            placeholder='repeat password'
+            type="password"
+            InputProps={{
+              style: {
+                height: 40,
+                padding: '0, 5px',
+                borderRadius: 0,
+                marginBottom: '10px',
+              },
+              endAdornment: (
+                <InputAdornment
+                  position="start"
+                  sx={{
+                    color: '#3B4CCA'
+                  }}
+                >
+                  <VisibilityOffIcon />
+                </InputAdornment>
+              ),
+            }}
+
+          />
+
           <Button
             variant="contained"
             sx={{
@@ -130,12 +146,12 @@ const SignIn = () => {
               }
             }}
           >
-            Sign In
+            Register
           </Button>
 
           <ElementLink
-            link={'/sign-up'}
-            text={'sign up'}
+            link={'/'}
+            text={'return'}
           />
         </Grid>
       </>
@@ -143,4 +159,4 @@ const SignIn = () => {
   );
 };
 
-export default SignIn;
+export default SignUp;
