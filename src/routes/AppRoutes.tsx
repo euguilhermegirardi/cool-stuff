@@ -1,4 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
+import Dashboard from '../pages/dashboard';
 import NotFound from '../pages/notFound/notFound';
 import SignIn from '../pages/signIn';
 import SignUp from '../pages/signUp';
@@ -15,6 +16,11 @@ const AppRoutes = () => {
       <Route
         path={ApplicationRoutes.signUp}
         element={<SignUp />}
+      />
+
+      <Route
+        path={ApplicationRoutes.dashboard}
+        element={<Dashboard />}
       />
 
       <Route

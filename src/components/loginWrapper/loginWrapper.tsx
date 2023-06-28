@@ -19,7 +19,7 @@ const LoginWrapper = ({ children }: { children: ReactElement }) => {
         },
         height: {
           xs: 500,
-          md: 650
+          md: 600
         },
       }}
     >
