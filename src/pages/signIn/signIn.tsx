@@ -1,4 +1,5 @@
 import { Button, Grid, InputAdornment, Paper, styled, TextField, Typography } from '@mui/material';
+import { FormEventHandler } from 'react';
 import { FieldErrors, UseFormRegister } from 'react-hook-form';
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import VisibilityIcon from '@mui/icons-material/Visibility';
@@ -6,13 +7,14 @@ import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import LoginRequest from './interfaces/loginRequest';
 import ElementLink from '../../components/elementLink/elementLink';
 import LoginWrapper from '../../components/loginWrapper/loginWrapper';
+import MuiButton from '../../components/muiButton/muiButton';
 
 const SignIn = ({
   onSubmit,
   register,
   formErrors,
 }: {
-  onSubmit: () => void;
+  onSubmit: () => FormEventHandler<HTMLFormElement> | undefined;
   register: UseFormRegister<LoginRequest>;
   formErrors: {
     email?: {
@@ -23,6 +25,7 @@ const SignIn = ({
     };
   };
 }) => {
+
   return (
     <LoginWrapper>
       <>
@@ -142,21 +145,11 @@ const SignIn = ({
 
             />
 
-            <Button
-              variant='contained'
+            <MuiButton
               type='submit'
-              sx={{
-                backgroundColor: '#3B4CCA',
-                color: '#FFDE00',
-                marginTop: '1rem',
-                height: {
-                  xs: 'unset',
-                  md: '3rem'
-                }
-              }}
-            >
-              Sign In
-            </Button>
+              color='ceruleanBlue'
+              text='Sign In'
+            />
 
             <ElementLink
               link={'/sign-up'}
