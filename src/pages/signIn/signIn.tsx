@@ -1,4 +1,4 @@
-import { Button, Grid, InputAdornment, Paper, styled, TextField, Typography } from '@mui/material';
+import { Button, Grid, InputAdornment, Paper, styled, TextField, Typography, useTheme } from '@mui/material';
 import { FormEventHandler } from 'react';
 import { FieldErrors, UseFormRegister } from 'react-hook-form';
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
@@ -26,19 +26,21 @@ const SignIn = ({
   };
 }) => {
 
+  const theme = useTheme();
+
   return (
     <LoginWrapper>
       <>
         <Typography
           sx={{
-            color: '#FFDE00',
+            color: theme.palette.secondary.main,
             fontSize: {
               xs: 35,
               md: 50
             },
             fontWeight: 'bold',
             textTransform: 'uppercase',
-            WebkitTextStrokeColor: 'blue',
+            WebkitTextStrokeColor: theme.palette.primary.main,
             WebkitTextStrokeWidth: '1.5px',
           }}
         >

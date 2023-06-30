@@ -31,6 +31,9 @@ const theme = createTheme({
     primary: {
       main: '#3B4CCA'
     },
+    secondary: {
+      main: '#FFDE00'
+    },
     red: createColor('#FF0000'),
     bostonUniRed: createColor('#CC0000'),
     ceruleanBlue: {
