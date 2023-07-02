@@ -4,6 +4,7 @@ import { FieldErrors, UseFormRegister } from 'react-hook-form';
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+import { Theme } from '@mui/material/styles';
 import LoginRequest from './interfaces/loginRequest';
 import ElementLink from '../../components/elementLink/elementLink';
 import LoginWrapper from '../../components/loginWrapper/loginWrapper';
@@ -26,22 +27,23 @@ const SignIn = ({
   };
 }) => {
 
-  const theme = useTheme();
+  const theme: Theme = useTheme();
+  console.log(theme)
 
   return (
     <LoginWrapper>
       <>
         <Typography
           sx={{
-            color: theme.palette.secondary.main,
+            color: 'goldenYellow.main',
             fontSize: {
               xs: 35,
               md: 50
             },
             fontWeight: 'bold',
             textTransform: 'uppercase',
-            WebkitTextStrokeColor: theme.palette.primary.main,
-            WebkitTextStrokeWidth: '1.5px',
+            WebkitTextStrokeColor: '#3B4CCA',
+            WebkitTextStrokeWidth: '2px',
           }}
         >
           Pokedex

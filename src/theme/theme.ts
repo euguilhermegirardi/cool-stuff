@@ -8,6 +8,7 @@ declare module '@mui/material/styles' {
     goldenYellow: PaletteColorOptions;
     goldenFoil: PaletteColorOptions;
   }
+
   interface Palette extends CustomPalette { }
   interface PaletteOptions extends CustomPalette { }
 };
@@ -22,26 +23,37 @@ declare module '@mui/material/Button' {
   }
 };
 
-const { palette } = createTheme();
-const { augmentColor } = palette;
-const createColor = (mainColor: string) => augmentColor({ color: { main: mainColor } });
-
 const theme = createTheme({
+  breakpoints: {
+    values: {
+      xs: 320,
+      sm: 600,
+      md: 750,
+      lg: 1200,
+      xl: 1640,
+    },
+  },
   palette: {
-    primary: {
-      main: '#3B4CCA'
+    red: {
+      main: '#FF0000',
+      contrastText: '#FFF',
     },
-    secondary: {
-      main: '#FFDE00'
+    bostonUniRed: {
+      main: '#CC0000',
+      contrastText: '#FFF',
     },
-    red: createColor('#FF0000'),
-    bostonUniRed: createColor('#CC0000'),
     ceruleanBlue: {
       main: '#3B4CCA',
-      contrastText: '#FFDE00',
+      contrastText: '#FFF',
     },
-    goldenYellow: createColor('#FFDE00'),
-    goldenFoil: createColor('#B3A125'),
+    goldenYellow: {
+      main: '#FFDE00',
+      contrastText: '#FFF',
+    },
+    goldenFoil: {
+      main: '#B3A125',
+      contrastText: '#FFF',
+    },
   },
 });
 
