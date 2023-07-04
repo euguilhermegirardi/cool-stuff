@@ -5,7 +5,6 @@ import SignIn from './signIn';
 import { loginSchema } from './validations/loginSchema';
 
 const SignInContainer = () => {
-
   const {
     register,
     handleSubmit,

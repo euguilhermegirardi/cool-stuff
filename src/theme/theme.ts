@@ -7,6 +7,7 @@ declare module '@mui/material/styles' {
     ceruleanBlue: PaletteColorOptions;
     goldenYellow: PaletteColorOptions;
     goldenFoil: PaletteColorOptions;
+    darkGrey: PaletteColorOptions;
   }
 
   interface Palette extends CustomPalette { }
@@ -36,24 +37,22 @@ const theme = createTheme({
   palette: {
     red: {
       main: '#FF0000',
-      contrastText: '#FFF',
     },
     bostonUniRed: {
       main: '#CC0000',
-      contrastText: '#FFF',
     },
     ceruleanBlue: {
       main: '#3B4CCA',
-      contrastText: '#FFF',
     },
     goldenYellow: {
       main: '#FFDE00',
-      contrastText: '#FFF',
     },
     goldenFoil: {
       main: '#B3A125',
-      contrastText: '#FFF',
     },
+    darkGrey: {
+      main: '#263238',
+    }
   },
 });
 

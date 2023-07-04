@@ -1,14 +1,15 @@
-import { Button, Grid, InputAdornment, Paper, styled, TextField, Typography, useTheme } from '@mui/material';
+import { Grid, InputAdornment, TextField, Typography, useTheme } from '@mui/material';
 import { FormEventHandler } from 'react';
-import { FieldErrors, UseFormRegister } from 'react-hook-form';
+import { UseFormRegister } from 'react-hook-form';
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
-import { Theme } from '@mui/material/styles';
 import LoginRequest from './interfaces/loginRequest';
 import ElementLink from '../../components/elementLink/elementLink';
 import LoginWrapper from '../../components/loginWrapper/loginWrapper';
 import MuiButton from '../../components/muiButton/muiButton';
+import { useTranslations } from '../../hooks/useTranslations';
+import ApplicationRoutes from '../../utils/navigation/applicationRoutes';
 
 const SignIn = ({
   onSubmit,
@@ -26,9 +27,8 @@ const SignIn = ({
     };
   };
 }) => {
-
-  const theme: Theme = useTheme();
-  console.log(theme)
+  const theme = useTheme();
+  const translations = useTranslations();
 
   return (
     <LoginWrapper>
@@ -43,10 +43,10 @@ const SignIn = ({
             fontWeight: 'bold',
             textTransform: 'uppercase',
             WebkitTextStrokeColor: '#3B4CCA',
-            WebkitTextStrokeWidth: '2px',
+            WebkitTextStrokeWidth: 2,
           }}
         >
-          Pokedex
+          {translations.login.title}
         </Typography>
 
         <Grid
@@ -56,17 +56,17 @@ const SignIn = ({
         >
           <Typography
             sx={{
-              color: '#263238',
+              color: 'darkGrey.main',
               textAlign: 'center',
               marginLeft: {
-                xs: '7rem',
-                md: '11rem'
+                xs: theme.spacing(13),
+                md: theme.spacing(22),
               },
               fontStyle: 'italic',
               fontWeight: 100,
             }}
           >
-            cool stuff
+            {translations.login.subtitle}
           </Typography>
         </Grid>
 
@@ -80,10 +80,10 @@ const SignIn = ({
               display: 'flex',
               flexDirection: 'column',
               marginTop: {
-                xs: '3rem',
-                md: '5rem'
+                xs: theme.spacing(3),
+                md: theme.spacing(5)
               },
-              padding: '0 2rem',
+              padding: `0 + ${theme.spacing(2)}`,
               width: {
                 xs: '100%',
                 md: '90%',
@@ -98,14 +98,14 @@ const SignIn = ({
               InputProps={{
                 style: {
                   height: 40,
-                  padding: '0, 5px',
+                  padding: `0 + ${theme.spacing(0.5)}`,
                   borderRadius: 0,
                 },
                 startAdornment: (
                   <InputAdornment
                     position="start"
                     sx={{
-                      color: '#3B4CCA'
+                      color: 'ceruleanBlue.main'
                     }}
                   >
                     <MailOutlineIcon />
@@ -116,9 +116,8 @@ const SignIn = ({
             />
 
             {formErrors.email ? (
-              <Typography role='alert' color='red'>
-                {/* {formErrors.email?.message} */}
-                error
+              <Typography role='alert' color='bostonUniRed.main'>
+                {formErrors.email?.message}
               </Typography>
             ) : null}
 
@@ -130,16 +129,16 @@ const SignIn = ({
               InputProps={{
                 style: {
                   height: 40,
-                  padding: '0, 5px',
+                  padding: `0 + ${theme.spacing(0.5)}`,
                   borderRadius: 0,
-                  marginTop: '10px',
-                  marginBottom: '10px',
+                  marginTop: 10,
+                  marginBottom: 10,
                 },
                 endAdornment: (
                   <InputAdornment
                     position="start"
                     sx={{
-                      color: '#3B4CCA'
+                      color: 'ceruleanBlue.main'
                     }}
                   >
                     <VisibilityOffIcon />
@@ -152,12 +151,12 @@ const SignIn = ({
             <MuiButton
               type='submit'
               color='ceruleanBlue'
-              text='Sign In'
+              text={translations.login.signIn}
             />
 
             <ElementLink
-              link={'/sign-up'}
-              text={'sign up'}
+              link={ApplicationRoutes.signUp}
+              text={translations.login.singUp}
             />
           </Grid>
         </form>
