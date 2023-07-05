@@ -5,6 +5,7 @@ import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import LoginRequest from './interfaces/loginRequest';
+import CoolStuffSubtitle from '../../components/coolStuffSubtitle/coolStuffSubtitle';
 import ElementLink from '../../components/elementLink/elementLink';
 import LoginTitle from '../../components/loginTitle/loginTitle';
 import LoginWrapper from '../../components/loginWrapper/loginWrapper';
@@ -34,31 +35,9 @@ const SignIn = ({
   return (
     <LoginWrapper>
       <>
-        <LoginTitle
-          title={translations.login.title}
-          fontSize={50}
-        />
+        <LoginTitle title={translations.login.title} />
 
-        <Grid
-          sx={{
-            width: '100%',
-          }}
-        >
-          <Typography
-            sx={{
-              color: 'darkGrey.main',
-              textAlign: 'center',
-              marginLeft: {
-                xs: theme.spacing(13),
-                md: theme.spacing(22),
-              },
-              fontStyle: 'italic',
-              fontWeight: 100,
-            }}
-          >
-            {translations.login.subtitle}
-          </Typography>
-        </Grid>
+        <CoolStuffSubtitle width={'50%'} />
 
         <form
           onSubmit={onSubmit()}

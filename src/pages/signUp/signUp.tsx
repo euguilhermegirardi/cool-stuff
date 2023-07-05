@@ -1,50 +1,23 @@
-import { Button, Grid, InputAdornment, TextField, Typography } from '@mui/material';
+import { Button, Grid, InputAdornment, TextField, useTheme } from '@mui/material';
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+import CoolStuffSubtitle from '../../components/coolStuffSubtitle/coolStuffSubtitle';
 import ElementLink from '../../components/elementLink/elementLink';
+import LoginTitle from '../../components/loginTitle/loginTitle';
 import LoginWrapper from '../../components/loginWrapper/loginWrapper';
+import { useTranslations } from '../../hooks/useTranslations';
 
 const SignUp = () => {
+  const theme = useTheme();
+  const translations = useTranslations();
+
   return (
     <LoginWrapper>
       <>
-        <Typography
-          sx={{
-            color: '#FFDE00',
-            fontSize: {
-              xs: 30,
-              md: 38
-            },
-            fontWeight: 'bold',
-            textTransform: 'uppercase',
-            WebkitTextStrokeColor: 'blue',
-            WebkitTextStrokeWidth: '1.5px',
-          }}
-        >
-          Sign Up to Pokedex
-        </Typography>
+        <LoginTitle title={translations.signUp.signUpToPokedex} />
 
-        <Grid
-          sx={{
-            width: '100%',
-          }}
-        >
-          <Typography
-            sx={{
-              color: '#263238',
-              textAlign: 'center',
-              marginLeft: {
-                xs: '16rem',
-                md: '22rem'
-              },
-              fontStyle: 'italic',
-              fontWeight: 100,
-            }}
-          >
-            cool stuff
-          </Typography>
-        </Grid>
+        <CoolStuffSubtitle width={'83%'} />
 
         <Grid
           item
@@ -52,8 +25,8 @@ const SignUp = () => {
             display: 'flex',
             flexDirection: 'column',
             marginTop: {
-              xs: '3rem',
-              md: '5rem'
+              xs: theme.spacing(3),
+              md: theme.spacing(4)
             },
             padding: '0 2rem',
             width: {
@@ -146,12 +119,12 @@ const SignUp = () => {
               }
             }}
           >
-            Register
+            {translations.signUp.register}
           </Button>
 
           <ElementLink
             link={'/'}
-            text={'return'}
+            text={translations.return}
           />
         </Grid>
       </>

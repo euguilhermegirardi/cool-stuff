@@ -9,6 +9,12 @@ const translations = {
     title: 'Something went wrong: 404!',
     return: 'return'
   },
+  signUp: {
+    signUpToPokedex: 'Sign Up to Pokedex',
+    register: 'Register',
+  },
+  return: 'return',
+  coolStuff: 'cool stuff',
 };
 
 export default translations;
