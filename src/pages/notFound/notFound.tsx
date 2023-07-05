@@ -1,28 +1,22 @@
-import { Grid, Typography } from '@mui/material';
 import ElementLink from '../../components/elementLink/elementLink';
+import LoginTitle from '../../components/loginTitle/loginTitle';
 import LoginWrapper from '../../components/loginWrapper/loginWrapper';
+import { useTranslations } from '../../hooks/useTranslations';
 
 const NotFound = () => {
+  const translations = useTranslations();
+
   return (
     <LoginWrapper>
       <>
-        <Typography
-          sx={{
-            color: '#FFDE00',
-            fontSize: 28,
-            fontWeight: 'bold',
-            textTransform: 'uppercase',
-            textAlign: 'center',
-            WebkitTextStrokeColor: 'blue',
-            WebkitTextStrokeWidth: '1px',
-          }}
-        >
-          Something went wrong: 404!
-        </Typography>
+        <LoginTitle
+          title={translations.notFound.title}
+          fontSize={38}
+        />
 
         <ElementLink
           link={'/'}
-          text={'return'}
+          text={translations.notFound.return}
         />
       </>
     </LoginWrapper>

@@ -6,6 +6,7 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import LoginRequest from './interfaces/loginRequest';
 import ElementLink from '../../components/elementLink/elementLink';
+import LoginTitle from '../../components/loginTitle/loginTitle';
 import LoginWrapper from '../../components/loginWrapper/loginWrapper';
 import MuiButton from '../../components/muiButton/muiButton';
 import { useTranslations } from '../../hooks/useTranslations';
@@ -33,21 +34,10 @@ const SignIn = ({
   return (
     <LoginWrapper>
       <>
-        <Typography
-          sx={{
-            color: 'goldenYellow.main',
-            fontSize: {
-              xs: 35,
-              md: 50
-            },
-            fontWeight: 'bold',
-            textTransform: 'uppercase',
-            WebkitTextStrokeColor: '#3B4CCA',
-            WebkitTextStrokeWidth: 2,
-          }}
-        >
-          {translations.login.title}
-        </Typography>
+        <LoginTitle
+          title={translations.login.title}
+          fontSize={50}
+        />
 
         <Grid
           sx={{
