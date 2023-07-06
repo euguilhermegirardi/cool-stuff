@@ -7,7 +7,7 @@ const LoginTitle = ({ title }: { title: string }) => {
         color: 'goldenYellow.main',
         fontSize: {
           xs: 30,
-          md: 38
+          md: 50
         },
         fontWeight: 'bold',
         textTransform: 'uppercase',
