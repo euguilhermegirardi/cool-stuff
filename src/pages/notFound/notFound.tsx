@@ -1,6 +1,6 @@
 import ElementLink from '../../components/elementLink/elementLink';
-import LoginTitle from '../../components/loginTitle/loginTitle';
-import LoginWrapper from '../../components/loginWrapper/loginWrapper';
+import LoginTitle from '../../components/login/loginTitle/loginTitle';
+import LoginWrapper from '../../components/login/loginWrapper/loginWrapper';
 import { useTranslations } from '../../hooks/useTranslations';
 
 const NotFound = () => {

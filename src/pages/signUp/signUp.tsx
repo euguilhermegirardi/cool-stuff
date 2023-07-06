@@ -2,10 +2,10 @@ import { Button, Grid, InputAdornment, TextField, useTheme } from '@mui/material
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
-import CoolStuffSubtitle from '../../components/coolStuffSubtitle/coolStuffSubtitle';
 import ElementLink from '../../components/elementLink/elementLink';
-import LoginTitle from '../../components/loginTitle/loginTitle';
-import LoginWrapper from '../../components/loginWrapper/loginWrapper';
+import CoolStuffSubtitle from '../../components/login/coolStuffSubtitle/coolStuffSubtitle';
+import LoginTitle from '../../components/login/loginTitle/loginTitle';
+import LoginWrapper from '../../components/login/loginWrapper/loginWrapper';
 import { useTranslations } from '../../hooks/useTranslations';
 
 const SignUp = () => {
