@@ -1,14 +1,13 @@
-import { Grid, InputAdornment, TextField, Typography, useTheme } from '@mui/material';
+import { Grid, useTheme } from '@mui/material';
 import { FormEventHandler } from 'react';
 import { UseFormRegister } from 'react-hook-form';
-import MailOutlineIcon from '@mui/icons-material/MailOutline';
-import VisibilityIcon from '@mui/icons-material/Visibility';
-import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import LoginRequest from './interfaces/loginRequest';
-import CoolStuffSubtitle from '../../components/coolStuffSubtitle/coolStuffSubtitle';
 import ElementLink from '../../components/elementLink/elementLink';
-import LoginTitle from '../../components/loginTitle/loginTitle';
-import LoginWrapper from '../../components/loginWrapper/loginWrapper';
+import CoolStuffSubtitle from '../../components/login/coolStuffSubtitle/coolStuffSubtitle';
+import EmailInput from '../../components/login/emailInput/emailInput';
+import LoginTitle from '../../components/login/loginTitle/loginTitle';
+import LoginWrapper from '../../components/login/loginWrapper/loginWrapper';
+import PasswordInput from '../../components/login/passwordInput';
 import MuiButton from '../../components/muiButton/muiButton';
 import { useTranslations } from '../../hooks/useTranslations';
 import ApplicationRoutes from '../../utils/navigation/applicationRoutes';
@@ -59,62 +58,16 @@ const SignIn = ({
               }
             }}
           >
-            <TextField
-              placeholder='email'
-              type="text"
-              defaultValue=''
-              {...register('email')}
-              InputProps={{
-                style: {
-                  height: 40,
-                  padding: `0 + ${theme.spacing(0.5)}`,
-                  borderRadius: 0,
-                },
-                startAdornment: (
-                  <InputAdornment
-                    position="start"
-                    sx={{
-                      color: 'ceruleanBlue.main'
-                    }}
-                  >
-                    <MailOutlineIcon />
-                  </InputAdornment>
-                ),
-              }}
-
+            <EmailInput
+              register={register}
+              formErrors={formErrors}
             />
 
-            {formErrors.email ? (
-              <Typography role='alert' color='bostonUniRed.main'>
-                {formErrors.email?.message}
-              </Typography>
-            ) : null}
-
-            <TextField
-              placeholder='password'
-              type="password"
-              defaultValue=''
-              {...register('password')}
-              InputProps={{
-                style: {
-                  height: 40,
-                  padding: `0 + ${theme.spacing(0.5)}`,
-                  borderRadius: 0,
-                  marginTop: 10,
-                  marginBottom: 10,
-                },
-                endAdornment: (
-                  <InputAdornment
-                    position="start"
-                    sx={{
-                      color: 'ceruleanBlue.main'
-                    }}
-                  >
-                    <VisibilityOffIcon />
-                  </InputAdornment>
-                ),
-              }}
-
+            <PasswordInput
+              autoFocus={false}
+              register={register}
+              formErrors={formErrors.password}
+              inputId={'12'}
             />
 
             <MuiButton
