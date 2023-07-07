@@ -1,12 +1,18 @@
 import { Typography } from '@mui/material';
 
-const LoginTitle = ({ title }: { title: string }) => {
+const LoginTitle = ({
+  title,
+  fontSizeXs,
+}: {
+  title: string,
+  fontSizeXs: number
+}) => {
   return (
     <Typography
       sx={{
         color: 'goldenYellow.main',
         fontSize: {
-          xs: 30,
+          xs: fontSizeXs,
           md: 50
         },
         fontWeight: 'bold',

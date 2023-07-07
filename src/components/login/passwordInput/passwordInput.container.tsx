@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { UseFormRegister } from 'react-hook-form';
+import { PasswordInputContainerProps } from './interfaces/passwordInputContainerProps';
 import PasswordInput from './passwordInput';
 
 const PasswordInputContainer = ({
@@ -7,14 +7,7 @@ const PasswordInputContainer = ({
   register,
   formErrors,
   inputId,
-}: {
-  autoFocus: boolean;
-  register: UseFormRegister<any>;
-  formErrors?: {
-    message?: string;
-  };
-  inputId: string;
-}) => {
+}: PasswordInputContainerProps) => {
   const [showPassword, setShowPassword] = useState(false);
 
   const handleShowPassword = () => setShowPassword((show) => !show);

@@ -3,7 +3,8 @@ const translations = {
     title: 'Pokedex',
     subtitle: 'cool stuff',
     signIn: 'sign in',
-    singUp: 'sign up'
+    singUp: 'sign up',
+    rememberMe: 'Remember me'
   },
   notFound: {
     title: 'Something went wrong: 404!',

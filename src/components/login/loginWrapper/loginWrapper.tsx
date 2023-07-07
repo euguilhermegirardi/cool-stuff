@@ -14,7 +14,7 @@ const LoginWrapper = ({ children }: { children: ReactElement }) => {
         backgroundColor: '#fff',
         borderRadius: 2,
         width: {
-          xs: 390,
+          xs: 340,
           md: 500
         },
         height: {

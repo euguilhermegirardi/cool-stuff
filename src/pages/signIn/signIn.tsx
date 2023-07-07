@@ -1,40 +1,33 @@
-import { Grid, useTheme } from '@mui/material';
-import { FormEventHandler } from 'react';
-import { UseFormRegister } from 'react-hook-form';
-import LoginRequest from './interfaces/loginRequest';
+import { Checkbox, Grid, Typography, useTheme } from '@mui/material';
+import { SignInProps } from './interfaces/signInProps';
 import ElementLink from '../../components/elementLink/elementLink';
 import CoolStuffSubtitle from '../../components/login/coolStuffSubtitle/coolStuffSubtitle';
 import EmailInput from '../../components/login/emailInput/emailInput';
 import LoginTitle from '../../components/login/loginTitle/loginTitle';
 import LoginWrapper from '../../components/login/loginWrapper/loginWrapper';
 import PasswordInput from '../../components/login/passwordInput';
+import { MuiCheckBox, MuiCheckedItemBox } from '../../components/login/styledCheckbox/styledCheckbox';
 import MuiButton from '../../components/muiButton/muiButton';
 import { useTranslations } from '../../hooks/useTranslations';
 import ApplicationRoutes from '../../utils/navigation/applicationRoutes';
 
 const SignIn = ({
-  onSubmit,
-  register,
+  defaultValue,
   formErrors,
-}: {
-  onSubmit: () => FormEventHandler<HTMLFormElement> | undefined;
-  register: UseFormRegister<LoginRequest>;
-  formErrors: {
-    email?: {
-      message?: string;
-    };
-    password?: {
-      message?: string;
-    };
-  };
-}) => {
+  register,
+  handleRememberMe,
+  onSubmit,
+}: SignInProps) => {
   const theme = useTheme();
   const translations = useTranslations();
 
   return (
     <LoginWrapper>
       <>
-        <LoginTitle title={translations.login.title} />
+        <LoginTitle
+          title={translations.login.title}
+          fontSizeXs={40}
+        />
 
         <CoolStuffSubtitle width={'50%'} />
 
@@ -49,7 +42,7 @@ const SignIn = ({
               flexDirection: 'column',
               marginTop: {
                 xs: theme.spacing(3),
-                md: theme.spacing(5)
+                md: theme.spacing(7)
               },
               padding: `0 + ${theme.spacing(2)}`,
               width: {
@@ -69,6 +62,36 @@ const SignIn = ({
               formErrors={formErrors.password}
               inputId={'12'}
             />
+
+            <Grid
+              item
+              sx={{
+                display: 'flex',
+                alignItems: 'center',
+                height: theme.spacing(6.5),
+                mb: 3,
+              }}
+            >
+              <Checkbox
+                disableRipple
+                defaultChecked={defaultValue ? true : false}
+                icon={<MuiCheckBox />}
+                checkedIcon={<MuiCheckedItemBox />}
+                inputProps={{ 'aria-label': 'remember_me_checkbox' }}
+                onChange={handleRememberMe}
+                sx={{
+                  padding: theme.spacing(1, 1, 1, 0.2)
+                }}
+              />
+              <Typography
+                sx={{
+                  fontSize: 15,
+                  color: 'ceruleanBlue.main'
+                }}
+              >
+                {translations.login.rememberMe}
+              </Typography>
+            </Grid>
 
             <MuiButton
               type='submit'
