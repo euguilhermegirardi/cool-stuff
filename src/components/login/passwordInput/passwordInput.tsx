@@ -64,7 +64,11 @@ const PasswordInput = ({
       />
 
       {formErrors?.message ? (
-        <Typography role='alert' color={theme.palette.error.main}>
+        <Typography
+          role='alert'
+          color={theme.palette.error.main}
+          sx={{ fontSize: 14 }}
+        >
           {formErrors.message}
         </Typography>
       ) : null}

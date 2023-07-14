@@ -24,12 +24,14 @@ const SignIn = ({
   return (
     <LoginWrapper>
       <>
-        <LoginTitle
-          title={translations.login.title}
-          fontSizeXs={40}
-        />
+        <Grid display={'flex'} flexDirection={'column'} alignItems={'flex-end'}>
+          <LoginTitle
+            title={translations.login.title}
+            fontSizeXs={40}
+          />
 
-        <CoolStuffSubtitle width={'50%'} />
+          <CoolStuffSubtitle width={'50%'} />
+        </Grid>
 
         <form
           onSubmit={onSubmit()}
@@ -42,7 +44,7 @@ const SignIn = ({
               flexDirection: 'column',
               marginTop: {
                 xs: theme.spacing(3),
-                md: theme.spacing(7)
+                md: theme.spacing(3)
               },
               padding: `0 + ${theme.spacing(2)}`,
               width: {

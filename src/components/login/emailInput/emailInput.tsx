@@ -43,7 +43,11 @@ const EmailInput = ({
       />
 
       {formErrors?.email ? (
-        <Typography role='alert' color={theme.palette.error.main}>
+        <Typography
+          role='alert'
+          color={theme.palette.error.main}
+          sx={{ fontSize: 14 }}
+        >
           {formErrors.email?.message}
         </Typography>
       ) : null}

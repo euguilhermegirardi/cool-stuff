@@ -5,12 +5,12 @@ const LoginWrapper = ({ children }: { children: ReactElement }) => {
   return (
     <Grid
       container
-      justifyContent={'flex-start'}
+      justifyContent={'space-evenly'}
       alignItems={'center'}
       flexDirection={'column'}
       sx={{
         margin: '0 auto',
-        padding: '4rem 0',
+        padding: '2rem 0',
         backgroundColor: '#fff',
         borderRadius: 2,
         width: {

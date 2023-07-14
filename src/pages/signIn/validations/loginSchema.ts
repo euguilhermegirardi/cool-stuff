@@ -8,6 +8,8 @@ export const loginSchema = yup.object({
   ,
   password: yup
     .string()
-    .required()
+    .min(5, 'Password is too short - it should be 5 characters minimum.')
+    .matches(/[a-zA-Z]/, 'Password can only contain Latin letters.')
+    .required('No password provided.')
   ,
 });
