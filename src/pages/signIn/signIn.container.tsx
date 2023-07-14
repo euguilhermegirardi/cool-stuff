@@ -1,16 +1,20 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 import { yupResolver } from '@hookform/resolvers/yup';
 import LoginRequest from './interfaces/loginRequest';
 import SignIn from './signIn';
 import { loginSchema } from './validations/loginSchema';
 import useLocalStorage from '../../hooks/useLocalStorage';
+import ApplicationRoutes from '../../utils/navigation/applicationRoutes';
 
 const SignInContainer = () => {
   const [rememberMe, setRememberMe] = useState(false);
-  const [email] = useLocalStorage('email', '');
+  const [email] = useLocalStorage('cool-stuff-email', '');
+  const [, setUserEmail] = useLocalStorage('cool-stuff-email', '');
   const [isRememberMe] = useLocalStorage('rememberMe', '');
-  const [, setUserEmail] = useLocalStorage('email', '');
+
+  const navigate = useNavigate();
 
   const {
     register,
@@ -24,8 +28,8 @@ const SignInContainer = () => {
   const handleRememberMe = () => setRememberMe((set) => !set);
 
   const handleOnSubmit = (body: LoginRequest) => {
-    console.log('onSubmit', body)
     setUserEmail(body.email);
+    navigate(ApplicationRoutes.dashboard);
   };
 
   const onSubmit = () => handleSubmit(handleOnSubmit);

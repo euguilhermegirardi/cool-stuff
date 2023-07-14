@@ -14,6 +14,9 @@ const translations = {
     signUpToPokedex: 'Sign Up to Pokedex',
     register: 'Register',
   },
+  dashboard: {
+    logout: 'logout',
+  },
   return: 'return',
   coolStuff: 'cool stuff',
 };
