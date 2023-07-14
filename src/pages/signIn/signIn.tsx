@@ -24,13 +24,18 @@ const SignIn = ({
   return (
     <LoginWrapper>
       <>
-        <Grid display={'flex'} flexDirection={'column'} alignItems={'flex-end'}>
+        <Grid
+          display={'flex'}
+          flexDirection={'column'}
+          alignItems={'center'}
+          sx={{ width: '100%' }}
+        >
           <LoginTitle
             title={translations.login.title}
             fontSizeXs={40}
           />
 
-          <CoolStuffSubtitle width={'50%'} />
+          <CoolStuffSubtitle />
         </Grid>
 
         <form

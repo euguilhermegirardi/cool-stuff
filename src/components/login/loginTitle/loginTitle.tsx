@@ -15,11 +15,18 @@ const LoginTitle = ({
           xs: fontSizeXs,
           md: 50
         },
-        fontWeight: 'bold',
+        fontWeight: {
+          xs: 'unset',
+          md: 'bold'
+        },
         textTransform: 'uppercase',
         textAlign: 'center',
         WebkitTextStrokeColor: '#3B4CCA',
-        WebkitTextStrokeWidth: 2,
+        WebkitTextStrokeWidth: {
+          xs: 0.5,
+          sm: 1,
+          md: 2
+        },
       }}
     >
       {title}
