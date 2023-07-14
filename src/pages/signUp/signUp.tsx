@@ -6,6 +6,7 @@ import ElementLink from '../../components/elementLink/elementLink';
 import CoolStuffSubtitle from '../../components/login/coolStuffSubtitle/coolStuffSubtitle';
 import LoginTitle from '../../components/login/loginTitle/loginTitle';
 import LoginWrapper from '../../components/login/loginWrapper/loginWrapper';
+import MuiButton from '../../components/muiButton/muiButton';
 import { useTranslations } from '../../hooks/useTranslations';
 
 const SignUp = () => {
@@ -17,7 +18,7 @@ const SignUp = () => {
       <>
         <LoginTitle title={translations.signUp.signUpToPokedex} />
 
-        <CoolStuffSubtitle width={'83%'} />
+        <CoolStuffSubtitle />
 
         <Grid
           item
@@ -107,20 +108,11 @@ const SignUp = () => {
 
           />
 
-          <Button
-            variant="contained"
-            sx={{
-              backgroundColor: '#3B4CCA',
-              color: '#FFDE00',
-              marginTop: '1rem',
-              height: {
-                xs: 'unset',
-                md: '3rem'
-              }
-            }}
-          >
-            {translations.signUp.register}
-          </Button>
+          <MuiButton
+            type='submit'
+            color='ceruleanBlue'
+            text={translations.signUp.register}
+          />
 
           <ElementLink
             link={'/'}

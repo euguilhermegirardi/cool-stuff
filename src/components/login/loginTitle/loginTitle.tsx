@@ -5,7 +5,7 @@ const LoginTitle = ({
   fontSizeXs,
 }: {
   title: string,
-  fontSizeXs: number
+  fontSizeXs?: number
 }) => {
   return (
     <Typography
