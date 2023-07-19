@@ -7,6 +7,7 @@ const PasswordInputContainer = ({
   register,
   formErrors,
   inputId,
+  validateInput,
 }: PasswordInputContainerProps) => {
   const [showPassword, setShowPassword] = useState(false);
 
@@ -27,6 +28,7 @@ const PasswordInputContainer = ({
       handleShowPassword={handleShowPassword}
       handleMouseDownPassword={handleMouseDownPassword}
       inputId={inputId}
+      validateInput={validateInput}
     />
   );
 };

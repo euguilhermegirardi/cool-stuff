@@ -12,4 +12,5 @@ export interface PasswordInputProps {
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => void;
   inputId: string;
+  validateInput: () => void;
 };

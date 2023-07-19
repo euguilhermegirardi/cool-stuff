@@ -7,4 +7,5 @@ export interface PasswordInputContainerProps {
     message?: string;
   };
   inputId: string;
+  validateInput?: () => void;
 };

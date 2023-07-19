@@ -1,4 +1,4 @@
-import { Grid, useTheme } from '@mui/material';
+import { Grid, Typography, useTheme } from '@mui/material';
 import { SignUpProps } from './interfaces/signUpProps';
 import ElementLink from '../../components/elementLink/elementLink';
 import CoolStuffSubtitle from '../../components/login/coolStuffSubtitle/coolStuffSubtitle';
@@ -10,8 +10,10 @@ import MuiButton from '../../components/muiButton/muiButton';
 import { useTranslations } from '../../hooks/useTranslations';
 
 const SignUp = ({
+  passwordDoNotMatch,
   formErrors,
   register,
+  validateInput,
   onSubmit,
 }: SignUpProps) => {
   const theme = useTheme();
@@ -61,14 +63,28 @@ const SignUp = ({
               register={register}
               formErrors={formErrors.password}
               inputId={translations.password}
+              validateInput={validateInput}
             />
 
             <PasswordInput
               autoFocus={false}
               register={register}
               formErrors={formErrors.password}
-              inputId={translations.signUp.confirmPassword}
+              inputId={translations.signUp.confirmPasswordId}
+              validateInput={validateInput}
             />
+
+            {passwordDoNotMatch ? (
+              <Typography
+                sx={{
+                  margin: theme.spacing(-1, 0, 2, 0),
+                  fontSize: 14,
+                  color: theme.palette.error.main
+                }}
+              >
+                {translations.signUp.doNotMatch}
+              </Typography>
+            ) : null}
 
             <MuiButton
               type='submit'

@@ -14,7 +14,9 @@ const translations = {
   signUp: {
     signUpToPokedex: 'Sign Up to Pokedex',
     register: 'Register',
-    confirmPassword: 'confirm password'
+    confirmPassword: 'confirm password',
+    confirmPasswordId: 'confirmPassword',
+    doNotMatch: 'Password dot not match',
   },
   dashboard: {
     logout: 'logout',
