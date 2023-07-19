@@ -32,9 +32,7 @@ const EmailInput = ({
           startAdornment: (
             <InputAdornment
               position="start"
-              sx={{
-                color: 'ceruleanBlue.main'
-              }}
+              sx={{ color: 'ceruleanBlue.main' }}
             >
               <MailOutlineIcon />
             </InputAdornment>

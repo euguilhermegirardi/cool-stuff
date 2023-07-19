@@ -10,6 +10,7 @@ import ApplicationRoutes from '../../utils/navigation/applicationRoutes';
 
 const SignInContainer = () => {
   const [rememberMe, setRememberMe] = useState(false);
+  const [notSignedIn, setNotSignedIn] = useState(false);
   const [email] = useLocalStorage('cool-stuff-email', '');
   const [, setUserEmail] = useLocalStorage('cool-stuff-email', '');
   const [isRememberMe] = useLocalStorage('rememberMe', '');
@@ -28,14 +29,20 @@ const SignInContainer = () => {
   const handleRememberMe = () => setRememberMe((set) => !set);
 
   const handleOnSubmit = (body: LoginRequest) => {
-    setUserEmail(body.email);
-    navigate(ApplicationRoutes.dashboard);
+    if (email) {
+      setUserEmail(body.email);
+      setNotSignedIn(false);
+      navigate(ApplicationRoutes.dashboard);
+    } else if (!email) {
+      setNotSignedIn(true);
+    }
   };
 
   const onSubmit = () => handleSubmit(handleOnSubmit);
 
   return (
     <SignIn
+      notSignedIn={notSignedIn}
       defaultValue={isRememberMe && email ? email : null}
       formErrors={formErrors}
       register={register}

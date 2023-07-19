@@ -1,10 +1,8 @@
 import { FormEventHandler } from 'react';
 import { UseFormRegister } from 'react-hook-form';
-import LoginRequest from './loginRequest';
+import SignUpRequest from './signUpRequest';
 
-export interface SignInProps {
-  notSignedIn: boolean;
-  defaultValue: string | null;
+export interface SignUpProps {
   formErrors: {
     email?: {
       message?: string;
@@ -12,8 +10,10 @@ export interface SignInProps {
     password?: {
       message?: string;
     };
+    confirmPassword?: {
+      message?: string;
+    };
   };
-  register: UseFormRegister<LoginRequest>;
-  handleRememberMe: () => void;
+  register: UseFormRegister<SignUpRequest>;
   onSubmit: () => FormEventHandler<HTMLFormElement> | undefined;
 };

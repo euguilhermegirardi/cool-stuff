@@ -18,10 +18,10 @@ const PasswordInput = ({
   return (
     <>
       <TextField
-        placeholder='password'
+        placeholder={inputId}
         type={showPassword ? 'text' : 'password'}
         defaultValue=''
-        {...register('password')}
+        {...register(inputId)}
         InputProps={{
           style: {
             height: 40,

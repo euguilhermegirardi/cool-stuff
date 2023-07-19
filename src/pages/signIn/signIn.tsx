@@ -1,4 +1,5 @@
 import { Checkbox, Grid, Typography, useTheme } from '@mui/material';
+import DangerousIcon from '@mui/icons-material/Dangerous';
 import { SignInProps } from './interfaces/signInProps';
 import ElementLink from '../../components/elementLink/elementLink';
 import CoolStuffSubtitle from '../../components/login/coolStuffSubtitle/coolStuffSubtitle';
@@ -12,6 +13,7 @@ import { useTranslations } from '../../hooks/useTranslations';
 import ApplicationRoutes from '../../utils/navigation/applicationRoutes';
 
 const SignIn = ({
+  notSignedIn,
   defaultValue,
   formErrors,
   register,
@@ -58,6 +60,28 @@ const SignIn = ({
               }
             }}
           >
+            {notSignedIn ? (
+              <Grid
+                sx={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  border: `1px solid ${theme.palette.error.main}`,
+                  mb: theme.spacing(1.5),
+                  padding: theme.spacing(1, 2),
+                }}
+              >
+                <DangerousIcon sx={{ color: `${theme.palette.error.main}` }} />
+                <Typography
+                  sx={{
+                    color: `${theme.palette.error.main}`,
+                    ml: theme.spacing(1),
+                  }}
+                >
+                  {translations.login.notSignedIn}
+                </Typography>
+              </Grid>
+            ) : null}
+
             <EmailInput
               register={register}
               formErrors={formErrors}
@@ -67,7 +91,7 @@ const SignIn = ({
               autoFocus={false}
               register={register}
               formErrors={formErrors.password}
-              inputId={'12'}
+              inputId={translations.password}
             />
 
             <Grid
@@ -76,7 +100,7 @@ const SignIn = ({
                 display: 'flex',
                 alignItems: 'center',
                 height: theme.spacing(6.5),
-                mb: 3,
+                mb: theme.spacing(3),
               }}
             >
               <Checkbox

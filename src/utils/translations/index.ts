@@ -4,7 +4,8 @@ const translations = {
     subtitle: 'cool stuff',
     signIn: 'sign in',
     singUp: 'sign up',
-    rememberMe: 'Remember me'
+    rememberMe: 'Remember me',
+    notSignedIn: 'Email and password wrong. Do not have an account? Sign up!',
   },
   notFound: {
     title: 'Something went wrong: 404!',
@@ -13,10 +14,12 @@ const translations = {
   signUp: {
     signUpToPokedex: 'Sign Up to Pokedex',
     register: 'Register',
+    confirmPassword: 'confirm password'
   },
   dashboard: {
     logout: 'logout',
   },
+  password: 'password',
   return: 'return',
   coolStuff: 'cool stuff',
 };
