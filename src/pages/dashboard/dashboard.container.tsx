@@ -6,9 +6,11 @@ import ApplicationRoutes from '../../utils/navigation/applicationRoutes';
 const DashboardContainer = () => {
   const navigate = useNavigate();
   const [, setUserEmail] = useLocalStorage('cool-stuff-email', '');
+  const [, setUserPassword] = useLocalStorage('cool-stuff-password', '');
 
   const handleLogOut = () => {
     setUserEmail('');
+    setUserPassword('');
     navigate(ApplicationRoutes.signIn);
   };
 
