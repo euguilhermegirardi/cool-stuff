@@ -1,4 +1,6 @@
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
+import ProtectedRoutes from './protectedRoutes';
+import useAuth from '../hooks/useAuth';
 import Dashboard from '../pages/dashboard';
 import NotFound from '../pages/notFound/notFound';
 import SignIn from '../pages/signIn';
@@ -6,11 +8,19 @@ import SignUp from '../pages/signUp';
 import ApplicationRoutes from '../utils/navigation/applicationRoutes';
 
 const AppRoutes = () => {
+  const { isLoggedIn } = useAuth();
+
   return (
     <Routes>
       <Route
         path={ApplicationRoutes.signIn}
-        element={<SignIn />}
+        element={
+          isLoggedIn ? (
+            <Navigate to={ApplicationRoutes.dashboard} replace />
+          ) : (
+            <SignIn />
+          )
+        }
       />
 
       <Route
@@ -20,7 +30,11 @@ const AppRoutes = () => {
 
       <Route
         path={ApplicationRoutes.dashboard}
-        element={<Dashboard />}
+        element={
+          <ProtectedRoutes>
+            <Dashboard />
+          </ProtectedRoutes>
+        }
       />
 
       <Route

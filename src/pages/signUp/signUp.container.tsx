@@ -5,12 +5,14 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import SignUpRequest from './interfaces/signUpRequest';
 import SignUp from './signUp';
 import { signUpSchema } from './validations/signUpSchema';
+import useAuth from '../../hooks/useAuth';
 import useSessionStorage from '../../hooks/useSessionStorage';
 import ApplicationRoutes from '../../utils/navigation/applicationRoutes';
 
 const SignUpContainer = () => {
   const [passwordDoNotMatch, setPasswordDoNotMatch] = useState(false);
 
+  const { login } = useAuth();
   const [, setUserEmail] = useSessionStorage('cool-stuff-email', '');
   const [, setUserPassword] = useSessionStorage('cool-stuff-password', '');
   const navigate = useNavigate();
@@ -37,8 +39,7 @@ const SignUpContainer = () => {
   };
 
   const handleOnSubmit = (body: SignUpRequest) => {
-    setUserEmail(body.email);
-    setUserPassword(body.password);
+    login(body.email, body.password)
     navigate(ApplicationRoutes.signIn);
   };
 
