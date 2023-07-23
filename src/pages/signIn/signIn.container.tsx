@@ -6,13 +6,14 @@ import LoginRequest from './interfaces/loginRequest';
 import SignIn from './signIn';
 import { loginSchema } from './validations/loginSchema';
 import useLocalStorage from '../../hooks/useLocalStorage';
+import useSessionStorage from '../../hooks/useSessionStorage';
 import ApplicationRoutes from '../../utils/navigation/applicationRoutes';
 
 const SignInContainer = () => {
   const [rememberMe, setRememberMe] = useState(false);
   const [notSignedIn, setNotSignedIn] = useState(false);
-  const [email] = useLocalStorage('cool-stuff-email', '');
-  const [password] = useLocalStorage('cool-stuff-password', '');
+  const [email] = useSessionStorage('cool-stuff-email', '');
+  const [password] = useSessionStorage('cool-stuff-password', '');
   const [, setUserEmail] = useLocalStorage('cool-stuff-email', '');
   const [isRememberMe] = useLocalStorage('rememberMe', '');
 
