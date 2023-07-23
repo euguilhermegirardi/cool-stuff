@@ -12,6 +12,7 @@ const SignInContainer = () => {
   const [rememberMe, setRememberMe] = useState(false);
   const [notSignedIn, setNotSignedIn] = useState(false);
   const [email] = useLocalStorage('cool-stuff-email', '');
+  const [password] = useLocalStorage('cool-stuff-password', '');
   const [, setUserEmail] = useLocalStorage('cool-stuff-email', '');
   const [isRememberMe] = useLocalStorage('rememberMe', '');
 
@@ -29,11 +30,10 @@ const SignInContainer = () => {
   const handleRememberMe = () => setRememberMe((set) => !set);
 
   const handleOnSubmit = (body: LoginRequest) => {
-    if (email) {
-      setUserEmail(body.email);
+    if (email == body.email && password == body.password) {
       setNotSignedIn(false);
       navigate(ApplicationRoutes.dashboard);
-    } else if (!email) {
+    } else if (email !== body.email && password !== body.password) {
       setNotSignedIn(true);
     }
   };
