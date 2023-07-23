@@ -28,7 +28,10 @@ const SignUp = ({
           alignItems={'center'}
           sx={{ width: '100%' }}
         >
-          <LoginTitle title={translations.signUp.signUpToPokedex} />
+          <LoginTitle
+            title={translations.signUp.signUpToPokedex}
+            fontSizeMd={40}
+          />
 
           <CoolStuffSubtitle />
         </Grid>
@@ -59,18 +62,20 @@ const SignUp = ({
             />
 
             <PasswordInput
-              autoFocus={false}
-              register={register}
-              formErrors={formErrors.password}
               inputId={translations.password}
+              inputName={translations.password}
+              autoFocus={false}
+              formErrors={formErrors.password}
+              register={register}
               validateInput={validateInput}
             />
 
             <PasswordInput
-              autoFocus={false}
-              register={register}
-              formErrors={formErrors.password}
               inputId={translations.signUp.confirmPasswordId}
+              inputName={translations.signUp.confirmPassword}
+              autoFocus={false}
+              formErrors={formErrors.password}
+              register={register}
               validateInput={validateInput}
             />
 

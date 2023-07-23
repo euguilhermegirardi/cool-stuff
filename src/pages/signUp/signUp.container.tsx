@@ -6,15 +6,14 @@ import SignUpRequest from './interfaces/signUpRequest';
 import SignUp from './signUp';
 import { signUpSchema } from './validations/signUpSchema';
 import useLocalStorage from '../../hooks/useLocalStorage';
-import { useTranslations } from '../../hooks/useTranslations';
 import ApplicationRoutes from '../../utils/navigation/applicationRoutes';
 
 const SignUpContainer = () => {
   const [passwordDoNotMatch, setPasswordDoNotMatch] = useState(false);
 
   const [, setUserEmail] = useLocalStorage('cool-stuff-email', '');
+  const [, setUserPassword] = useLocalStorage('cool-stuff-password', '');
   const navigate = useNavigate();
-  const translations = useTranslations();
 
   const {
     register,
@@ -37,12 +36,10 @@ const SignUpContainer = () => {
     }
   };
 
-  // why it's not calling this function?
   const handleOnSubmit = (body: SignUpRequest) => {
-    // setUserEmail(body.email);
-    // set password as well
-    // navigate(ApplicationRoutes.signIn);
-    console.log('kai')
+    setUserEmail(body.email);
+    setUserPassword(body.password);
+    navigate(ApplicationRoutes.signIn);
   };
 
   const onSubmit = () => handleSubmit(handleOnSubmit);

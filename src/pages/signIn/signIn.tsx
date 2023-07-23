@@ -35,6 +35,7 @@ const SignIn = ({
           <LoginTitle
             title={translations.login.title}
             fontSizeXs={40}
+            fontSizeMd={50}
           />
 
           <CoolStuffSubtitle />
@@ -88,10 +89,11 @@ const SignIn = ({
             />
 
             <PasswordInput
-              autoFocus={false}
-              register={register}
-              formErrors={formErrors.password}
               inputId={translations.password}
+              inputName={translations.password}
+              autoFocus={false}
+              formErrors={formErrors.password}
+              register={register}
             />
 
             <Grid

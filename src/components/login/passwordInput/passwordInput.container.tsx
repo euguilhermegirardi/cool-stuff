@@ -3,10 +3,11 @@ import { PasswordInputContainerProps } from './interfaces/passwordInputContainer
 import PasswordInput from './passwordInput';
 
 const PasswordInputContainer = ({
-  autoFocus,
-  register,
-  formErrors,
   inputId,
+  inputName,
+  autoFocus,
+  formErrors,
+  register,
   validateInput,
 }: PasswordInputContainerProps) => {
   const [showPassword, setShowPassword] = useState(false);
@@ -21,13 +22,14 @@ const PasswordInputContainer = ({
 
   return (
     <PasswordInput
-      autoFocus={autoFocus}
-      register={register}
-      formErrors={formErrors}
-      showPassword={showPassword}
-      handleShowPassword={handleShowPassword}
-      handleMouseDownPassword={handleMouseDownPassword}
       inputId={inputId}
+      inputName={inputName}
+      autoFocus={autoFocus}
+      showPassword={showPassword}
+      formErrors={formErrors}
+      handleMouseDownPassword={handleMouseDownPassword}
+      register={register}
+      handleShowPassword={handleShowPassword}
       validateInput={validateInput}
     />
   );

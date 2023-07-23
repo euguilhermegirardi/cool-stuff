@@ -3,9 +3,11 @@ import { Typography } from '@mui/material';
 const LoginTitle = ({
   title,
   fontSizeXs,
+  fontSizeMd,
 }: {
   title: string,
-  fontSizeXs?: number
+  fontSizeXs?: number,
+  fontSizeMd: number,
 }) => {
   return (
     <Typography
@@ -13,7 +15,7 @@ const LoginTitle = ({
         color: 'goldenYellow.main',
         fontSize: {
           xs: fontSizeXs,
-          md: 50
+          md: fontSizeMd,
         },
         fontWeight: {
           xs: 'unset',

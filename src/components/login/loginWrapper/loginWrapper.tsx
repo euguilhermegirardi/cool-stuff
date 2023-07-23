@@ -10,7 +10,7 @@ const LoginWrapper = ({ children }: { children: ReactElement }) => {
       flexDirection={'column'}
       sx={{
         margin: '0 auto',
-        padding: '2rem 0',
+        padding: '4rem 0',
         backgroundColor: '#fff',
         borderRadius: 2,
         width: {

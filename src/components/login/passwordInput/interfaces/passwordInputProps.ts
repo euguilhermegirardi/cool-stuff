@@ -1,16 +1,17 @@
 import { UseFormRegister } from 'react-hook-form';
 
 export interface PasswordInputProps {
+  inputId: string;
+  inputName: string;
   autoFocus: boolean;
-  register: UseFormRegister<any>;
+  showPassword: boolean;
   formErrors?: {
     message?: string;
   };
-  showPassword: boolean;
-  handleShowPassword: () => void;
   handleMouseDownPassword: (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => void;
-  inputId: string;
-  validateInput: () => void;
+  register: UseFormRegister<any>;
+  handleShowPassword: () => void;
+  validateInput?: () => void;
 };

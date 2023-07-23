@@ -28,6 +28,7 @@ const EmailInput = ({
             height: 40,
             padding: `0 + ${theme.spacing(0.5)}`,
             borderRadius: 0,
+            marginBottom: theme.spacing(1)
           },
           startAdornment: (
             <InputAdornment

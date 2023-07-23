@@ -1,11 +1,12 @@
 import { UseFormRegister } from 'react-hook-form';
 
 export interface PasswordInputContainerProps {
+  inputId: string;
+  inputName: string;
   autoFocus: boolean;
-  register: UseFormRegister<any>;
   formErrors?: {
     message?: string;
   };
-  inputId: string;
+  register: UseFormRegister<any>;
   validateInput?: () => void;
 };

@@ -5,13 +5,14 @@ import { PasswordInputProps } from './interfaces/passwordInputProps';
 import Locker from '../../../assets/icons/locker.svg';
 
 const PasswordInput = ({
-  autoFocus,
-  register,
-  formErrors,
-  showPassword,
-  handleShowPassword,
-  handleMouseDownPassword,
   inputId,
+  inputName,
+  autoFocus,
+  showPassword,
+  formErrors,
+  handleMouseDownPassword,
+  register,
+  handleShowPassword,
   validateInput,
 }: PasswordInputProps) => {
   const theme = useTheme();
@@ -19,7 +20,7 @@ const PasswordInput = ({
   return (
     <>
       <TextField
-        placeholder={inputId}
+        placeholder={inputName}
         type={showPassword ? 'text' : 'password'}
         defaultValue=''
         {...register(inputId)}
@@ -29,8 +30,7 @@ const PasswordInput = ({
             height: 40,
             padding: `0 + ${theme.spacing(0.5)}`,
             borderRadius: 0,
-            marginTop: 10,
-            marginBottom: 10,
+            marginBottom: theme.spacing(1)
           },
           startAdornment: (
             <InputAdornment position='start'
