@@ -1,4 +1,4 @@
-import { ReactElement, useState } from 'react';
+import { ReactElement, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import AuthContext from '../context/auth.context';
 import useLocalStorage from '../hooks/useLocalStorage';
@@ -37,14 +37,14 @@ const AuthProvider = ({ children }: { children: ReactElement }) => {
     navigate(ApplicationRoutes.signIn);
   };
 
+  const providerValues = useMemo(() => ({
+    isLoggedIn,
+    login,
+    logout,
+  }), []);
+
   return (
-    <AuthContext.Provider
-      value={{
-        isLoggedIn,
-        login,
-        logout,
-      }}
-    >
+    <AuthContext.Provider value={providerValues}>
       {children}
     </AuthContext.Provider>
   )
