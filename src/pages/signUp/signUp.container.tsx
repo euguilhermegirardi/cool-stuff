@@ -6,15 +6,15 @@ import SignUpRequest from './interfaces/signUpRequest';
 import SignUp from './signUp';
 import { signUpSchema } from './validations/signUpSchema';
 import useAuth from '../../hooks/useAuth';
-import useSessionStorage from '../../hooks/useSessionStorage';
+import useLocalStorage from '../../hooks/useLocalStorage';
 import ApplicationRoutes from '../../utils/navigation/applicationRoutes';
 
 const SignUpContainer = () => {
   const [passwordDoNotMatch, setPasswordDoNotMatch] = useState(false);
 
   const { login } = useAuth();
-  const [, setUserEmail] = useSessionStorage('cool-stuff-email', '');
-  const [, setUserPassword] = useSessionStorage('cool-stuff-password', '');
+  const [, setUserEmail] = useLocalStorage('cool-stuff-email', '');
+  const [, setUserPassword] = useLocalStorage('cool-stuff-password', '');
 
   const navigate = useNavigate();
 

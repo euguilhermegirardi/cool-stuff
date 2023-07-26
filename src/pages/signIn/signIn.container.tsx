@@ -6,15 +6,14 @@ import SignIn from './signIn';
 import { loginSchema } from './validations/loginSchema';
 import useAuth from '../../hooks/useAuth';
 import useLocalStorage from '../../hooks/useLocalStorage';
-import useSessionStorage from '../../hooks/useSessionStorage';
 
 const SignInContainer = () => {
   const [notSignedIn, setNotSignedIn] = useState(false);
 
   const { login } = useAuth();
 
-  const [email] = useSessionStorage('cool-stuff-email', '');
-  const [password] = useSessionStorage('cool-stuff-password', '');
+  const [email] = useLocalStorage('cool-stuff-email', '');
+  const [password] = useLocalStorage('cool-stuff-password', '');
   const [userEmail, setUserEmail] = useLocalStorage('cool-stuff-email', '');
 
   const {

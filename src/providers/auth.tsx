@@ -2,7 +2,6 @@ import { ReactElement, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import AuthContext from '../context/auth.context';
 import useLocalStorage from '../hooks/useLocalStorage';
-import useSessionStorage from '../hooks/useSessionStorage';
 import ApplicationRoutes from '../utils/navigation/applicationRoutes';
 
 const AuthProvider = ({ children }: { children: ReactElement }) => {
@@ -12,8 +11,8 @@ const AuthProvider = ({ children }: { children: ReactElement }) => {
 
   const [isLoggedIn, setIsLoggedIn] = useState(!!accessToken);
 
-  const [userEmail, setUserEmail] = useSessionStorage('cool-stuff-email', '');
-  const [, setUserPassword] = useSessionStorage('cool-stuff-password', '');
+  const [userEmail, setUserEmail] = useLocalStorage('cool-stuff-email', '');
+  const [, setUserPassword] = useLocalStorage('cool-stuff-password', '');
   const [lsUserEmail,] = useLocalStorage('cool-stuff-email', '');
 
   const navigate = useNavigate();
