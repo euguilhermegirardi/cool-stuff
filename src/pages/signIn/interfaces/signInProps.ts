@@ -4,7 +4,6 @@ import LoginRequest from './loginRequest';
 
 export interface SignInProps {
   notSignedIn: boolean;
-  defaultValue: string | null;
   formErrors: {
     email?: {
       message?: string;
@@ -14,6 +13,5 @@ export interface SignInProps {
     };
   };
   register: UseFormRegister<LoginRequest>;
-  handleRememberMe: () => void;
   onSubmit: () => FormEventHandler<HTMLFormElement> | undefined;
 };

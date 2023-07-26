@@ -15,6 +15,7 @@ const SignUpContainer = () => {
   const { login } = useAuth();
   const [, setUserEmail] = useSessionStorage('cool-stuff-email', '');
   const [, setUserPassword] = useSessionStorage('cool-stuff-password', '');
+
   const navigate = useNavigate();
 
   const {
@@ -39,7 +40,8 @@ const SignUpContainer = () => {
   };
 
   const handleOnSubmit = (body: SignUpRequest) => {
-    login(body.email, body.password)
+    setUserEmail(body.email);
+    setUserPassword(body.password);
     navigate(ApplicationRoutes.signIn);
   };
 

@@ -1,4 +1,4 @@
-import { ReactElement, useMemo, useState } from 'react';
+import { ReactElement, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import AuthContext from '../context/auth.context';
 import useLocalStorage from '../hooks/useLocalStorage';
@@ -12,9 +12,10 @@ const AuthProvider = ({ children }: { children: ReactElement }) => {
 
   const [isLoggedIn, setIsLoggedIn] = useState(!!accessToken);
 
-  const [, setUserEmail] = useSessionStorage('cool-stuff-email', '');
+  const [userEmail, setUserEmail] = useSessionStorage('cool-stuff-email', '');
   const [, setUserPassword] = useSessionStorage('cool-stuff-password', '');
-  const [isRememberMe, setIsRememberMe] = useLocalStorage('rememberMe', '');
+  const [lsUserEmail,] = useLocalStorage('cool-stuff-email', '');
+
   const navigate = useNavigate();
 
   const login = (
@@ -22,11 +23,10 @@ const AuthProvider = ({ children }: { children: ReactElement }) => {
     password: string,
     rememberMe?: boolean,
   ) => {
-    setIsLoggedIn(true);
     setAccessToken(email);
+    setIsLoggedIn(true);
     setUserEmail(email);
     setUserPassword(password);
-    setIsRememberMe('true');
   };
 
   const logout = () => {
@@ -37,14 +37,12 @@ const AuthProvider = ({ children }: { children: ReactElement }) => {
     navigate(ApplicationRoutes.signIn);
   };
 
-  const providerValues = useMemo(() => ({
-    isLoggedIn,
-    login,
-    logout,
-  }), []);
-
   return (
-    <AuthContext.Provider value={providerValues}>
+    <AuthContext.Provider value={{
+      isLoggedIn,
+      login,
+      logout,
+    }}>
       {children}
     </AuthContext.Provider>
   )
