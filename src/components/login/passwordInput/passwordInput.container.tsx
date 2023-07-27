@@ -8,7 +8,6 @@ const PasswordInputContainer = ({
   autoFocus,
   formErrors,
   register,
-  validateInput,
 }: PasswordInputContainerProps) => {
   const [showPassword, setShowPassword] = useState(false);
 
@@ -30,7 +29,6 @@ const PasswordInputContainer = ({
       handleMouseDownPassword={handleMouseDownPassword}
       register={register}
       handleShowPassword={handleShowPassword}
-      validateInput={validateInput}
     />
   );
 };

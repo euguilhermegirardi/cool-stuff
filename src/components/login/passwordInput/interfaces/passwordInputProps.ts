@@ -13,5 +13,4 @@ export interface PasswordInputProps {
   ) => void;
   register: UseFormRegister<any>;
   handleShowPassword: () => void;
-  validateInput?: () => void;
 };

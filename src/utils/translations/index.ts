@@ -16,7 +16,6 @@ const translations = {
     register: 'Register',
     confirmPassword: 'confirm password',
     confirmPasswordId: 'confirmPassword',
-    doNotMatch: 'Password dot not match',
   },
   dashboard: {
     logout: 'logout',

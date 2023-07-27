@@ -8,5 +8,4 @@ export interface PasswordInputContainerProps {
     message?: string;
   };
   register: UseFormRegister<any>;
-  validateInput?: () => void;
 };

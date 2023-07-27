@@ -13,7 +13,6 @@ const PasswordInput = ({
   handleMouseDownPassword,
   register,
   handleShowPassword,
-  validateInput,
 }: PasswordInputProps) => {
   const theme = useTheme();
 
@@ -24,7 +23,6 @@ const PasswordInput = ({
         type={showPassword ? 'text' : 'password'}
         defaultValue=''
         {...register(inputId)}
-        onBlur={validateInput}
         InputProps={{
           style: {
             height: 40,
