@@ -1,0 +1,14 @@
+{
+  "users": [
+    {
+      "userEmail": "gui@icloud.com",
+      "userPassword": "123456",
+      "id": 1
+    },
+    {
+      "userEmail": "kai@icloud.com",
+      "userPassword": "kaikai",
+      "id": 2
+    }
+  ]
+}

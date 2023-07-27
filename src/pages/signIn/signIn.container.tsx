@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import LoginRequest from './interfaces/loginRequest';
@@ -35,6 +35,21 @@ const SignInContainer = () => {
   };
 
   const onSubmit = () => handleSubmit(handleOnSubmit);
+
+  const handle = async () => {
+    await fetch('http://localhost:3000/users')
+
+    await fetch('http://localhost:3000/users')
+      .then(function (response) { return response.json(); })
+      .then(function (data) {
+        const items = data;
+        console.log(items)
+      })
+  };
+
+  useEffect(() => {
+    handle();
+  }, []);
 
   return (
     <SignIn

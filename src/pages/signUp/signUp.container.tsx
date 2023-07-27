@@ -12,10 +12,6 @@ import ApplicationRoutes from '../../utils/navigation/applicationRoutes';
 const SignUpContainer = () => {
   const [passwordDoNotMatch, setPasswordDoNotMatch] = useState(false);
 
-  const { login } = useAuth();
-  const [, setUserEmail] = useLocalStorage('cool-stuff-email', '');
-  const [, setUserPassword] = useLocalStorage('cool-stuff-password', '');
-
   const navigate = useNavigate();
 
   const {
@@ -39,9 +35,21 @@ const SignUpContainer = () => {
     }
   };
 
+  const handleSignUp = async (email: string, password: string) => {
+    await fetch('http://localhost:3000/users', {
+      method: 'POST',
+      body: JSON.stringify({
+        userEmail: email,
+        userPassword: password,
+      }),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+  };
+
   const handleOnSubmit = (body: SignUpRequest) => {
-    setUserEmail(body.email);
-    setUserPassword(body.password);
+    handleSignUp(body.email, body.confirmPassword);
     navigate(ApplicationRoutes.signIn);
   };
 
