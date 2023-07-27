@@ -8,12 +8,13 @@ import useAuth from '../../hooks/useAuth';
 import useLocalStorage from '../../hooks/useLocalStorage';
 
 const SignInContainer = () => {
+  const [users, setUsers] = useState<any>([]);
   const [notSignedIn, setNotSignedIn] = useState(false);
 
   const { login } = useAuth();
 
-  const [email] = useLocalStorage('cool-stuff-email', '');
-  const [password] = useLocalStorage('cool-stuff-password', '');
+  // const [email] = useLocalStorage('cool-stuff-email', '');
+  // const [password] = useLocalStorage('cool-stuff-password', '');
   const [userEmail, setUserEmail] = useLocalStorage('cool-stuff-email', '');
 
   const {
@@ -26,30 +27,33 @@ const SignInContainer = () => {
   });
 
   const handleOnSubmit = (body: LoginRequest) => {
-    if (email == body.email && password == body.password) {
-      setNotSignedIn(false);
-      login(body.email, body.password);
-    } else if (email !== body.email && password !== body.password) {
+    if (users.length && (body.email && body.password)) {
+      users.forEach((user: any) => {
+        if (user.userEmail === body.email && user.userPassword === body.password) {
+          setNotSignedIn(false);
+          login(body.email, body.password);
+        }
+      });
+    } else {
       setNotSignedIn(true);
     }
   };
 
   const onSubmit = () => handleSubmit(handleOnSubmit);
 
-  const handle = async () => {
+  const handleGetUsers = async () => {
     await fetch('http://localhost:3000/users')
-
-    await fetch('http://localhost:3000/users')
-      .then(function (response) { return response.json(); })
-      .then(function (data) {
-        const items = data;
-        console.log(items)
+      .then(response => { return response.json(); })
+      .then(data => {
+        if (data.length) {
+          setUsers(data)
+        }
       })
   };
 
   useEffect(() => {
-    handle();
-  }, []);
+    handleGetUsers();
+  }, [])
 
   return (
     <SignIn
