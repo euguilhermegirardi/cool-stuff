@@ -13,8 +13,6 @@ const SignInContainer = () => {
 
   const { login } = useAuth();
 
-  // const [email] = useLocalStorage('cool-stuff-email', '');
-  // const [password] = useLocalStorage('cool-stuff-password', '');
   const [userEmail, setUserEmail] = useLocalStorage('cool-stuff-email', '');
 
   const {
@@ -32,10 +30,10 @@ const SignInContainer = () => {
         if (user.userEmail === body.email && user.userPassword === body.password) {
           setNotSignedIn(false);
           login(body.email, body.password);
+        } else {
+          setNotSignedIn(true);
         }
       });
-    } else {
-      setNotSignedIn(true);
     }
   };
 
