@@ -12,6 +12,7 @@ const NotFound = () => {
         <LoginTitle
           title={translations.notFound.title}
           fontSizeXs={33}
+          fontSizeMd={50}
         />
 
         <ElementLink
