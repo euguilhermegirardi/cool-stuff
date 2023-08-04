@@ -1,15 +1,12 @@
 import { Grid, Link, Typography } from '@mui/material';
 import { Link as RouterLink } from 'react-router-dom';
+import ElementLinkProps from './interfaces/elementLinkProps';
 
 const ElementLink = ({
   link,
   text,
   onClick,
-}: {
-  link: string;
-  text: string;
-  onClick?: () => void;
-}) => {
+}: ElementLinkProps) => {
   return (
     <Grid
       item
