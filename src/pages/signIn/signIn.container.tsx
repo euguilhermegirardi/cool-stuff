@@ -5,15 +5,13 @@ import LoginRequest from './interfaces/loginRequest';
 import SignIn from './signIn';
 import { loginSchema } from './validations/loginSchema';
 import useAuth from '../../hooks/useAuth';
-import useLocalStorage from '../../hooks/useLocalStorage';
 
 const SignInContainer = () => {
   const [users, setUsers] = useState<any>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [notSignedIn, setNotSignedIn] = useState(false);
 
   const { login } = useAuth();
-
-  const [userEmail, setUserEmail] = useLocalStorage('cool-stuff-email', '');
 
   const {
     register,
@@ -25,16 +23,22 @@ const SignInContainer = () => {
   });
 
   const handleOnSubmit = (body: LoginRequest) => {
-    if (users.length && (body.email && body.password)) {
-      users.forEach((user: any) => {
-        if (user.userEmail === body.email && user.userPassword === body.password) {
-          setNotSignedIn(false);
-          login(body.email, body.password);
-        } else {
-          setNotSignedIn(true);
-        }
-      });
-    }
+    setIsLoading(true);
+
+    setTimeout(() => {
+      if (users.length && (body.email && body.password)) {
+        users.forEach((user: any) => {
+          if (user.userEmail === body.email && user.userPassword === body.password) {
+            setNotSignedIn(false);
+            setIsLoading(false);
+            login(body.email, body.password);
+          } else {
+            setIsLoading(false);
+            setNotSignedIn(true);
+          }
+        });
+      }
+    }, 1500);
   };
 
   const onSubmit = () => handleSubmit(handleOnSubmit);
@@ -51,10 +55,11 @@ const SignInContainer = () => {
 
   useEffect(() => {
     handleGetUsers();
-  }, [])
+  }, []);
 
   return (
     <SignIn
+      isLoading={isLoading}
       notSignedIn={notSignedIn}
       formErrors={formErrors}
       register={register}

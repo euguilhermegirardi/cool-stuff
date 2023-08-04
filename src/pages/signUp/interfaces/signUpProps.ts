@@ -3,6 +3,7 @@ import { UseFormRegister } from 'react-hook-form';
 import SignUpRequest from './signUpRequest';
 
 export interface SignUpProps {
+  isLoading: boolean;
   formErrors: {
     email?: {
       message?: string;

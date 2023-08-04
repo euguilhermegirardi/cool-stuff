@@ -3,6 +3,7 @@ import { UseFormRegister } from 'react-hook-form';
 import LoginRequest from './loginRequest';
 
 export interface SignInProps {
+  isLoading: boolean;
   notSignedIn: boolean;
   formErrors: {
     email?: {

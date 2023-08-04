@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -9,6 +10,9 @@ import useLocalStorage from '../../hooks/useLocalStorage';
 import ApplicationRoutes from '../../utils/navigation/applicationRoutes';
 
 const SignUpContainer = () => {
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [error, setError] = useState();
+
   const navigate = useNavigate();
 
   const {
@@ -20,28 +24,36 @@ const SignUpContainer = () => {
     resolver: yupResolver(validationSignUpSchema),
   });
 
-  const handleSignUp = async (email: string, password: string) => {
-    await fetch('http://localhost:3000/users', {
-      method: 'POST',
-      body: JSON.stringify({
-        userEmail: email,
-        userPassword: password,
-      }),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    })
-  };
+  const handleOnSubmit = async (data: SignUpRequest) => {
+    setIsLoading(true);
 
-  const handleOnSubmit = (body: SignUpRequest) => {
-    handleSignUp(body.email, body.confirmPassword);
-    navigate(ApplicationRoutes.signIn);
+    try {
+      await fetch('http://localhost:3000/users', {
+        method: 'POST',
+        body: JSON.stringify({
+          userEmail: data.email,
+          userPassword: data.password,
+        }),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+        .then(() => {
+          setIsLoading(false);
+          navigate(ApplicationRoutes.signIn)
+        })
+    } catch (error: any) {
+      setError(error)
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const onSubmit = () => handleSubmit(handleOnSubmit);
 
   return (
     <SignUp
+      isLoading={isLoading}
       formErrors={formErrors}
       register={register}
       onSubmit={onSubmit}

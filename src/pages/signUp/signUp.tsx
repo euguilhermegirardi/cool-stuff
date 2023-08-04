@@ -10,6 +10,7 @@ import MuiButton from '../../components/muiButton/muiButton';
 import { useTranslations } from '../../hooks/useTranslations';
 
 const SignUp = ({
+  isLoading,
   formErrors,
   register,
   onSubmit,
@@ -79,6 +80,7 @@ const SignUp = ({
               type='submit'
               color='ceruleanBlue'
               text={translations.signUp.register}
+              isLoading={isLoading}
             />
 
             <ElementLink

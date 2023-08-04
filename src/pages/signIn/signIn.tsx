@@ -12,6 +12,7 @@ import { useTranslations } from '../../hooks/useTranslations';
 import ApplicationRoutes from '../../utils/navigation/applicationRoutes';
 
 const SignIn = ({
+  isLoading,
   notSignedIn,
   formErrors,
   register,
@@ -97,6 +98,7 @@ const SignIn = ({
               type='submit'
               color='ceruleanBlue'
               text={translations.login.signIn}
+              isLoading={isLoading}
             />
 
             <ElementLink
