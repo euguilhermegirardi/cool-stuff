@@ -1,3 +1,4 @@
+import React from 'react';
 import ElementLink from '../../components/elementLink/elementLink';
 import LoginTitle from '../../components/login/loginTitle/loginTitle';
 import LoginWrapper from '../../components/login/loginWrapper/loginWrapper';

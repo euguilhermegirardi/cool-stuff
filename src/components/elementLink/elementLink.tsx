@@ -5,7 +5,6 @@ import ElementLinkProps from './interfaces/elementLinkProps';
 const ElementLink = ({
   link,
   text,
-  onClick,
 }: ElementLinkProps) => {
   return (
     <Grid
@@ -19,7 +18,6 @@ const ElementLink = ({
       <Link
         component={RouterLink}
         to={link}
-        onClick={onClick}
         sx={{
           textTransform: 'uppercase',
           textDecoration: 'none',
