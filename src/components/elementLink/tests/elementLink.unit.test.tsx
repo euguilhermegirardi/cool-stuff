@@ -1,11 +1,11 @@
 import { BrowserRouter } from 'react-router-dom';
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import MockTheme from '../../../tests/mockTheme';
 import translations from '../../../utils/translations';
 import ElementLink from '../elementLink';
 import ElementLinkProps from '../interfaces/elementLinkProps';
-
 
 const link = '/';
 const text = translations.notFound.return;
@@ -37,5 +37,19 @@ describe('ElementLink component', () => {
 
     expect(textMsg).toBeInTheDocument();
     screen.debug(undefined, 999999)
+  });
+
+  it('should the anchor element', async () => {
+    renderElementLinkComponent({ link, text });
+    const anchorElement = await screen.findByRole('link', { name: 'return' });
+
+    expect(anchorElement).toHaveAttribute('href', '/');
+  });
+
+  it('should the anchor element', async () => {
+    renderElementLinkComponent({ link, text });
+    const anchorElement = await screen.findByRole('link', { name: 'return' });
+
+    await userEvent.click(anchorElement);
   });
 });
