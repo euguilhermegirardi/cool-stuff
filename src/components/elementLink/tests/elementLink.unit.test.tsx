@@ -36,17 +36,23 @@ describe('ElementLink component', () => {
     const textMsg = await screen.findByText(text);
 
     expect(textMsg).toBeInTheDocument();
-    screen.debug(undefined, 999999)
   });
 
-  it('should the anchor element', async () => {
+  it('should the anchor element with the correct attribute', async () => {
     renderElementLinkComponent({ link, text });
     const anchorElement = await screen.findByRole('link', { name: 'return' });
 
     expect(anchorElement).toHaveAttribute('href', '/');
   });
 
-  it('should the anchor element', async () => {
+  it('should the anchor element and check wrong attribute', async () => {
+    renderElementLinkComponent({ link, text });
+    const anchorElement = await screen.findByRole('link', { name: 'return' });
+
+    expect(anchorElement).not.toHaveAttribute('href', '/testing');
+  });
+
+  it('should the anchor element and able to click on it', async () => {
     renderElementLinkComponent({ link, text });
     const anchorElement = await screen.findByRole('link', { name: 'return' });
 
