@@ -1,8 +1,7 @@
-import { Grid, Typography, useTheme } from '@mui/material';
+import { Typography } from '@mui/material';
 import { useTranslations } from '../../../hooks/useTranslations';
 
 const CoolStuffSubtitle = () => {
-  const theme = useTheme();
   const translations = useTranslations();
 
   return (
