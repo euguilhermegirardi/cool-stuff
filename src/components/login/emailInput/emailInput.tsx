@@ -22,7 +22,7 @@ const EmailInput = ({
         type="text"
         defaultValue=''
         {...register('email')}
-        error={formErrors.email?.message ? true : false}
+        error={!!formErrors.email?.message}
         InputProps={{
           style: {
             height: 40,
