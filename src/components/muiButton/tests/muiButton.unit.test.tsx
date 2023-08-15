@@ -8,7 +8,7 @@ import MuiButton from '../muiButton';
 const submitBtnTxt = 'Submit';
 const mockOnClick = jest.fn();
 
-describe('MuiButton Component', () => {
+describe('Mui Button Component', () => {
   const renderMuiButtonComponent = (
     type: 'submit' | 'reset' | 'button',
     text: string,

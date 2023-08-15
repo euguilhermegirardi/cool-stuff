@@ -3,7 +3,7 @@ import { render, screen } from '@testing-library/react';
 import translations from '../../../../utils/translations';
 import CoolStuffSubtitle from '../coolStuffSubtitle';
 
-describe('coolStuffSubtitle Component', () => {
+describe('Cool Stuff Subtitle Component', () => {
   beforeEach(() => {
     render(<CoolStuffSubtitle />)
   });

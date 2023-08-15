@@ -6,7 +6,7 @@ import { MockEmailInputProps } from './interfaces/emailInputProps';
 import { mockEmptyFormErrors, mockFormErrors } from './models/emailInputProps';
 import EmailInput from '../emailInput';
 
-describe('emailInput Component', () => {
+describe('Email Input Component', () => {
   const EmailInputTestContainer = ({
     formErrors,
   }: {

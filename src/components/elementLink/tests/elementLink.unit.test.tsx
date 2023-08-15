@@ -10,7 +10,7 @@ import ElementLinkProps from '../interfaces/elementLinkProps';
 const link = '/';
 const text = translations.notFound.return;
 
-describe('ElementLink component', () => {
+describe('Element Link component', () => {
   const renderElementLinkComponent = ({
     link,
     text,
