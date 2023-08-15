@@ -1,5 +1,6 @@
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import jest from 'jest-mock';
 import MockTheme from '../../../tests/mockTheme';
 import MuiButton from '../muiButton';
@@ -63,6 +64,34 @@ describe('MuiButton Component', () => {
     const button = await screen.findByRole('button', { name: 'Submit' });
 
     expect(button).not.toHaveClass('Mui-disabled');
+  });
+
+  it('should render the button with text', async () => {
+    renderMuiButtonComponent(
+      'submit',
+      submitBtnTxt,
+      false,
+      false,
+      mockOnClick,
+    );
+    const buttonTxt = await screen.findByText(submitBtnTxt);
+
+    expect(buttonTxt).toBeInTheDocument();
+    screen.debug(undefined, 999999);
+  });
+
+  it('should be able to click on the button', async () => {
+    renderMuiButtonComponent(
+      'submit',
+      submitBtnTxt,
+      false,
+      false,
+      mockOnClick,
+    );
+    const button = await screen.findByRole('button', { name: submitBtnTxt });
+
+    await userEvent.click(button);
+    expect(mockOnClick).toHaveBeenCalledTimes(1);
   });
 
   it('should render the loading circular progress', async () => {
