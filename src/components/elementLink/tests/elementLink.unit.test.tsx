@@ -40,21 +40,21 @@ describe('ElementLink component', () => {
 
   it('should the anchor element with the correct attribute', async () => {
     renderElementLinkComponent({ link, text });
-    const anchorElement = await screen.findByRole('link', { name: 'return' });
+    const anchorElement = await screen.findByRole('link', { name: translations.notFound.return });
 
     expect(anchorElement).toHaveAttribute('href', '/');
   });
 
   it('should the anchor element and check wrong attribute', async () => {
     renderElementLinkComponent({ link, text });
-    const anchorElement = await screen.findByRole('link', { name: 'return' });
+    const anchorElement = await screen.findByRole('link', { name: translations.notFound.return });
 
     expect(anchorElement).not.toHaveAttribute('href', '/testing');
   });
 
   it('should the anchor element and able to click on it', async () => {
     renderElementLinkComponent({ link, text });
-    const anchorElement = await screen.findByRole('link', { name: 'return' });
+    const anchorElement = await screen.findByRole('link', { name: translations.notFound.return });
 
     await userEvent.click(anchorElement);
   });
