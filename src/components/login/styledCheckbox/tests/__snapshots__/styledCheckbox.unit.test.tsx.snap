@@ -1,0 +1,7 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`it works 1`] = `
+<span
+  className="css-1gfkhh6"
+/>
+`;
