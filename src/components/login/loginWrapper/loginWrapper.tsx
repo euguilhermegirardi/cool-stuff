@@ -1,7 +1,9 @@
-import { Grid } from '@mui/material';
+import { Grid, useTheme } from '@mui/material';
 import { ReactElement } from 'react';
 
 const LoginWrapper = ({ children }: { children: ReactElement }) => {
+  const theme = useTheme();
+
   return (
     <Grid
       container
@@ -11,7 +13,7 @@ const LoginWrapper = ({ children }: { children: ReactElement }) => {
       sx={{
         margin: '0 auto',
         padding: '4rem 0',
-        backgroundColor: '#fff',
+        backgroundColor: theme.palette.common.white,
         borderRadius: 2,
         width: {
           xs: 340,
