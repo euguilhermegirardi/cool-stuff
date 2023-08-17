@@ -3,7 +3,7 @@ import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { MockEmailInputProps } from './interfaces/emailInputProps';
-import { mockEmptyFormErrors, mockFormErrors } from './models/emailInputProps';
+import { mockEmailEmptyFormErrors, mockEmailFormErrors } from './models/emailInputProps';
 import EmailInput from '../emailInput';
 
 describe('Email Input Component', () => {
@@ -37,11 +37,12 @@ describe('Email Input Component', () => {
     render(<EmailInputTestContainer formErrors={formErrors} />);
 
   it('should render the component', () => {
-    renderEmailInputComponent(mockEmptyFormErrors);
+    renderEmailInputComponent(mockEmailEmptyFormErrors);
+    expect(screen).not.toBeNull();
   });
 
   it('should render the input with the svg icon', () => {
-    renderEmailInputComponent(mockEmptyFormErrors);
+    renderEmailInputComponent(mockEmailEmptyFormErrors);
     const svgIcon = screen.getByTestId('MailOutlineIcon');
     const input = screen.getByRole('textbox');
 
@@ -50,7 +51,7 @@ describe('Email Input Component', () => {
   });
 
   it('should be able to type in the input', async () => {
-    renderEmailInputComponent(mockEmptyFormErrors);
+    renderEmailInputComponent(mockEmailEmptyFormErrors);
     const input = screen.getByRole('textbox');
 
     expect(input).toHaveValue('');
@@ -59,9 +60,9 @@ describe('Email Input Component', () => {
   });
 
   it('should render the form error message', () => {
-    renderEmailInputComponent(mockFormErrors);
-    const errorMessage = screen.getByText(mockFormErrors.email.message);
+    renderEmailInputComponent(mockEmailFormErrors);
+    const errorMessage = screen.getByText(mockEmailFormErrors.email.message);
 
     expect(errorMessage).toBeInTheDocument();
-  })
+  });
 });

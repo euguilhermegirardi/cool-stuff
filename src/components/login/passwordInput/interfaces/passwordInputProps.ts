@@ -3,10 +3,12 @@ import { UseFormRegister } from 'react-hook-form';
 export interface PasswordInputProps {
   inputId: string;
   inputName: string;
-  autoFocus: boolean;
+  autoFocus?: boolean;
   showPassword: boolean;
   formErrors?: {
-    message?: string;
+    password?: {
+      message?: string;
+    }
   };
   handleMouseDownPassword: (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>

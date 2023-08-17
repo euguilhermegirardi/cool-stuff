@@ -1,10 +1,10 @@
-export const mockFormErrors = {
+export const mockEmailFormErrors = {
   email: {
     message: 'email is required',
   }
 };
 
-export const mockEmptyFormErrors = {
+export const mockEmailEmptyFormErrors = {
   email: {
     message: '',
   }
