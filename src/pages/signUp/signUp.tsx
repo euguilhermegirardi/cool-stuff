@@ -1,4 +1,4 @@
-import { Grid, Typography, useTheme } from '@mui/material';
+import { Grid, useTheme } from '@mui/material';
 import { SignUpProps } from './interfaces/signUpProps';
 import ElementLink from '../../components/elementLink/elementLink';
 import CoolStuffSubtitle from '../../components/login/coolStuffSubtitle/coolStuffSubtitle';
@@ -78,7 +78,7 @@ const SignUp = ({
 
             <MuiButton
               type='submit'
-              color='ceruleanBlue'
+              color={theme.palette.ceruleanBlue && 'ceruleanBlue'}
               text={translations.signUp.register}
               isLoading={isLoading}
             />

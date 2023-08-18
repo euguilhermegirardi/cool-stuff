@@ -2,21 +2,19 @@ import { useForm } from 'react-hook-form';
 import { BrowserRouter } from 'react-router-dom';
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
-import { mockEmptySignInFormErrors, mockSignInFormErrors } from './models/signInProps';
+import { mockSignUpEmptyFormErrors, mockSignUpFormErrors } from './models/signUpProps';
 import { mockOnSubmit } from '../../../shared/models/unitTestingProps';
 import MockTheme from '../../../tests/mockTheme';
 import translations from '../../../utils/translations';
-import LoginRequest from '../interfaces/loginRequest';
-import SignIn from '../signIn';
+import SignUpRequest from '../interfaces/signUpRequest';
+import SignUp from '../signUp';
 
-describe('Sign In Component', () => {
-  const SignInTestContainer = ({
+describe('Sign Up Component', () => {
+  const SignUpTestContainer = ({
     isLoading,
-    notSignedIn,
     formErrors,
   }: {
     isLoading: boolean,
-    notSignedIn: boolean,
     formErrors: {
       email?: {
         message?: string;
@@ -24,22 +22,25 @@ describe('Sign In Component', () => {
       password?: {
         message?: string;
       };
-    },
+      confirmPassword?: {
+        message?: string;
+      };
+    }
   }
   ) => {
-    const { register } = useForm<LoginRequest>({
+    const { register } = useForm<SignUpRequest>({
       defaultValues: {
-        email: 'testing email',
-        password: 'testing password'
+        email: 'testing signup email',
+        password: 'testing signup password',
+        confirmPassword: 'testing signup confirmPassword',
       }
     });
 
     return (
       <BrowserRouter>
         <MockTheme>
-          <SignIn
+          <SignUp
             isLoading={isLoading}
-            notSignedIn={notSignedIn}
             formErrors={formErrors}
             register={register}
             onSubmit={mockOnSubmit}
@@ -49,9 +50,8 @@ describe('Sign In Component', () => {
     )
   };
 
-  const renderSignInComponent = (
+  const renderSignUpComponent = (
     isLoading: boolean,
-    notSignedIn: boolean,
     formErrors: {
       email?: {
         message?: string;
@@ -59,58 +59,57 @@ describe('Sign In Component', () => {
       password?: {
         message?: string;
       };
-    },
+      confirmPassword?: {
+        message?: string;
+      };
+    }
   ) =>
     render(
-      <SignInTestContainer
+      <SignUpTestContainer
         isLoading={isLoading}
-        notSignedIn={notSignedIn}
         formErrors={formErrors}
       />
     );
 
   it('should render the component', () => {
-    renderSignInComponent(false, false, mockEmptySignInFormErrors);
+    renderSignUpComponent(false, mockSignUpEmptyFormErrors);
     expect(screen).not.toBeNull();
   });
 
   it('should render all the elements on the page', () => {
-    renderSignInComponent(false, false, mockEmptySignInFormErrors);
-    const title = screen.getByText(translations.login.title);
+    renderSignUpComponent(false, mockSignUpEmptyFormErrors);
+    const title = screen.getByText(translations.signUp.signUpToPokedex);
     const subtitle = screen.getByText(translations.coolStuff);
     const emailInput = screen.getByRole('textbox');
     const passwordInput = screen.getByPlaceholderText(translations.password);
-    const signButton = screen.getByRole('button', { name: translations.login.signIn });
-    const signUpLink = screen.getByRole('link', { name: translations.login.singUp });
+    const confirmPasswordInput = screen.getByPlaceholderText(translations.signUp.confirmPassword);
+    const registerBtn = screen.getByRole('button', { name: translations.signUp.register });
+    const returnLink = screen.getByRole('link', { name: translations.return });
 
     expect(title).toBeInTheDocument();
     expect(subtitle).toBeInTheDocument();
     expect(emailInput).toBeInTheDocument();
     expect(passwordInput).toBeInTheDocument();
-    expect(signButton).toBeInTheDocument();
-    expect(signUpLink).toBeInTheDocument();
-  });
-
-  it('should render the "notLoggedIn" message', () => {
-    renderSignInComponent(false, true, mockEmptySignInFormErrors);
-    const notSignedInMsg = screen.getByText(translations.login.notSignedIn);
-
-    expect(notSignedInMsg).toBeInTheDocument();
+    expect(confirmPasswordInput).toBeInTheDocument();
+    expect(registerBtn).toBeInTheDocument();
+    expect(returnLink).toBeInTheDocument();
   });
 
   it('should render the loading circular progress', async () => {
-    renderSignInComponent(true, false, mockEmptySignInFormErrors);
+    renderSignUpComponent(true, mockSignUpEmptyFormErrors);
     const progressbar = await screen.findByRole('progressbar');
 
     expect(progressbar).toBeInTheDocument();
   });
 
   it('should render the form error messages', () => {
-    renderSignInComponent(false, false, mockSignInFormErrors);
-    const emailErrorMsg = screen.getByText(mockSignInFormErrors.email.message);
-    const passwordErrorMsg = screen.getByText(mockSignInFormErrors.password.message);
+    renderSignUpComponent(true, mockSignUpFormErrors);
+    const emailErrorMsg = screen.getByText(mockSignUpFormErrors.email.message);
+    const passwordErrorMsg = screen.getByText(mockSignUpFormErrors.password.message);
+    const confirmPasswordErrorMsg = screen.getByText(mockSignUpFormErrors.confirmPassword.message);
 
     expect(emailErrorMsg).toBeInTheDocument();
     expect(passwordErrorMsg).toBeInTheDocument();
+    expect(confirmPasswordErrorMsg).toBeInTheDocument();
   });
 });
