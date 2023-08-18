@@ -11,9 +11,7 @@ describe('Email Input Component', () => {
     formErrors,
   }: {
     formErrors: {
-      email?: {
-        message?: string;
-      };
+      message?: string;
     }
   }) => {
     const { register } = useForm<MockEmailInputProps>({
@@ -29,9 +27,7 @@ describe('Email Input Component', () => {
 
   const renderEmailInputComponent = (
     formErrors: {
-      email?: {
-        message?: string;
-      };
+      message?: string;
     }
   ) =>
     render(<EmailInputTestContainer formErrors={formErrors} />);
@@ -61,7 +57,7 @@ describe('Email Input Component', () => {
 
   it('should render the form error message', () => {
     renderEmailInputComponent(mockEmailFormErrors);
-    const errorMessage = screen.getByText(mockEmailFormErrors.email.message);
+    const errorMessage = screen.getByText(mockEmailFormErrors.message);
 
     expect(errorMessage).toBeInTheDocument();
   });

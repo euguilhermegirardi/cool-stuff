@@ -19,9 +19,7 @@ describe('Password Input Component', () => {
     inputName: string;
     showPassword: boolean;
     formErrors?: {
-      password?: {
-        message?: string;
-      }
+      message?: string;
     };
     handleMouseDownPassword: (
       event: React.MouseEvent<HTMLButtonElement, MouseEvent>
@@ -50,9 +48,7 @@ describe('Password Input Component', () => {
   const renderPasswordInput = (
     showPassword: boolean,
     formErrors?: {
-      password?: {
-        message?: string;
-      }
+      message?: string;
     }
   ) =>
     render(
@@ -99,7 +95,7 @@ describe('Password Input Component', () => {
 
   it('should render the form error message', () => {
     renderPasswordInput(false, mockPasswordFormErrors);
-    const errorMessage = screen.getByText(mockPasswordFormErrors.password.message);
+    const errorMessage = screen.getByText(mockPasswordFormErrors.message);
 
     expect(errorMessage).toBeInTheDocument();
   });

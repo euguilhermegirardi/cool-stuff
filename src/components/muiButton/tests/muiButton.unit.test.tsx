@@ -77,7 +77,6 @@ describe('Mui Button Component', () => {
     const buttonTxt = await screen.findByText(submitBtnTxt);
 
     expect(buttonTxt).toBeInTheDocument();
-    screen.debug(undefined, 999999);
   });
 
   it('should be able to click on the button', async () => {

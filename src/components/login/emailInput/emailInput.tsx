@@ -7,10 +7,8 @@ const EmailInput = ({
   formErrors,
 }: {
   register: UseFormRegister<any>;
-  formErrors: {
-    email?: {
-      message?: string;
-    };
+  formErrors?: {
+    message?: string;
   };
 }) => {
   const theme = useTheme();
@@ -22,7 +20,7 @@ const EmailInput = ({
         type="text"
         defaultValue=''
         {...register('email')}
-        error={!!formErrors.email?.message}
+        error={!!formErrors?.message}
         InputProps={{
           style: {
             height: 40,
@@ -41,13 +39,13 @@ const EmailInput = ({
         }}
       />
 
-      {formErrors?.email ? (
+      {formErrors ? (
         <Typography
           role='alert'
           color={theme.palette.error.main}
           sx={{ fontSize: 14 }}
         >
-          {formErrors.email?.message}
+          {formErrors.message}
         </Typography>
       ) : null}
     </>

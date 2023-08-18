@@ -83,7 +83,7 @@ const SignIn = ({
 
             <EmailInput
               register={register}
-              formErrors={formErrors}
+              formErrors={formErrors.email}
             />
 
             <PasswordInput
@@ -96,7 +96,7 @@ const SignIn = ({
 
             <MuiButton
               type='submit'
-              color='ceruleanBlue'
+              color={theme.palette.ceruleanBlue && 'ceruleanBlue'}
               text={translations.login.signIn}
               isLoading={isLoading}
             />

@@ -6,9 +6,7 @@ export interface PasswordInputProps {
   autoFocus?: boolean;
   showPassword: boolean;
   formErrors?: {
-    password?: {
-      message?: string;
-    }
+    message?: string;
   };
   handleMouseDownPassword: (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>

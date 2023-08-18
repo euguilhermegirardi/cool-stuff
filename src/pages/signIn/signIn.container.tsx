@@ -48,7 +48,7 @@ const SignInContainer = () => {
       .then(response => { return response.json(); })
       .then(data => {
         if (data.length) {
-          setUsers(data)
+          setUsers(data);
         }
       })
   };

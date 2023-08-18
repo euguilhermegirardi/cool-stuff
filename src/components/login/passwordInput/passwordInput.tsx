@@ -23,7 +23,7 @@ const PasswordInput = ({
         type={showPassword ? 'text' : 'password'}
         defaultValue=''
         {...register(inputId)}
-        error={!!formErrors?.password?.message}
+        error={!!formErrors?.message}
         InputProps={{
           style: {
             height: 40,
@@ -63,13 +63,13 @@ const PasswordInput = ({
         }}
       />
 
-      {formErrors?.password?.message ? (
+      {formErrors?.message ? (
         <Typography
           role='alert'
           color={theme.palette.error.main}
           sx={{ fontSize: 14 }}
         >
-          {formErrors.password?.message}
+          {formErrors.message}
         </Typography>
       ) : null}
     </>

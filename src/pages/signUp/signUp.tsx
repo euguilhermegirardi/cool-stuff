@@ -57,7 +57,7 @@ const SignUp = ({
           >
             <EmailInput
               register={register}
-              formErrors={formErrors}
+              formErrors={formErrors.email}
             />
 
             <PasswordInput
