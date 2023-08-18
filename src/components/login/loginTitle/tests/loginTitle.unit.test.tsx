@@ -16,4 +16,9 @@ describe('Login Title Component', () => {
 
     expect(title).toBeInTheDocument();
   });
+
+  it('should match the snapshot', () => {
+    const loginTitleComponent = renderLoginTitle(mockTitle);
+    expect(loginTitleComponent).toMatchSnapshot();
+  });
 });

@@ -2,6 +2,7 @@ import { useForm } from 'react-hook-form';
 import { BrowserRouter } from 'react-router-dom';
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
+import renderer from 'react-test-renderer';
 import { mockEmptySignInFormErrors, mockSignInFormErrors } from './models/signInProps';
 import { mockOnSubmit } from '../../../shared/models/unitTestingProps';
 import MockTheme from '../../../tests/mockTheme';
@@ -112,5 +113,15 @@ describe('Sign In Component', () => {
 
     expect(emailErrorMsg).toBeInTheDocument();
     expect(passwordErrorMsg).toBeInTheDocument();
+  });
+
+  it('should match the snapshot with form errors', () => {
+    const signInComponent = renderSignInComponent(false, false, mockSignInFormErrors);
+    expect(signInComponent).toMatchSnapshot();
+  });
+
+  it('should match the snapshot without form errors', () => {
+    const signInComponent = renderSignInComponent(false, false, mockEmptySignInFormErrors);
+    expect(signInComponent).toMatchSnapshot();
   });
 });

@@ -105,4 +105,37 @@ describe('Mui Button Component', () => {
 
     expect(progressbar).toBeInTheDocument();
   });
+
+  it('should match the snapshot with isLoading on', () => {
+    const muiButtonComponent = renderMuiButtonComponent(
+      'submit',
+      submitBtnTxt,
+      true,
+      false,
+      mockOnClick,
+    );
+    expect(muiButtonComponent).toMatchSnapshot();
+  });
+
+  it('should match the snapshot with isLoading and isDisabled off', () => {
+    const muiButtonComponent = renderMuiButtonComponent(
+      'submit',
+      submitBtnTxt,
+      false,
+      false,
+      mockOnClick,
+    );
+    expect(muiButtonComponent).toMatchSnapshot();
+  });
+
+  it('should match the snapshot with isDisabled on', () => {
+    const muiButtonComponent = renderMuiButtonComponent(
+      'submit',
+      submitBtnTxt,
+      false,
+      true,
+      mockOnClick,
+    );
+    expect(muiButtonComponent).toMatchSnapshot();
+  });
 });

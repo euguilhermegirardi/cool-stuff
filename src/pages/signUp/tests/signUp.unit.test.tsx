@@ -112,4 +112,14 @@ describe('Sign Up Component', () => {
     expect(passwordErrorMsg).toBeInTheDocument();
     expect(confirmPasswordErrorMsg).toBeInTheDocument();
   });
+
+  it('should match the snapshot with form errors', () => {
+    const signUpComponent = renderSignUpComponent(true, mockSignUpFormErrors);
+    expect(signUpComponent).toMatchSnapshot();
+  });
+
+  it('should match the snapshot without form errors', () => {
+    const signUpComponent = renderSignUpComponent(true, mockSignUpEmptyFormErrors);
+    expect(signUpComponent).toMatchSnapshot();
+  });
 });

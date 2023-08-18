@@ -99,4 +99,14 @@ describe('Password Input Component', () => {
 
     expect(errorMessage).toBeInTheDocument();
   });
+
+  it('should match the snapshot with form errors', () => {
+    const passwordInputComponent = renderPasswordInput(false, mockPasswordFormErrors);
+    expect(passwordInputComponent).toMatchSnapshot();
+  });
+
+  it('should match the snapshot without form errors', () => {
+    const passwordInputComponent = renderPasswordInput(false, mockPasswordEmptyFormErrors);
+    expect(passwordInputComponent).toMatchSnapshot();
+  });
 });

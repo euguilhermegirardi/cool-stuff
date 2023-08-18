@@ -13,4 +13,8 @@ describe('Cool Stuff Subtitle Component', () => {
 
     expect(subtitle).toBeInTheDocument();
   });
+
+  it('should match the snapshot without form errors', () => {
+    expect(screen).toMatchSnapshot();
+  });
 });

@@ -16,4 +16,9 @@ describe('Login Wrapper Component', () => {
   it('should render the component', () => {
     renderLoginWrapper(componentTest);
   });
+
+  it('should match the snapshot', () => {
+    const loginWrapperComponent = renderLoginWrapper(componentTest);
+    expect(loginWrapperComponent).toMatchSnapshot();
+  });
 });
