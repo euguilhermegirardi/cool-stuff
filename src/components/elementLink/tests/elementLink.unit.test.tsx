@@ -2,7 +2,7 @@ import { BrowserRouter } from 'react-router-dom';
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import MockTheme from '../../../tests/mockTheme';
+import MockTheme from '../../../tests/mockComponents/mockTheme';
 import translations from '../../../utils/translations';
 import ElementLink from '../elementLink';
 import ElementLinkProps from '../interfaces/elementLinkProps';

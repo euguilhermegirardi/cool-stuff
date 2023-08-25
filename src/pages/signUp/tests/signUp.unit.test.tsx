@@ -4,7 +4,7 @@ import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
 import { mockSignUpEmptyFormErrors, mockSignUpFormErrors } from './models/signUpProps';
 import { mockOnSubmit } from '../../../shared/models/unitTestingProps';
-import MockTheme from '../../../tests/mockTheme';
+import MockTheme from '../../../tests/mockComponents/mockTheme';
 import translations from '../../../utils/translations';
 import SignUpRequest from '../interfaces/signUpRequest';
 import SignUp from '../signUp';
