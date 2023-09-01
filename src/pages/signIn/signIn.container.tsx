@@ -46,22 +46,19 @@ const SignInContainer = () => {
 
   const handleGetUsers = async () => {
     await axios.get('http://localhost:3000/users')
-      .then(function (response) {
+      .then((response) => {
         setUsers(response.data);
       })
-      .catch(function (error) {
+      .catch((error) => {
         console.log(error);
       })
-      .finally(function () {
-        // always executed
-      });
+      .finally(() => { }
+      );
   };
 
   useEffect(() => {
     handleGetUsers();
   }, []);
-
-  console.log('users', users);
 
   return (
     <SignIn

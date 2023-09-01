@@ -15,6 +15,7 @@ describe('Login Wrapper Component', () => {
 
   it('should render the component', () => {
     renderLoginWrapper(componentTest);
+    expect(screen).not.toBeNull();
   });
 
   it('should match the snapshot', () => {
