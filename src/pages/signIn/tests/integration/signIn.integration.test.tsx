@@ -1,13 +1,9 @@
 import '@testing-library/jest-dom';
-import { render, screen, waitFor } from '@testing-library/react';
+import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import jest from 'jest-mock';
 import { rest } from 'msw';
-import AuthContext from '../../../../context/auth.context';
-import MockPageContainer from '../../../../tests/mockComponents/mockPageContainer';
 import { mockUsers } from '../../../../tests/mockData/users/mockUsers';
 import translations from '../../../../utils/translations';
-import SignIn from '../../signIn.container';
 import { config, mockLogin, renderSignInContent, server } from '../utils/renderSignIn';
 
 const prepareRender = async () => {
@@ -58,7 +54,9 @@ describe('Sign In Integration Test', () => {
     const input = screen.getByRole('textbox');
 
     expect(input).toHaveValue('');
+
     await userEvent.type(input, 'testing the input');
+
     expect(input).toHaveValue('testing the input');
   });
 
@@ -66,13 +64,31 @@ describe('Sign In Integration Test', () => {
     const passwordInput = screen.getByRole('textbox');
 
     expect(passwordInput).toHaveValue('');
+
     await userEvent.type(passwordInput, 'testing the password input');
+
     expect(passwordInput).toHaveValue('testing the password input');
   });
 
-  // it('should show user email error message', () => {})
+  it('should show user email error message', async () => {
+    const emailInput = screen.getByRole('textbox');
+    const signInBtn = screen.getByRole('button', { name: translations.login.signIn });
 
-  // it('should show user password error message', () => {})
+    await userEvent.type(emailInput, ' ');
+    await userEvent.click(signInBtn);
+
+    expect(screen.findByText(/email must be a valid email/i));
+  });
+
+  it('should show user password error message', async () => {
+    const passwordInput = screen.getByPlaceholderText(/password/i);
+    const signInBtn = screen.getByRole('button', { name: translations.login.signIn });
+
+    await userEvent.type(passwordInput, ' ');
+    await userEvent.click(signInBtn);
+
+    expect(screen.findByText(/Password is too short - it should be 5 characters minimum./i));
+  });
 
   it('should be able to submit and show loading progressbar', async () => {
     const emailInput = screen.getByRole('textbox');
