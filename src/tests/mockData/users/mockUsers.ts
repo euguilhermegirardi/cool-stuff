@@ -1,17 +1,7 @@
 export const mockUsers = [
   {
-    "userEmail": "gui@icloud.com",
-    "userPassword": "abcdefg",
+    "userEmail": "girardi.kaiowa@icloud.com",
+    "userPassword": "newPassword",
     "id": 1
   },
-  {
-    "userEmail": "kai@icloud.com",
-    "userPassword": "kaikai",
-    "id": 2
-  },
-  {
-    "userEmail": "raisa@icloud.com",
-    "userPassword": "teamo",
-    "id": 3
-  }
 ];

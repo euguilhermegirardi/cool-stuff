@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
+import axios from 'axios';
 import LoginRequest from './interfaces/loginRequest';
 import SignIn from './signIn';
 import { loginSchema } from './validations/loginSchema';
@@ -44,13 +45,16 @@ const SignInContainer = () => {
   const onSubmit = () => handleSubmit(handleOnSubmit);
 
   const handleGetUsers = async () => {
-    await fetch('http://localhost:3000/users')
-      .then(response => { return response.json(); })
-      .then(data => {
-        if (data.length) {
-          setUsers(data);
-        }
+    await axios.get('http://localhost:3000/users')
+      .then(function (response) {
+        setUsers(response.data);
       })
+      .catch(function (error) {
+        console.log(error);
+      })
+      .finally(function () {
+        // always executed
+      });
   };
 
   useEffect(() => {

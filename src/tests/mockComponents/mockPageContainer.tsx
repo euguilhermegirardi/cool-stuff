@@ -6,7 +6,7 @@ import mockServerService from '../mockServer/mockServerService';
 const mockCONFIG: any = {
   core: {
     api: {
-      baseUrl: 'https://test.com',
+      baseUrl: 'http://localhost:3000',
     },
   },
 };
