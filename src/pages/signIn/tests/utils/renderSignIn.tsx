@@ -7,7 +7,7 @@ import SignIn from '../../signIn.container';
 
 const mockSignInRequest = jest.fn();
 const mockIsLoggedIn = false;
-const mockLogin = jest.fn();
+export const mockLogin = jest.fn();
 const mockLogout = jest.fn();
 
 const server = startServer();

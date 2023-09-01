@@ -1,10 +1,14 @@
 import '@testing-library/jest-dom';
-import { screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import jest from 'jest-mock';
 import { rest } from 'msw';
+import AuthContext from '../../../../context/auth.context';
+import MockPageContainer from '../../../../tests/mockComponents/mockPageContainer';
 import { mockUsers } from '../../../../tests/mockData/users/mockUsers';
 import translations from '../../../../utils/translations';
-import { config, renderSignInContent, server } from '../utils/renderSignIn';
+import SignIn from '../../signIn.container';
+import { config, mockLogin, renderSignInContent, server } from '../utils/renderSignIn';
 
 const prepareRender = async () => {
   server.use(
@@ -48,7 +52,6 @@ describe('Sign In Integration Test', () => {
     expect(visibleIcon).toBeInTheDocument();
     expect(signInBtn).toBeInTheDocument();
     expect(signUpLink).toBeInTheDocument();
-    screen.debug(undefined, 999999)
   });
 
   it('should be able to type in the user email', async () => {
@@ -65,5 +68,29 @@ describe('Sign In Integration Test', () => {
     expect(passwordInput).toHaveValue('');
     await userEvent.type(passwordInput, 'testing the password input');
     expect(passwordInput).toHaveValue('testing the password input');
+  });
+
+  // it('should show user email error message', () => {})
+
+  // it('should show user password error message', () => {})
+
+  it('should be able to submit and show loading progressbar', async () => {
+    const emailInput = screen.getByRole('textbox');
+    const passwordInput = screen.getByPlaceholderText(/password/i);
+    const signInBtn = screen.getByRole('button', { name: translations.login.signIn });
+
+    await userEvent.type(emailInput, 'testSignIn@test.com');
+    await userEvent.type(passwordInput, 'testSignInPassword');
+
+    expect(emailInput).toHaveValue('testSignIn@test.com');
+    expect(passwordInput).toHaveValue('testSignInPassword');
+
+    await userEvent.click(signInBtn);
+
+    expect(await screen.findByRole('progressbar')).toBeInTheDocument();
+
+    setTimeout(() => {
+      expect(mockLogin).toHaveBeenCalled();
+    }, 2000);
   });
 });

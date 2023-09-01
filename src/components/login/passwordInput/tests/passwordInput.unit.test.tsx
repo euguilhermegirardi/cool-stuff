@@ -84,7 +84,7 @@ describe('Password Input Component', () => {
 
   it('should be able to type in the input with the visibilityOnIcon', async () => {
     renderPasswordInput(true, mockPasswordEmptyFormErrors);
-    const passwordInput = screen.getByRole('textbox');
+    const passwordInput = screen.getByPlaceholderText(/password/i);
     const visibilityIcon = screen.getByTestId('VisibilityIcon');
 
     expect(passwordInput).toHaveValue('');
