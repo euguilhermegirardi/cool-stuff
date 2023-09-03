@@ -2,10 +2,10 @@ import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import axios from 'axios';
+import useAuth from 'hooks/useAuth';
 import LoginRequest from './interfaces/loginRequest';
 import SignIn from './signIn';
 import { loginSchema } from './validations/loginSchema';
-import useAuth from '../../hooks/useAuth';
 
 const SignInContainer = () => {
   const [users, setUsers] = useState<any>([]);
@@ -18,7 +18,6 @@ const SignInContainer = () => {
     register,
     handleSubmit,
     formState: { errors: formErrors },
-    formState,
   } = useForm<LoginRequest>({
     resolver: yupResolver(loginSchema),
   });

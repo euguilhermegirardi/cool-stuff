@@ -1,8 +1,8 @@
 import { Box, IconButton, InputAdornment, TextField, Typography, useTheme } from '@mui/material';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
+import Locker from 'assets/icons/locker.svg';
 import { PasswordInputProps } from './interfaces/passwordInputProps';
-import Locker from '../../../assets/icons/locker.svg';
 
 const PasswordInput = ({
   inputId,

@@ -1,5 +1,5 @@
 import { Typography } from '@mui/material';
-import { useTranslations } from '../../../hooks/useTranslations';
+import { useTranslations } from 'hooks/useTranslations';
 
 const CoolStuffSubtitle = () => {
   const translations = useTranslations();

@@ -18,7 +18,6 @@ const SignUpContainer = () => {
     register,
     handleSubmit,
     formState: { errors: formErrors },
-    getValues,
   } = useForm<SignUpRequest>({
     resolver: yupResolver(validationSignUpSchema),
   });

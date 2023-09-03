@@ -1,13 +1,13 @@
 import { Grid, useTheme } from '@mui/material';
+import ElementLink from 'components/elementLink/elementLink';
+import CoolStuffSubtitle from 'components/login/coolStuffSubtitle/coolStuffSubtitle';
+import EmailInput from 'components/login/emailInput/emailInput';
+import LoginTitle from 'components/login/loginTitle/loginTitle';
+import LoginWrapper from 'components/login/loginWrapper/loginWrapper';
+import PasswordInput from 'components/login/passwordInput';
+import MuiButton from 'components/muiButton/muiButton';
+import { useTranslations } from 'hooks/useTranslations';
 import { SignUpProps } from './interfaces/signUpProps';
-import ElementLink from '../../components/elementLink/elementLink';
-import CoolStuffSubtitle from '../../components/login/coolStuffSubtitle/coolStuffSubtitle';
-import EmailInput from '../../components/login/emailInput/emailInput';
-import LoginTitle from '../../components/login/loginTitle/loginTitle';
-import LoginWrapper from '../../components/login/loginWrapper/loginWrapper';
-import PasswordInput from '../../components/login/passwordInput';
-import MuiButton from '../../components/muiButton/muiButton';
-import { useTranslations } from '../../hooks/useTranslations';
 
 const SignUp = ({
   isLoading,

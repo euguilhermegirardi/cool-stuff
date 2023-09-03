@@ -1,5 +1,5 @@
-import MuiButton from '../../components/muiButton/muiButton';
-import { useTranslations } from '../../hooks/useTranslations';
+import MuiButton from 'components/muiButton/muiButton';
+import { useTranslations } from 'hooks/useTranslations';
 
 const Dashboard = ({
   handleLogOut,

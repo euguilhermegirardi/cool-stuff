@@ -1,6 +1,6 @@
 import { CheckboxProps } from '@mui/material/Checkbox';
 import { styled } from '@mui/material/styles';
-import CheckedItem from '../../../assets/icons/checkedItem.svg';
+import CheckedItem from 'assets/icons/checkedItem.svg';
 
 export const MuiCheckBox = styled('span')(({ theme }) => ({
   width: 15,

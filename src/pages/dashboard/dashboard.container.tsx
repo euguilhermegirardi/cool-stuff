@@ -1,5 +1,5 @@
+import useAuth from 'hooks/useAuth';
 import Dashboard from './dashboard';
-import useAuth from '../../hooks/useAuth';
 
 const DashboardContainer = () => {
   const { logout } = useAuth();
