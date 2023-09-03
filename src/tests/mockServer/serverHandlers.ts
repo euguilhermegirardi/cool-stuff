@@ -1,4 +1,6 @@
 import { DefaultBodyType, MockedRequest, rest, RestHandler } from 'msw';
+import { mockHandleOnSubmit } from '../../pages/signUp/tests/utils/renderSignUp';
+import { mockUsers } from '../mockData/users';
 
 export const createHandlers = (
   config: any
@@ -7,19 +9,20 @@ export const createHandlers = (
 
   handlers.push(
     rest.get(
-      `${config.core.api.baseUrl}`,
+      `${config.core.api.baseUrl}/users`,
       async (req, res, ctx) => {
-        return res(
-          ctx.json([
-            {
-              "userEmail": "testing@uol.com",
-              "userPassword": "testingThetest",
-              "id": 1
-            },
-          ])
-        );
+        return (
+          res(ctx.json(mockUsers))
+        )
       }
-    )
+    ),
+    rest.post(`${config.core.api.baseUrl}/users`,
+      (req, res, ctx) => {
+        mockHandleOnSubmit();
+        return res(
+          ctx.status(200)
+        );
+      })
   );
 
   return handlers;

@@ -16,7 +16,6 @@ export const {
   addHandler,
   rest,
   startServer,
-  MockQueryClientProvider,
 } = mockServerService(mockCONFIG);
 
 const MockPageContainer = ({
@@ -27,15 +26,13 @@ const MockPageContainer = ({
   children: ReactNode;
 }) => {
   return (
-    <MockQueryClientProvider>
+    <Router
+      initialEntries={[{ pathname: '/', search: 'testQueryParameters' }]}
+    >
       <MockTheme>
-        <Router
-          initialEntries={[{ pathname: '/', search: 'testQueryParameters' }]}
-        >
-          {children}
-        </Router>
+        {children}
       </MockTheme>
-    </MockQueryClientProvider>
+    </Router>
   );
 };
 

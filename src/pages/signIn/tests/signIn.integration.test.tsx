@@ -1,23 +1,11 @@
 import '@testing-library/jest-dom';
 import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { rest } from 'msw';
-import { config, mockLogin, renderSignInContent, server } from './utils/renderSignIn';
-import { mockUsers } from '../../../tests/mockData/users/mockUsers';
+import { mockLogin, renderSignInContent, server } from './utils/renderSignIn';
 import translations from '../../../utils/translations';
 
 const prepareRender = async () => {
-  server.use(
-    rest.get(
-      `${config.core.api.baseUrl}/users`,
-      async (req, res, ctx) => {
-        return (
-          res(ctx.json(mockUsers))
-        )
-      }
-    )
-  );
-
+  server.use();
   renderSignInContent();
 };
 

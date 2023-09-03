@@ -1,29 +1,11 @@
 import '@testing-library/jest-dom';
 import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import jest from 'jest-mock';
-import { rest } from 'msw';
-import { config, renderSignUpContent, server } from './utils/renderSignUp';
+import { mockHandleOnSubmit, renderSignUpContent, server } from './utils/renderSignUp';
 import translations from '../../../utils/translations';
 
-const mockHandleOnSubmit = jest.fn();
-
 const prepareRender = async () => {
-  server.use(
-    rest.post(`${config.core.api.baseUrl}/users`,
-      (req, res, ctx) => {
-        mockHandleOnSubmit();
-        return res(
-          ctx.status(200),
-          ctx.json(
-            {
-              userEmail: 'didItWork@test.com',
-              userPassword: 'testingSignUp',
-            },
-          ),
-        );
-      })
-  );
+  server.use();
 
   renderSignUpContent();
 };
@@ -97,7 +79,7 @@ describe('Sign Up Integration Test', () => {
     const emailInput = screen.getByRole('textbox');
     const passwordInput = screen.getByPlaceholderText('password');
     const confirmPasswordInput = screen.getByPlaceholderText('confirm password');
-    const registerBtn = screen.getByRole('button', { name: translations.signUp.register })
+    const registerBtn = screen.getByRole('button', { name: translations.signUp.register });
 
     await userEvent.type(emailInput, 'testSignUp@test.com');
     await userEvent.type(passwordInput, 'signUptesting...');

@@ -1,7 +1,6 @@
 import { DefaultBodyType, MockedRequest, rest, RestHandler } from 'msw';
 import { setupServer } from 'msw/node';
 import { createHandlers } from './serverHandlers';
-import MockQueryClientProvider from '../mockComponents/mockQueryClientProvider';
 
 const mockServerService = (config?: any) => {
   const defaultConfig: any = {
@@ -26,7 +25,6 @@ const mockServerService = (config?: any) => {
     addHandler: (handler: RestHandler<MockedRequest<DefaultBodyType>>[]) => serverHandlers.push(...handler),
     rest,
     config: config || defaultConfig,
-    MockQueryClientProvider,
   };
 };
 
