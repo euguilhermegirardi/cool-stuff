@@ -3,32 +3,14 @@ import { MemoryRouter as Router } from 'react-router-dom';
 import MockTheme from './mockTheme';
 import mockServerService from '../mockServer/mockServerService';
 
-const mockCONFIG: any = {
-  core: {
-    api: {
-      baseUrl: 'http://localhost:3000',
-    },
-  },
-};
-
 export const {
-  config,
-  addHandler,
   rest,
   startServer,
-} = mockServerService(mockCONFIG);
+} = mockServerService();
 
-const MockPageContainer = ({
-  config,
-  children,
-}: {
-  config?: {};
-  children: ReactNode;
-}) => {
+const MockPageContainer = ({ children }: { children: ReactNode }) => {
   return (
-    <Router
-      initialEntries={[{ pathname: '/', search: 'testQueryParameters' }]}
-    >
+    <Router>
       <MockTheme>
         {children}
       </MockTheme>

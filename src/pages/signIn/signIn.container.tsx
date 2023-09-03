@@ -60,8 +60,6 @@ const SignInContainer = () => {
     handleGetUsers();
   }, []);
 
-  console.log('users', users)
-
   return (
     <SignIn
       isLoading={isLoading}

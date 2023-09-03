@@ -1,7 +1,8 @@
 import '@testing-library/jest-dom';
 import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { mockHandleOnSubmit, renderSignUpContent, server } from './utils/renderSignUp';
+import { renderSignUpContent, server } from './utils/renderSignUp';
+import { mockHandleSignUpOnSubmit } from '../../../tests/mockServer/serverHandlers';
 import translations from '../../../utils/translations';
 
 const prepareRender = async () => {
@@ -92,7 +93,7 @@ describe('Sign Up Integration Test', () => {
     await userEvent.click(registerBtn);
 
     setTimeout(() => {
-      expect(mockHandleOnSubmit).toHaveBeenCalled();
+      expect(mockHandleSignUpOnSubmit).toHaveBeenCalled();
     }, 2000);
   });
 });

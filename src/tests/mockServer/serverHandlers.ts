@@ -1,29 +1,30 @@
-import { DefaultBodyType, MockedRequest, rest, RestHandler } from 'msw';
-import { mockHandleOnSubmit } from '../../pages/signUp/tests/utils/renderSignUp';
+import { rest } from 'msw';
 import { mockUsers } from '../mockData/users';
 
-export const createHandlers = (
-  config: any
-): RestHandler<MockedRequest<DefaultBodyType>>[] => {
-  const handlers: RestHandler<MockedRequest<DefaultBodyType>>[] = [];
+export const mockHandleSignUpOnSubmit = vi.fn();
 
-  handlers.push(
-    rest.get(
-      `${config.core.api.baseUrl}/users`,
-      async (req, res, ctx) => {
-        return (
-          res(ctx.json(mockUsers))
-        )
-      }
-    ),
-    rest.post(`${config.core.api.baseUrl}/users`,
-      (req, res, ctx) => {
-        mockHandleOnSubmit();
-        return res(
-          ctx.status(200)
-        );
-      })
-  );
-
-  return handlers;
+const mockCONFIG: any = {
+  core: {
+    api: {
+      baseUrl: 'http://localhost:3000',
+    },
+  },
 };
+
+export const handlers = [
+  rest.get(
+    `${mockCONFIG.core.api.baseUrl}/users`,
+    async (req, res, ctx) => {
+      return (
+        res(ctx.json(mockUsers))
+      )
+    }
+  ),
+  rest.post(`${mockCONFIG.core.api.baseUrl}/users`,
+    (req, res, ctx) => {
+      mockHandleSignUpOnSubmit();
+      return res(
+        ctx.status(200)
+      );
+    })
+];

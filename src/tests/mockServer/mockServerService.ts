@@ -1,30 +1,18 @@
-import { DefaultBodyType, MockedRequest, rest, RestHandler } from 'msw';
+import { rest } from 'msw';
 import { setupServer } from 'msw/node';
-import { createHandlers } from './serverHandlers';
+import { handlers } from './serverHandlers';
 
-const mockServerService = (config?: any) => {
-  const defaultConfig: any = {
-    core: {
-      api: {
-        baseUrl: 'https://test.com',
-      },
-    },
-  };
-
-  const serverHandlers = createHandlers(config || defaultConfig);
-
+const mockServerService = () => {
   return {
     startServer: () => {
-      const server = setupServer(...serverHandlers);
+      const server = setupServer(...handlers);
       beforeAll(() => server.listen());
       afterEach(() => server.resetHandlers());
       afterAll(() => server.close());
 
       return server;
     },
-    addHandler: (handler: RestHandler<MockedRequest<DefaultBodyType>>[]) => serverHandlers.push(...handler),
     rest,
-    config: config || defaultConfig,
   };
 };
 
