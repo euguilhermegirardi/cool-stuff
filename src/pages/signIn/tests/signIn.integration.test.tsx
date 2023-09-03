@@ -2,9 +2,9 @@ import '@testing-library/jest-dom';
 import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { rest } from 'msw';
-import { mockUsers } from '../../../../tests/mockData/users/mockUsers';
-import translations from '../../../../utils/translations';
-import { config, mockLogin, renderSignInContent, server } from '../utils/renderSignIn';
+import { config, mockLogin, renderSignInContent, server } from './utils/renderSignIn';
+import { mockUsers } from '../../../tests/mockData/users/mockUsers';
+import translations from '../../../utils/translations';
 
 const prepareRender = async () => {
   server.use(
@@ -51,17 +51,17 @@ describe('Sign In Integration Test', () => {
   });
 
   it('should be able to type in the user email', async () => {
-    const input = screen.getByRole('textbox');
+    const emailInput = screen.getByRole('textbox');
 
-    expect(input).toHaveValue('');
+    expect(emailInput).toHaveValue('');
 
-    await userEvent.type(input, 'testing the input');
+    await userEvent.type(emailInput, 'signInIntegration@test.com');
 
-    expect(input).toHaveValue('testing the input');
+    expect(emailInput).toHaveValue('signInIntegration@test.com');
   });
 
   it('should be able to type in the user password', async () => {
-    const passwordInput = screen.getByRole('textbox');
+    const passwordInput = screen.getByPlaceholderText('password');
 
     expect(passwordInput).toHaveValue('');
 

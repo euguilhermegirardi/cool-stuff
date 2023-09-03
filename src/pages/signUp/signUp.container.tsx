@@ -2,11 +2,10 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { yupResolver } from '@hookform/resolvers/yup';
+import axios from 'axios';
 import SignUpRequest from './interfaces/signUpRequest';
 import SignUp from './signUp';
 import validationSignUpSchema from './validations/validationSignUpSchema';
-import useAuth from '../../hooks/useAuth';
-import useLocalStorage from '../../hooks/useLocalStorage';
 import ApplicationRoutes from '../../utils/navigation/applicationRoutes';
 
 const SignUpContainer = () => {
@@ -27,26 +26,20 @@ const SignUpContainer = () => {
   const handleOnSubmit = async (data: SignUpRequest) => {
     setIsLoading(true);
 
-    try {
-      await fetch('http://localhost:3000/users', {
-        method: 'POST',
-        body: JSON.stringify({
-          userEmail: data.email,
-          userPassword: data.password,
-        }),
-        headers: {
-          'Content-Type': 'application/json'
-        }
+    await axios.post('http://localhost:3000/users', {
+      userEmail: data.email,
+      userPassword: data.password,
+    })
+      .then(() => {
+        setIsLoading(false);
+        navigate(ApplicationRoutes.signIn);
       })
-        .then(() => {
-          setIsLoading(false);
-          navigate(ApplicationRoutes.signIn)
-        })
-    } catch (error: any) {
-      setError(error)
-    } finally {
-      setIsLoading(false);
-    }
+      .catch((error) => {
+        setError(error)
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
   };
 
   const onSubmit = () => handleSubmit(handleOnSubmit);

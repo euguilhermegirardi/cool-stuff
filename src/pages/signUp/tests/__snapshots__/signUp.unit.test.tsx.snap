@@ -270,7 +270,7 @@ exports[`Sign Up Component > should match the snapshot with form errors 1`] = `
               class="MuiGrid-root MuiGrid-item css-lptiby-MuiGrid-root"
             >
               <a
-                class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineAlways css-1unaml3-MuiTypography-root-MuiLink-root"
+                class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineAlways css-1mtr98v-MuiTypography-root-MuiLink-root"
                 href="/"
               >
                 <p
@@ -551,7 +551,7 @@ exports[`Sign Up Component > should match the snapshot with form errors 1`] = `
             class="MuiGrid-root MuiGrid-item css-lptiby-MuiGrid-root"
           >
             <a
-              class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineAlways css-1unaml3-MuiTypography-root-MuiLink-root"
+              class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineAlways css-1mtr98v-MuiTypography-root-MuiLink-root"
               href="/"
             >
               <p
@@ -875,7 +875,7 @@ exports[`Sign Up Component > should match the snapshot without form errors 1`] =
               class="MuiGrid-root MuiGrid-item css-lptiby-MuiGrid-root"
             >
               <a
-                class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineAlways css-1unaml3-MuiTypography-root-MuiLink-root"
+                class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineAlways css-1mtr98v-MuiTypography-root-MuiLink-root"
                 href="/"
               >
                 <p
@@ -1142,7 +1142,7 @@ exports[`Sign Up Component > should match the snapshot without form errors 1`] =
             class="MuiGrid-root MuiGrid-item css-lptiby-MuiGrid-root"
           >
             <a
-              class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineAlways css-1unaml3-MuiTypography-root-MuiLink-root"
+              class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineAlways css-1mtr98v-MuiTypography-root-MuiLink-root"
               href="/"
             >
               <p
