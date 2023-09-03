@@ -32,7 +32,7 @@ const SignInContainer = () => {
           if (user.userEmail === body.email && user.userPassword === body.password) {
             setNotSignedIn(false);
             setIsLoading(false);
-            login(body.email, body.password);
+            login();
           } else {
             setIsLoading(false);
             setNotSignedIn(true);
