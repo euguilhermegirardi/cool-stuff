@@ -1,11 +1,11 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
+import useAuth from 'hooks/useAuth';
+import Dashboard from 'pages/dashboard';
+import NotFound from 'pages/notFound/notFound';
+import SignIn from 'pages/signIn';
+import SignUp from 'pages/signUp';
+import ApplicationRoutes from 'utils/navigation/applicationRoutes';
 import ProtectedRoutes from './protectedRoutes';
-import useAuth from '../hooks/useAuth';
-import Dashboard from '../pages/dashboard';
-import NotFound from '../pages/notFound/notFound';
-import SignIn from '../pages/signIn';
-import SignUp from '../pages/signUp';
-import ApplicationRoutes from '../utils/navigation/applicationRoutes';
 
 const AppRoutes = () => {
   const { isLoggedIn } = useAuth();

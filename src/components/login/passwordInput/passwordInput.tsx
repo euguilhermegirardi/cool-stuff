@@ -7,7 +7,6 @@ import { PasswordInputProps } from './interfaces/passwordInputProps';
 const PasswordInput = ({
   inputId,
   inputName,
-  autoFocus,
   showPassword,
   formErrors,
   handleMouseDownPassword,

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { localStorageService } from '../services/localStorage.service';
+import { localStorageService } from 'services/localStorage.service';
 
 function useLocalStorage(key: string, defaultValue: string) {
   const [storedValue, setStoredValue] = useState(() => {
