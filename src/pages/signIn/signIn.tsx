@@ -12,6 +12,7 @@ import ApplicationRoutes from 'utils/navigation/applicationRoutes';
 import { SignInProps } from './interfaces/signInProps';
 
 const SignIn = ({
+  getUsersError,
   isLoading,
   notSignedIn,
   formErrors,
@@ -37,6 +38,17 @@ const SignIn = ({
           />
 
           <CoolStuffSubtitle />
+
+          {getUsersError ? (
+            <Typography
+              sx={{
+                color: `${theme.palette.error.main}`,
+                ml: theme.spacing(1),
+              }}
+            >
+              Ops, something went wrong, please refresh the page.
+            </Typography>
+          ) : null}
         </Grid>
 
         <form

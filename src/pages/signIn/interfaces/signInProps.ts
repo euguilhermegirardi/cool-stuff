@@ -3,6 +3,7 @@ import { UseFormRegister } from 'react-hook-form';
 import LoginRequest from './loginRequest';
 
 export interface SignInProps {
+  getUsersError?: string;
   isLoading: boolean;
   notSignedIn: boolean;
   formErrors: {
