@@ -2,6 +2,7 @@ const FallbackComponent = () => {
   return (
     <div >
       <h2>Something went wrong...</h2>
+      <h3>Please, refresh the page and try again!</h3>
     </div>
   );
 };

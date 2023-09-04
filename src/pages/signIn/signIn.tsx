@@ -1,6 +1,7 @@
 import { Grid, Typography, useTheme } from '@mui/material';
 import DangerousIcon from '@mui/icons-material/Dangerous';
 import ElementLink from 'components/elementLink/elementLink';
+import { ErrorFallbackComponent } from 'components/errorFallbackComponent/errorFallbackComponent';
 import CoolStuffSubtitle from 'components/login/coolStuffSubtitle/coolStuffSubtitle';
 import EmailInput from 'components/login/emailInput/emailInput';
 import LoginTitle from 'components/login/loginTitle/loginTitle';
@@ -8,10 +9,11 @@ import LoginWrapper from 'components/login/loginWrapper/loginWrapper';
 import PasswordInput from 'components/login/passwordInput';
 import MuiButton from 'components/muiButton/muiButton';
 import { useTranslations } from 'hooks/useTranslations';
+import { withErrorBoundary } from 'react-error-boundary';
 import ApplicationRoutes from 'utils/navigation/applicationRoutes';
 import { SignInProps } from './interfaces/signInProps';
 
-const SignIn = ({
+const SignIn = withErrorBoundary(({
   getUsersError,
   isLoading,
   notSignedIn,
@@ -122,6 +124,6 @@ const SignIn = ({
       </>
     </LoginWrapper>
   );
-};
+}, ErrorFallbackComponent);
 
 export default SignIn;
