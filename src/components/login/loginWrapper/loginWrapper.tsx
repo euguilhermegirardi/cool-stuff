@@ -1,7 +1,9 @@
 import { Grid, useTheme } from '@mui/material';
 import { ReactElement } from 'react';
+import { withErrorBoundary } from 'react-error-boundary';
+import { ErrorFallbackComponent } from 'src/components/errorFallbackComponent/errorFallbackComponent';
 
-const LoginWrapper = ({ children }: { children: ReactElement }) => {
+const LoginWrapper = withErrorBoundary(({ children }: { children: ReactElement }) => {
   const theme = useTheme();
 
   return (
@@ -31,6 +33,6 @@ const LoginWrapper = ({ children }: { children: ReactElement }) => {
       {children}
     </Grid>
   )
-};
+}, ErrorFallbackComponent);
 
 export default LoginWrapper;

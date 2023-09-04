@@ -1,9 +1,11 @@
 import ElementLink from 'components/elementLink/elementLink';
+import { ErrorFallbackComponent } from 'components/errorFallbackComponent/errorFallbackComponent';
 import LoginTitle from 'components/login/loginTitle/loginTitle';
 import LoginWrapper from 'components/login/loginWrapper/loginWrapper';
 import { useTranslations } from 'hooks/useTranslations';
+import { withErrorBoundary } from 'react-error-boundary';
 
-const NotFound = () => {
+const NotFound = withErrorBoundary(() => {
   const translations = useTranslations();
 
   return (
@@ -22,6 +24,6 @@ const NotFound = () => {
       </>
     </LoginWrapper>
   );
-};
+}, ErrorFallbackComponent);
 
 export default NotFound;

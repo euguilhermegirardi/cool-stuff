@@ -1,11 +1,12 @@
 import { useState } from 'react';
+import { ErrorFallbackComponent } from 'components/errorFallbackComponent/errorFallbackComponent';
+import { withErrorBoundary } from 'react-error-boundary';
 import { PasswordInputContainerProps } from './interfaces/passwordInputContainerProps';
 import PasswordInput from './passwordInput';
 
-const PasswordInputContainer = ({
+const PasswordInputContainer = withErrorBoundary(({
   inputId,
   inputName,
-  autoFocus,
   formErrors,
   register,
 }: PasswordInputContainerProps) => {
@@ -23,7 +24,6 @@ const PasswordInputContainer = ({
     <PasswordInput
       inputId={inputId}
       inputName={inputName}
-      autoFocus={autoFocus}
       showPassword={showPassword}
       formErrors={formErrors}
       handleMouseDownPassword={handleMouseDownPassword}
@@ -31,6 +31,6 @@ const PasswordInputContainer = ({
       handleShowPassword={handleShowPassword}
     />
   );
-};
+}, ErrorFallbackComponent);
 
 export default PasswordInputContainer;

@@ -1,7 +1,9 @@
+import { ErrorFallbackComponent } from 'components/errorFallbackComponent/errorFallbackComponent';
 import MuiButton from 'components/muiButton/muiButton';
 import { useTranslations } from 'hooks/useTranslations';
+import { withErrorBoundary } from 'react-error-boundary';
 
-const Dashboard = ({
+const Dashboard = withErrorBoundary(({
   handleLogOut,
 }: {
   handleLogOut: () => void;
@@ -19,6 +21,6 @@ const Dashboard = ({
       />
     </>
   );
-};
+}, ErrorFallbackComponent);
 
 export default Dashboard;

@@ -3,12 +3,14 @@ import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { yupResolver } from '@hookform/resolvers/yup';
 import axios from 'axios';
+import { ErrorFallbackComponent } from 'components/errorFallbackComponent/errorFallbackComponent';
+import { withErrorBoundary } from 'react-error-boundary';
+import ApplicationRoutes from 'utils/navigation/applicationRoutes';
 import SignUpRequest from './interfaces/signUpRequest';
 import SignUp from './signUp';
 import validationSignUpSchema from './validations/validationSignUpSchema';
-import ApplicationRoutes from '../../utils/navigation/applicationRoutes';
 
-const SignUpContainer = () => {
+const SignUpContainer = withErrorBoundary(() => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState();
 
@@ -51,6 +53,6 @@ const SignUpContainer = () => {
       onSubmit={onSubmit}
     />
   );
-};
+}, ErrorFallbackComponent);
 
 export default SignUpContainer;

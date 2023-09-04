@@ -1,8 +1,10 @@
 import { Button, Typography, useTheme } from '@mui/material';
 import CircularProgress from '@mui/material/CircularProgress';
+import { withErrorBoundary } from 'react-error-boundary';
 import { MuiButtonProps } from './interface/muiButtonProps';
+import { ErrorFallbackComponent } from '../errorFallbackComponent/errorFallbackComponent';
 
-const MuiButton = ({
+const MuiButton = withErrorBoundary(({
   type,
   variant = 'contained',
   color = 'primary',
@@ -34,6 +36,6 @@ const MuiButton = ({
       )}
     </Button>
   );
-};
+}, ErrorFallbackComponent);
 
 export default MuiButton;

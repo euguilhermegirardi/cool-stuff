@@ -1,7 +1,9 @@
+import { ErrorFallbackComponent } from 'components/errorFallbackComponent/errorFallbackComponent';
 import useAuth from 'hooks/useAuth';
+import { withErrorBoundary } from 'react-error-boundary';
 import Dashboard from './dashboard';
 
-const DashboardContainer = () => {
+const DashboardContainer = withErrorBoundary(() => {
   const { logout } = useAuth();
 
   const handleLogOut = () => logout();
@@ -11,6 +13,6 @@ const DashboardContainer = () => {
       handleLogOut={handleLogOut}
     />
   );
-};
+}, ErrorFallbackComponent);
 
 export default DashboardContainer;

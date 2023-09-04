@@ -1,5 +1,6 @@
 import { Grid, useTheme } from '@mui/material';
 import ElementLink from 'components/elementLink/elementLink';
+import { ErrorFallbackComponent } from 'components/errorFallbackComponent/errorFallbackComponent';
 import CoolStuffSubtitle from 'components/login/coolStuffSubtitle/coolStuffSubtitle';
 import EmailInput from 'components/login/emailInput/emailInput';
 import LoginTitle from 'components/login/loginTitle/loginTitle';
@@ -7,9 +8,10 @@ import LoginWrapper from 'components/login/loginWrapper/loginWrapper';
 import PasswordInput from 'components/login/passwordInput';
 import MuiButton from 'components/muiButton/muiButton';
 import { useTranslations } from 'hooks/useTranslations';
+import { withErrorBoundary } from 'react-error-boundary';
 import { SignUpProps } from './interfaces/signUpProps';
 
-const SignUp = ({
+const SignUp = withErrorBoundary(({
   isLoading,
   formErrors,
   register,
@@ -92,6 +94,6 @@ const SignUp = ({
       </>
     </LoginWrapper>
   );
-};
+}, ErrorFallbackComponent);
 
 export default SignUp;

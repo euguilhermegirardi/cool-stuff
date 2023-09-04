@@ -1,8 +1,10 @@
 import { InputAdornment, TextField, Typography, useTheme } from '@mui/material';
 import { UseFormRegister } from 'react-hook-form';
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
+import { ErrorFallbackComponent } from 'components/errorFallbackComponent/errorFallbackComponent';
+import { withErrorBoundary } from 'react-error-boundary';
 
-const EmailInput = ({
+const EmailInput = withErrorBoundary(({
   register,
   formErrors,
 }: {
@@ -50,6 +52,6 @@ const EmailInput = ({
       ) : null}
     </>
   );
-};
+}, ErrorFallbackComponent);
 
 export default EmailInput;

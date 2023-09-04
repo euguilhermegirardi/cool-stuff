@@ -2,9 +2,11 @@ import { Box, IconButton, InputAdornment, TextField, Typography, useTheme } from
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import Locker from 'assets/icons/locker.svg';
+import { ErrorFallbackComponent } from 'components/errorFallbackComponent/errorFallbackComponent';
+import { withErrorBoundary } from 'react-error-boundary';
 import { PasswordInputProps } from './interfaces/passwordInputProps';
 
-const PasswordInput = ({
+const PasswordInput = withErrorBoundary(({
   inputId,
   inputName,
   showPassword,
@@ -73,6 +75,6 @@ const PasswordInput = ({
       ) : null}
     </>
   );
-};
+}, ErrorFallbackComponent);
 
 export default PasswordInput;
