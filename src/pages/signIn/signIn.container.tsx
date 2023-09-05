@@ -1,7 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import axios from 'axios';
 import { ErrorFallbackComponent } from 'components/errorFallbackComponent/errorFallbackComponent';
 import useAuth from 'hooks/useAuth';
 import { useFetch } from 'hooks/useFetch';
@@ -16,7 +15,7 @@ import SignIn from './signIn';
 import { loginSchema } from './validations/loginSchema';
 
 const SignInContainer = withErrorBoundary(() => {
-  const [users, setUsers] = useState<any>();
+  const [users, setUsers] = useState<UsersListResponse[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [notSignedIn, setNotSignedIn] = useState(false);
 
@@ -60,8 +59,8 @@ const SignInContainer = withErrorBoundary(() => {
   const onSubmit = () => handleSubmit(handleOnSubmit);
 
   const handleGetUsersTwo = useCallback(() => {
-    return fetchService.get<UsersListResponse>('users')
-      .then((response: UsersListResponse) => {
+    return fetchService.get<UsersListResponse[]>('users')
+      .then((response: UsersListResponse[]) => {
         setUsers(response);
       })
       .catch(() => {

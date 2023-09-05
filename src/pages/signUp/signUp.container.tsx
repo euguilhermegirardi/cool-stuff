@@ -2,7 +2,6 @@ import { useCallback, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { yupResolver } from '@hookform/resolvers/yup';
-import axios from 'axios';
 import { ErrorFallbackComponent } from 'components/errorFallbackComponent/errorFallbackComponent';
 import { useFetch } from 'hooks/useFetch';
 import { useTranslations } from 'hooks/useTranslations';
