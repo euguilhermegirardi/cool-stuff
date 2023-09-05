@@ -1,9 +1,10 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { yupResolver } from '@hookform/resolvers/yup';
 import axios from 'axios';
 import { ErrorFallbackComponent } from 'components/errorFallbackComponent/errorFallbackComponent';
+import { useFetch } from 'hooks/useFetch';
 import { useTranslations } from 'hooks/useTranslations';
 import { withErrorBoundary } from 'react-error-boundary';
 import { toast } from 'react-toastify';
@@ -17,6 +18,7 @@ import validationSignUpSchema from './validations/validationSignUpSchema';
 const SignUpContainer = withErrorBoundary(() => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
+  const fetchService = useFetch();
   const navigate = useNavigate();
   const translations = useTranslations();
 
@@ -34,12 +36,12 @@ const SignUpContainer = withErrorBoundary(() => {
     resolver: yupResolver(validationSignUpSchema),
   });
 
-  const handleOnSubmit = async (data: SignUpRequest) => {
-    setIsLoading(true);
-
-    await axios.post('http://localhost:3000/users', {
-      userEmail: data.email,
-      userPassword: data.password,
+  const handleOnSubmit = useCallback((data: SignUpRequest) => {
+    return fetchService.post('users', {
+      body: {
+        email: data.email,
+        password: data.password,
+      }
     })
       .then(() => {
         setIsLoading(false);
@@ -47,11 +49,12 @@ const SignUpContainer = withErrorBoundary(() => {
       })
       .catch(() => {
         notify();
+
       })
       .finally(() => {
         setIsLoading(false);
       });
-  };
+  }, [fetchService]);
 
   const onSubmit = () => handleSubmit(handleOnSubmit);
 

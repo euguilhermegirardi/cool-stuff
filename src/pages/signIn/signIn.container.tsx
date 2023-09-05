@@ -1,23 +1,26 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import axios from 'axios';
 import { ErrorFallbackComponent } from 'components/errorFallbackComponent/errorFallbackComponent';
 import useAuth from 'hooks/useAuth';
+import { useFetch } from 'hooks/useFetch';
 import { useTranslations } from 'hooks/useTranslations';
 import { withErrorBoundary } from 'react-error-boundary';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { v1 as uuidv1 } from 'uuid';
 import LoginRequest from './interfaces/loginRequest';
+import UsersListResponse from './interfaces/usersListResponse';
 import SignIn from './signIn';
 import { loginSchema } from './validations/loginSchema';
 
 const SignInContainer = withErrorBoundary(() => {
-  const [users, setUsers] = useState<any>([]);
+  const [users, setUsers] = useState<any>();
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [notSignedIn, setNotSignedIn] = useState(false);
 
+  const fetchService = useFetch();
   const { login } = useAuth();
   const translations = useTranslations();
 
@@ -39,7 +42,7 @@ const SignInContainer = withErrorBoundary(() => {
     setIsLoading(true);
 
     setTimeout(() => {
-      if (users.length && (body.email && body.password)) {
+      if (users?.length && (body.email && body.password)) {
         users.forEach((user: any) => {
           if (user.userEmail === body.email && user.userPassword === body.password) {
             setNotSignedIn(false);
@@ -56,19 +59,21 @@ const SignInContainer = withErrorBoundary(() => {
 
   const onSubmit = () => handleSubmit(handleOnSubmit);
 
-  const handleGetUsers = async () => {
-    await axios.get('http://localhost:3000/users')
-      .then((response) => {
-        setUsers(response.data);
+  const handleGetUsersTwo = useCallback(() => {
+    return fetchService.get<UsersListResponse>('users')
+      .then((response: UsersListResponse) => {
+        setUsers(response);
       })
       .catch(() => {
         notify();
-      })
-  };
+      });
+  }, [fetchService]);
 
   useEffect(() => {
-    handleGetUsers();
+    handleGetUsersTwo();
   }, []);
+
+  console.log('users', users)
 
   return (
     <SignIn
