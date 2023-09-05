@@ -14,7 +14,6 @@ import ApplicationRoutes from 'utils/navigation/applicationRoutes';
 import { SignInProps } from './interfaces/signInProps';
 
 const SignIn = withErrorBoundary(({
-  getUsersError,
   isLoading,
   notSignedIn,
   formErrors,
@@ -40,17 +39,6 @@ const SignIn = withErrorBoundary(({
           />
 
           <CoolStuffSubtitle />
-
-          {getUsersError ? (
-            <Typography
-              sx={{
-                color: `${theme.palette.error.main}`,
-                ml: theme.spacing(1),
-              }}
-            >
-              Ops, something went wrong, please refresh the page.
-            </Typography>
-          ) : null}
         </Grid>
 
         <form
@@ -103,7 +91,6 @@ const SignIn = withErrorBoundary(({
             <PasswordInput
               inputId={translations.password}
               inputName={translations.password}
-              autoFocus={false}
               formErrors={formErrors.password}
               register={register}
             />

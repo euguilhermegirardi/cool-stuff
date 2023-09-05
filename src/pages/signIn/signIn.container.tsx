@@ -4,18 +4,28 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import axios from 'axios';
 import { ErrorFallbackComponent } from 'components/errorFallbackComponent/errorFallbackComponent';
 import useAuth from 'hooks/useAuth';
+import { useTranslations } from 'hooks/useTranslations';
 import { withErrorBoundary } from 'react-error-boundary';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { v1 as uuidv1 } from 'uuid';
 import LoginRequest from './interfaces/loginRequest';
 import SignIn from './signIn';
 import { loginSchema } from './validations/loginSchema';
 
 const SignInContainer = withErrorBoundary(() => {
   const [users, setUsers] = useState<any>([]);
-  const [getUsersError, setGetUsersError] = useState('');
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [notSignedIn, setNotSignedIn] = useState(false);
 
   const { login } = useAuth();
+  const translations = useTranslations();
+
+  const notify = () => {
+    toast.error(translations.somethingWentWrong, {
+      toastId: uuidv1()
+    });
+  };
 
   const {
     register,
@@ -51,8 +61,8 @@ const SignInContainer = withErrorBoundary(() => {
       .then((response) => {
         setUsers(response.data);
       })
-      .catch((error) => {
-        setGetUsersError(error.message);
+      .catch(() => {
+        notify();
       })
   };
 
@@ -62,7 +72,6 @@ const SignInContainer = withErrorBoundary(() => {
 
   return (
     <SignIn
-      getUsersError={getUsersError}
       isLoading={isLoading}
       notSignedIn={notSignedIn}
       formErrors={formErrors}
@@ -73,3 +82,4 @@ const SignInContainer = withErrorBoundary(() => {
 }, ErrorFallbackComponent);
 
 export default SignInContainer;
+

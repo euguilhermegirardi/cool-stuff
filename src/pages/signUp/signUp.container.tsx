@@ -4,17 +4,27 @@ import { useNavigate } from 'react-router-dom';
 import { yupResolver } from '@hookform/resolvers/yup';
 import axios from 'axios';
 import { ErrorFallbackComponent } from 'components/errorFallbackComponent/errorFallbackComponent';
+import { useTranslations } from 'hooks/useTranslations';
 import { withErrorBoundary } from 'react-error-boundary';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import ApplicationRoutes from 'utils/navigation/applicationRoutes';
+import { v1 as uuidv1 } from 'uuid';
 import SignUpRequest from './interfaces/signUpRequest';
 import SignUp from './signUp';
 import validationSignUpSchema from './validations/validationSignUpSchema';
 
 const SignUpContainer = withErrorBoundary(() => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [error, setError] = useState();
 
   const navigate = useNavigate();
+  const translations = useTranslations();
+
+  const notify = () => {
+    toast.error(translations.somethingWentWrong, {
+      toastId: uuidv1()
+    });
+  };
 
   const {
     register,
@@ -35,8 +45,8 @@ const SignUpContainer = withErrorBoundary(() => {
         setIsLoading(false);
         navigate(ApplicationRoutes.signIn);
       })
-      .catch((error) => {
-        setError(error)
+      .catch(() => {
+        notify();
       })
       .finally(() => {
         setIsLoading(false);

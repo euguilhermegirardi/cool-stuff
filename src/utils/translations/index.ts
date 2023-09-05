@@ -23,6 +23,7 @@ const translations = {
   password: 'password',
   return: 'return',
   coolStuff: 'cool stuff',
+  somethingWentWrong: 'Something went wrong, please refresh the page!',
 };
 
 export default translations;

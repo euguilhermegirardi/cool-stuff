@@ -14,4 +14,4 @@ export const ErrorFallbackComponent = {
   },
 };
 
-export default FallbackComponent;
+export default ErrorFallbackComponent;

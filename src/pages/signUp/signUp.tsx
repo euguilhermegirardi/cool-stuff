@@ -65,7 +65,6 @@ const SignUp = withErrorBoundary(({
             <PasswordInput
               inputId={translations.password}
               inputName={translations.password}
-              autoFocus={false}
               formErrors={formErrors.password}
               register={register}
             />
@@ -73,7 +72,6 @@ const SignUp = withErrorBoundary(({
             <PasswordInput
               inputId={translations.signUp.confirmPasswordId}
               inputName={translations.signUp.confirmPassword}
-              autoFocus={false}
               formErrors={formErrors.confirmPassword}
               register={register}
             />
