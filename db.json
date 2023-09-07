@@ -29,6 +29,11 @@
       "userEmail": "test@test.com",
       "userPassword": "asdasd",
       "id": 7
+    },
+    {
+      "email": "test@test.com",
+      "password": "test123",
+      "id": 8
     }
   ]
 }

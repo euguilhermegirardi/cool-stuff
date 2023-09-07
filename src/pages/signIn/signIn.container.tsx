@@ -1,8 +1,9 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useReducer } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { ErrorFallbackComponent } from 'components/errorFallbackComponent/errorFallbackComponent';
 import useAuth from 'hooks/useAuth';
+import { useCreateReducer } from 'hooks/useCreateReducer';
 import { useFetch } from 'hooks/useFetch';
 import { useTranslations } from 'hooks/useTranslations';
 import { withErrorBoundary } from 'react-error-boundary';
@@ -12,12 +13,20 @@ import { v1 as uuidv1 } from 'uuid';
 import LoginRequest from './interfaces/loginRequest';
 import UsersListResponse from './interfaces/usersListResponse';
 import SignIn from './signIn';
+import { initialState, SignInInitialStateProps } from './signIn.state';
 import { loginSchema } from './validations/loginSchema';
 
 const SignInContainer = withErrorBoundary(() => {
-  const [users, setUsers] = useState<UsersListResponse[]>([]);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [notSignedIn, setNotSignedIn] = useState(false);
+  const {
+    state: {
+      users,
+      isLoading,
+      notSignedIn
+    },
+    dispatch,
+  } = useCreateReducer<SignInInitialStateProps>({
+    initialState,
+  });
 
   const fetchService = useFetch();
   const { login } = useAuth();
@@ -38,30 +47,30 @@ const SignInContainer = withErrorBoundary(() => {
   });
 
   const handleOnSubmit = (body: LoginRequest) => {
-    setIsLoading(true);
+    dispatch({ type: 'change', field: 'isLoading', value: true });
 
     setTimeout(() => {
       if (users?.length && (body.email && body.password)) {
         users.forEach((user: any) => {
           if (user.userEmail === body.email && user.userPassword === body.password) {
-            setNotSignedIn(false);
-            setIsLoading(false);
+            dispatch({ type: 'change', field: 'notSignedIn', value: false });
+            dispatch({ type: 'change', field: 'isLoading', value: false });
             login();
           } else {
-            setIsLoading(false);
-            setNotSignedIn(true);
+            dispatch({ type: 'change', field: 'isLoading', value: false });
+            dispatch({ type: 'change', field: 'notSignedIn', value: true });
           }
         });
       }
-    }, 1500);
+    }, 2000);
   };
 
   const onSubmit = () => handleSubmit(handleOnSubmit);
 
-  const handleGetUsersTwo = useCallback(() => {
+  const handleGetUsers = useCallback(() => {
     return fetchService.get<UsersListResponse[]>('users')
       .then((response: UsersListResponse[]) => {
-        setUsers(response);
+        dispatch({ type: 'change', field: 'users', value: response });
       })
       .catch(() => {
         notify();
@@ -69,10 +78,8 @@ const SignInContainer = withErrorBoundary(() => {
   }, [fetchService]);
 
   useEffect(() => {
-    handleGetUsersTwo();
+    handleGetUsers();
   }, []);
-
-  console.log('users', users)
 
   return (
     <SignIn

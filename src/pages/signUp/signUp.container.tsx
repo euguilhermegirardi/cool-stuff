@@ -36,6 +36,8 @@ const SignUpContainer = withErrorBoundary(() => {
   });
 
   const handleOnSubmit = useCallback((data: SignUpRequest) => {
+    setIsLoading(true);
+
     return fetchService.post('users', {
       body: {
         email: data.email,
