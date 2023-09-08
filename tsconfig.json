@@ -47,7 +47,7 @@
     "jsx": "react-jsx",
     "types": ["vitest/globals", "@testing-library/jest-dom"]
   },
-  "include": ["src", "tests/setup.ts"],
+  "include": ["src", "tests/setup.ts", "custom.d.ts"],
   "exclude": ["node_modules", "build"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

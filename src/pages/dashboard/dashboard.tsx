@@ -1,5 +1,6 @@
 import { ErrorFallbackComponent } from 'components/errorFallbackComponent/errorFallbackComponent';
 import MuiButton from 'components/muiButton/muiButton';
+import MuiDrawer from 'components/muiDrawer';
 import { useTranslations } from 'hooks/useTranslations';
 import { withErrorBoundary } from 'react-error-boundary';
 
@@ -11,7 +12,7 @@ const Dashboard = withErrorBoundary(({
   const translations = useTranslations();
   return (
     <>
-      <div>Dashboard</div>
+      <MuiDrawer />
 
       <MuiButton
         type='button'
