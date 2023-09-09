@@ -15,8 +15,8 @@ const MuiDrawer = ({
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
   const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
 
-  const pages = ['Products', 'Pricing', 'Blog'];
-  const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+  const pages = ['Project Technologies', 'Contact Us'];
+  const settings = ['Profile', 'Logout'];
 
   const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElUser(event.currentTarget);
@@ -34,13 +34,16 @@ const MuiDrawer = ({
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
       <AppBar
-        position="fixed"
+        position='fixed'
         sx={{
+          height: 111,
           width: { sm: `calc(100% - ${drawerWidth}px)` },
           ml: { sm: `${drawerWidth}px` },
+
         }}
       >
-        <Toolbar>
+        <Toolbar sx={{ height: '100%' }}>
+          {/* Hamburger menu for mobile starts */}
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -50,68 +53,29 @@ const MuiDrawer = ({
           >
             <MenuIcon />
           </IconButton>
+          {/* Hamburger menu for mobile ends */}
 
           <Container maxWidth="xl">
             <Toolbar disableGutters>
-              <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
-                <Menu
-                  id="menu-appbar"
-                  anchorEl={anchorElNav}
-                  anchorOrigin={{
-                    vertical: 'bottom',
-                    horizontal: 'left',
-                  }}
-                  keepMounted
-                  transformOrigin={{
-                    vertical: 'top',
-                    horizontal: 'left',
-                  }}
-                  open={Boolean(anchorElNav)}
-                  onClose={handleCloseNavMenu}
-                  sx={{
-                    display: { xs: 'block', md: 'none' },
-                  }}
-                >
-                  {pages.map((page) => (
-                    <MenuItem key={page} onClick={handleCloseNavMenu}>
-                      <Typography textAlign="center">{page}</Typography>
-                    </MenuItem>
-                  ))}
-                </Menu>
-              </Box>
-
+              {/* Icon and menu items for mobile starts */}
               <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+              {/* Icon and menu items for mobile ends */}
 
-              <Typography
-                variant="h5"
-                noWrap
-                component="a"
-                href="/"
-                sx={{
-                  mr: 2,
-                  display: { xs: 'flex', md: 'none' },
-                  flexGrow: 1,
-                  fontFamily: 'monospace',
-                  fontWeight: 700,
-                  letterSpacing: '.3rem',
-                  color: 'white',
-                  textDecoration: 'none',
-                }}
-              >
-                LOGO
-              </Typography>
+              {/* List items for desktop starts */}
               <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                 {pages.map((page) => (
                   <Button
                     key={page}
                     onClick={handleCloseNavMenu}
-                    sx={{ my: 2, color: 'white', display: 'block' }}
+                    sx={{ my: 2, mx: 1.5, color: 'white', display: 'block' }}
                   >
                     {page}
                   </Button>
                 ))}
               </Box>
+              {/* List items for desktop ends */}
 
+              {/* Profile menu for desktop starts */}
               <Box sx={{ flexGrow: 0 }}>
                 <Tooltip title="Open settings">
                   <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
@@ -141,11 +105,13 @@ const MuiDrawer = ({
                   ))}
                 </Menu>
               </Box>
+              {/* Profile menu desktop ends */}
             </Toolbar>
           </Container>
         </Toolbar>
       </AppBar>
 
+      {/* Permanent menu on the left for desktop starts */}
       <Box
         component="nav"
         sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
@@ -176,6 +142,7 @@ const MuiDrawer = ({
           <DrawerList />
         </Drawer>
       </Box>
+      {/* Permanent menu on the left for desktop ends */}
 
       <Box
         component="main"
