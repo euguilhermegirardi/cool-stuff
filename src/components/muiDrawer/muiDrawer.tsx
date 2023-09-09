@@ -8,28 +8,17 @@ import DrawerList from './components/drawerList/DrawerList';
 import { MuiDrawerProps } from './interfaces/MuiDrawerProps';
 
 const MuiDrawer = ({
+  anchorElNav,
+  anchorElUser,
   drawerWidth,
   mobileOpen,
+  pages,
+  settings,
   handleDrawerToggle,
+  handleOpenUserMenu,
+  handleCloseUserMenu,
+  handleCloseNavMenu,
 }: MuiDrawerProps) => {
-  const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
-  const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
-
-  const pages = ['Project Technologies', 'Contact Us'];
-  const settings = ['Profile', 'Logout'];
-
-  const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorElUser(event.currentTarget);
-  };
-
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
-  };
-
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
-  };
-
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
@@ -56,11 +45,7 @@ const MuiDrawer = ({
           {/* Hamburger menu for mobile ends */}
 
           <Container maxWidth="xl">
-            <Toolbar disableGutters>
-              {/* Icon and menu items for mobile starts */}
-              <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
-              {/* Icon and menu items for mobile ends */}
-
+            <Toolbar disableGutters sx={{ display: 'flex', justifyContent: 'space-between' }}>
               {/* List items for desktop starts */}
               <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                 {pages.map((page) => (
@@ -74,6 +59,21 @@ const MuiDrawer = ({
                 ))}
               </Box>
               {/* List items for desktop ends */}
+
+              {/* Icon and menu items for mobile starts */}
+              <Typography
+                sx={{
+                  fontFamily: 'cursive',
+                  fontSize: 25,
+                  letterSpacing: 3,
+                  marginRight: {
+                    md: 5
+                  }
+                }}
+              >
+                cool stuff
+              </Typography>
+              {/* Icon and menu items for mobile ends */}
 
               {/* Profile menu for desktop starts */}
               <Box sx={{ flexGrow: 0 }}>
