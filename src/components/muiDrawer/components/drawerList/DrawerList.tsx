@@ -18,11 +18,10 @@ const DrawerList = () => {
         />
       </Grid>
 
-
       <Divider />
 
       <List>
-        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
+        {['Dashboard', 'Pokemon List', 'Pokemon Card', 'Pokemon Statistics'].map((text, index) => (
           <ListItem key={text} disablePadding>
             <ListItemButton>
               <ListItemIcon>
@@ -35,7 +34,7 @@ const DrawerList = () => {
       </List>
       <Divider />
       <List>
-        {['All mail', 'Trash', 'Spam'].map((text, index) => (
+        {['Add Custom Pokemon'].map((text, index) => (
           <ListItem key={text} disablePadding>
             <ListItemButton>
               <ListItemIcon>
