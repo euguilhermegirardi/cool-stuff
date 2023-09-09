@@ -34,6 +34,15 @@ const theme = createTheme({
       xl: 1640,
     },
   },
+  components: {
+    MuiAppBar: {
+      styleOverrides: {
+        colorPrimary: {
+          backgroundColor: '#3B4CCA'
+        }
+      }
+    }
+  },
   palette: {
     red: {
       main: '#FF0000',
