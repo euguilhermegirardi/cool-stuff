@@ -4,7 +4,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import AdbIcon from '@mui/icons-material/Adb';
 import MenuIcon from '@mui/icons-material/Menu';
 import AppBar from '@mui/material/AppBar';
-import DrawerList from './components/drawerList/DrawerList';
+import DrawerList from './components/drawerList';
 import { MuiDrawerProps } from './interfaces/MuiDrawerProps';
 
 const MuiDrawer = ({

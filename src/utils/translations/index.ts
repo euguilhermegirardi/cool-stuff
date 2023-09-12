@@ -18,7 +18,20 @@ const translations = {
     confirmPasswordId: 'confirmPassword',
   },
   dashboard: {
+    title: 'Dashboard',
     logout: 'logout',
+  },
+  pokemonList: {
+    title: 'Pokemon List',
+  },
+  pokemonCard: {
+    title: 'Pokemon Card',
+  },
+  pokemonStatistics: {
+    title: 'Pokemon Statistics',
+  },
+  addCustomPokemon: {
+    title: 'Add Custom Pokemon',
   },
   password: 'password',
   return: 'return',
