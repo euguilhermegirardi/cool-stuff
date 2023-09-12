@@ -1,4 +1,4 @@
-export interface MuiDrawerProps {
+export interface MuiAppBarProps {
   anchorElNav: HTMLElement | null;
   anchorElUser: HTMLElement | null;
   drawerWidth: number;

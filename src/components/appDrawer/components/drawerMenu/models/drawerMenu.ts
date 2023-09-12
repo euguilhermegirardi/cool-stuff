@@ -1,13 +1,13 @@
 import ApplicationRoutes from 'utils/navigation/applicationRoutes';
 import translations from 'utils/translations';
 
-export interface ListItemProps {
+export interface DrawerMenuProps {
   id: number;
   path: string;
   name: string;
 };
 
-export const drawerListItems: ListItemProps[] = [
+export const drawerMenu: DrawerMenuProps[] = [
   {
     id: 1,
     path: ApplicationRoutes.dashboard,

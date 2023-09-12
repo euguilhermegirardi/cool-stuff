@@ -3,9 +3,9 @@ import { NavLink } from 'react-router-dom';
 import MailIcon from '@mui/icons-material/Mail';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import PokemonLogo from 'assets/images/pokemon-logo-png.png';
-import { drawerListItems, ListItemProps } from './models/drawerListItem';
+import { drawerMenu, DrawerMenuProps } from './models/drawerMenu';
 
-const DrawerList = () => {
+const DrawerMenu = () => {
   return (
     <div>
       <Grid sx={{ display: 'grid', placeItems: 'center' }}>
@@ -23,8 +23,8 @@ const DrawerList = () => {
       <Divider />
 
       <List>
-        {drawerListItems.length > 0 &&
-          drawerListItems.map((listItem: ListItemProps, index: number) => (
+        {drawerMenu.length > 0 &&
+          drawerMenu.map((listItem: DrawerMenuProps, index: number) => (
             <ListItem key={listItem.id} disablePadding sx={{ display: 'block' }}>
               <NavLink to={listItem.path} style={{ textDecoration: 'none', color: '#000' }}>
                 {({ isActive, isPending }) => (
@@ -56,8 +56,8 @@ const DrawerList = () => {
           </ListItem>
         ))}
       </List>
-    </div >
-  )
+    </div>
+  );
 };
 
-export default DrawerList;
+export default DrawerMenu;

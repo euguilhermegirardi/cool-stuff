@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import MuiDrawer from './muiDrawer';
+import MuiAppBar from './muiAppBar';
 
-const MuiDrawerContainer = () => {
+const MuiAppBarContainer = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
   const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
@@ -21,7 +21,7 @@ const MuiDrawerContainer = () => {
   const handleCloseNavMenu = () => setAnchorElNav(null);
 
   return (
-    <MuiDrawer
+    <MuiAppBar
       anchorElNav={anchorElNav}
       anchorElUser={anchorElUser}
       drawerWidth={drawerWidth}
@@ -32,9 +32,8 @@ const MuiDrawerContainer = () => {
       handleOpenUserMenu={handleOpenUserMenu}
       handleCloseUserMenu={handleCloseUserMenu}
       handleCloseNavMenu={handleCloseNavMenu}
-
     />
-  )
+  );
 };
 
-export default MuiDrawerContainer;
+export default MuiAppBarContainer;
