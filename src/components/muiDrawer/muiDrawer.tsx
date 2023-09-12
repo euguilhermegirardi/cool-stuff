@@ -1,7 +1,5 @@
 import { Avatar, Box, Button, Container, Drawer, IconButton, Menu, MenuItem, Toolbar, Tooltip, Typography } from '@mui/material';
-import { useState } from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import AdbIcon from '@mui/icons-material/Adb';
 import MenuIcon from '@mui/icons-material/Menu';
 import AppBar from '@mui/material/AppBar';
 import DrawerList from './components/drawerList';

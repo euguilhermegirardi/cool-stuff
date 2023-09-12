@@ -26,7 +26,7 @@ const DrawerList = () => {
         {drawerListItems.length > 0 &&
           drawerListItems.map((listItem: ListItemProps, index: number) => (
             <ListItem key={listItem.id} disablePadding sx={{ display: 'block' }}>
-              <NavLink to={listItem.path} style={{ textDecoration: 'none' }}>
+              <NavLink to={listItem.path} style={{ textDecoration: 'none', color: '#000' }}>
                 {({ isActive, isPending }) => (
                   <ListItemButton sx={{
                     backgroundColor: isPending ? 'inherit' : isActive ? 'ceruleanBlue.main' : 'transparent'
