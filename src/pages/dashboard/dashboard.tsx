@@ -1,4 +1,4 @@
-import { Grid } from '@mui/material';
+import { Grid, Toolbar } from '@mui/material';
 import { ErrorFallbackComponent } from 'components/errorFallbackComponent/errorFallbackComponent';
 import MuiButton from 'components/muiButton/muiButton';
 import { useTranslations } from 'hooks/useTranslations';
@@ -14,7 +14,9 @@ const Dashboard = withErrorBoundary(({
   const translations = useTranslations();
 
   return (
-    <Grid sx={{ mt: '20px' }}>
+    <Grid>
+      <Toolbar sx={{ minHeight: '125px' }} />
+
       <FirstSection />
       <SecondSection />
 

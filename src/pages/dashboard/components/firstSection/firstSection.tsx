@@ -26,33 +26,56 @@ const FirstSection = () => {
             md: 'flex-start'
           },
           flexDirection: {
-            sx: 'column',
+            xs: 'column',
             md: 'row'
           },
           alignItems: 'flex-start',
-          margin: '0 15px'
+          margin: '0 15px',
+          padding: '15px 0'
         }}
       >
-        <Typography
-          sx={{
-            order: 2,
-            textAlign: 'justify',
-            fontSize: 17,
-          }}
+        <Grid sx={{
+          order: {
+            xs: 1,
+            md: 2
+          },
+          flex: 2,
+          padding: '13px 10px'
+        }}
         >
-          {translations.dashboard.worldOfPokemonTxt}
-        </Typography>
+          <Typography
+            sx={{
+              textAlign: 'justify',
+              fontSize: 17,
+            }}
+          >
+            {translations.dashboard.worldOfPokemonTxt}
+          </Typography>
+        </Grid>
 
-        <Box
-          component="img"
-          sx={{
-            order: 1,
-            maxHeight: 180,
-            maxWidth: 180,
-          }}
-          src={PikachuImg}
-          alt='Pokemon-logo'
-        />
+        <Grid sx={{
+          order: {
+            xs: 2,
+            md: 1
+          },
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          flex: 1,
+          width: '100%'
+        }}
+        >
+          <Box
+            component="img"
+            sx={{
+
+              maxHeight: 180,
+              maxWidth: 180,
+            }}
+            src={PikachuImg}
+            alt='Pokemon-logo'
+          />
+        </Grid>
       </Grid>
     </Grid>
   );
