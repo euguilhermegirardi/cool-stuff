@@ -1,13 +1,15 @@
 import { useState } from 'react';
 import MuiAppDrawer from './muiAppDrawer';
 
-const MuiAppDrawerContainer = () => {
-  const [mobileOpen, setMobileOpen] = useState(false);
-
-  const drawerWidth = 240;
-
-  const handleDrawerToggle = () => setMobileOpen(!mobileOpen);
-
+const MuiAppDrawerContainer = ({
+  drawerWidth,
+  mobileOpen,
+  handleDrawerToggle
+}: {
+  drawerWidth: number;
+  mobileOpen: boolean;
+  handleDrawerToggle: () => void;
+}) => {
   return (
     <MuiAppDrawer
       drawerWidth={drawerWidth}

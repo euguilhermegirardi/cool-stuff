@@ -1,6 +1,6 @@
 import { ReactElement } from 'react';
 import { Navigate } from 'react-router-dom';
-import AppLayout from 'components/appLayout/appLayout';
+import AppLayout from 'components/appLayout';
 import useAuth from 'hooks/useAuth';
 import ApplicationRoutes from 'utils/navigation/applicationRoutes';
 
