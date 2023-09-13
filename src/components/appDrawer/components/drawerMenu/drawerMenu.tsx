@@ -28,9 +28,16 @@ const DrawerMenu = () => {
             <ListItem key={listItem.id} disablePadding sx={{ display: 'block' }}>
               <NavLink to={listItem.path} style={{ textDecoration: 'none', color: '#000' }}>
                 {({ isActive, isPending }) => (
-                  <ListItemButton sx={{
-                    backgroundColor: isPending ? 'inherit' : isActive ? 'ceruleanBlue.main' : 'transparent'
-                  }}>
+                  <ListItemButton
+                    sx={{
+                      backgroundColor: isPending ? 'inherit' : isActive ? 'ceruleanBlue.main' : 'transparent',
+                      color: isPending ? '#000' : isActive ? 'goldenYellow.main' : '#000',
+                      "&:hover": {
+                        color: '#000',
+                        backgroundColor: 'goldenFoil.main'
+                      }
+                    }}
+                  >
                     <ListItemIcon>
                       {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
                     </ListItemIcon>
