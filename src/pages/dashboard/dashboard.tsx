@@ -1,8 +1,10 @@
-import { Box, Typography } from '@mui/material';
+import { Grid } from '@mui/material';
 import { ErrorFallbackComponent } from 'components/errorFallbackComponent/errorFallbackComponent';
 import MuiButton from 'components/muiButton/muiButton';
 import { useTranslations } from 'hooks/useTranslations';
 import { withErrorBoundary } from 'react-error-boundary';
+import FirstSection from './components/firstSection/firstSection';
+import SecondSection from './components/secondSection/secondSection';
 
 const Dashboard = withErrorBoundary(({
   handleLogOut,
@@ -12,14 +14,9 @@ const Dashboard = withErrorBoundary(({
   const translations = useTranslations();
 
   return (
-    <Box>
-      <Typography>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Rhoncus dolor purus non
-        enim praesent elementum facilisis leo vel. Risus at ultrices mi tempus
-        imperdiet. Semper risus in hendrerit gravida rutrum quisque non tellus.
-        Convallis convallis tellus id
-      </Typography>
+    <Grid sx={{ mt: '20px' }}>
+      <FirstSection />
+      <SecondSection />
 
       <MuiButton
         type='button'
@@ -27,7 +24,7 @@ const Dashboard = withErrorBoundary(({
         text={translations.dashboard.logout}
         onClick={handleLogOut}
       />
-    </Box>
+    </Grid>
   );
 }, ErrorFallbackComponent);
 

@@ -23,7 +23,6 @@ const AppLayout = ({
         mobileOpen={mobileOpen}
         handleDrawerToggle={handleDrawerToggle}
       />
-      <Toolbar />
       {children}
     </Box>
   );
