@@ -1,5 +1,5 @@
 import { Box, Grid, Typography } from '@mui/material';
-import PikachuImg from 'assets/images/Pikachu.png';
+import GengarImg from 'assets/images/gengar.png';
 import clsx from 'clsx';
 import { useTranslations } from 'hooks/useTranslations';
 import { styles } from '../../css/sections.styles';
@@ -26,7 +26,7 @@ const FirstSection = () => {
           <Box
             component="img"
             className={classes.image}
-            src={PikachuImg}
+            src={GengarImg}
             alt='Pokemon-logo'
           />
         </Grid>

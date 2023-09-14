@@ -1,5 +1,5 @@
 import { Box, Grid, Typography } from '@mui/material';
-import BulbaImg from 'assets/images/bulba.jpeg';
+import MachampImg from 'assets/images/machamp.png';
 import clsx from 'clsx';
 import { useTranslations } from 'hooks/useTranslations';
 import { styles } from 'pages/dashboard/css/sections.styles';
@@ -25,7 +25,7 @@ const ThirdSection = () => {
           <Box
             component="img"
             className={classes.image}
-            src={BulbaImg}
+            src={MachampImg}
             alt='Pokemon-logo'
           />
         </Grid>

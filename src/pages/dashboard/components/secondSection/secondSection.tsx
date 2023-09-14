@@ -1,5 +1,5 @@
 import { Box, Grid, Typography } from '@mui/material';
-import SquirtleImg from 'assets/images/squirtle.jpeg';
+import AerodactylImg from 'assets/images/aerodactyl.png';
 import clsx from 'clsx';
 import { useTranslations } from 'hooks/useTranslations';
 import { styles } from 'pages/dashboard/css/sections.styles';
@@ -32,7 +32,7 @@ const SecondSection = () => {
             component="img"
             className={classes.image}
             sx={{ mixBlendMode: 'multiply' }}
-            src={SquirtleImg}
+            src={AerodactylImg}
             alt='Pokemon-logo'
           />
         </Grid>

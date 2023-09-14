@@ -1,5 +1,5 @@
 import { Box, Grid, Typography } from '@mui/material';
-import PokemonImg from 'assets/images/starters.jpeg';
+import CharizardImg from 'assets/images/charizard.png';
 import clsx from 'clsx';
 import { useTranslations } from 'hooks/useTranslations';
 import { styles } from '../../css/sections.styles';
@@ -26,7 +26,7 @@ const FifthSection = () => {
             component="img"
             className={classes.image}
             sx={{ mixBlendMode: 'multiply' }}
-            src={PokemonImg}
+            src={CharizardImg}
             alt='Pokemon-logo'
           />
         </Grid>
