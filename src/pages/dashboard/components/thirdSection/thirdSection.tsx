@@ -11,16 +11,7 @@ const ThirdSection = () => {
   return (
     <Grid className={classes.mainSection}>
       <Grid className={classes.firstSection}>
-        <Grid
-          sx={{
-            order: {
-              xs: 1,
-              md: 2
-            },
-            flex: 2,
-            padding: '13px 10px'
-          }}
-        >
+        <Grid className={classes.evenTxtSection}>
           <Typography className={classes.title}>
             {translations.dashboard.collectTitle}
           </Typography>

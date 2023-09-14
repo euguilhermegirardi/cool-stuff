@@ -17,16 +17,7 @@ const SixthSection = () => {
       }}
     >
       <Grid className={classes.firstSection}>
-        <Grid
-          sx={{
-            order: {
-              xs: 1,
-              md: 1
-            },
-            flex: 2,
-            padding: '13px 10px'
-          }}
-        >
+        <Grid className={classes.oddTxtSection}>
           <Typography className={classes.title}>
             {translations.dashboard.discoverTitle}
           </Typography>
