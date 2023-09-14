@@ -2,9 +2,10 @@ export default class ApplicationRoutes {
   static signIn = '/';
   static signUp = '/sign-up';
   static dashboard = '/dashboard';
-  static pokemonList = '/pokemonList';
-  static pokemonCard = '/pokemonCard';
-  static pokemonStatistics = '/pokemonStatistics';
-  static addCustomPokemon = '/addCustomPokemon';
+  static projectTechnologies = '/project-technologies';
+  static pokemonList = '/pokemon-list';
+  static pokemonCard = '/pokemon-card';
+  static pokemonStatistics = '/pokemon-statistics';
+  static addCustomPokemon = '/add-custom-pokemon';
   static badRoute = '*';
 };

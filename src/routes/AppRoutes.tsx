@@ -6,6 +6,7 @@ import NotFound from 'pages/notFound/notFound';
 import PokemonCard from 'pages/pokemonCard';
 import PokemonList from 'pages/pokemonList';
 import PokemonStatistics from 'pages/pokemonStatistics';
+import ProjectTechnologies from 'pages/projectTechnologies/projectTechnologies';
 import SignIn from 'pages/signIn';
 import SignUp from 'pages/signUp';
 import ApplicationRoutes from 'utils/navigation/applicationRoutes';
@@ -37,6 +38,15 @@ const AppRoutes = () => {
         element={
           <ProtectedRoutes>
             <Dashboard />
+          </ProtectedRoutes>
+        }
+      />
+
+      <Route
+        path={ApplicationRoutes.projectTechnologies}
+        element={
+          <ProtectedRoutes>
+            <ProjectTechnologies />
           </ProtectedRoutes>
         }
       />

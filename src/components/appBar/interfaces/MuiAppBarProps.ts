@@ -1,5 +1,4 @@
 export interface MuiAppBarProps {
-  anchorElNav: HTMLElement | null;
   anchorElUser: HTMLElement | null;
   drawerWidth: number;
   mobileOpen: boolean;
