@@ -1,10 +1,10 @@
 import { Box, Grid, Typography } from '@mui/material';
-import SquirtleImg from 'assets/images/squirtle.jpeg';
+import CharmanderImg from 'assets/images/char.jpeg';
 import clsx from 'clsx';
 import { useTranslations } from 'hooks/useTranslations';
 import { styles } from 'pages/dashboard/css/sections.styles';
 
-const SecondSection = () => {
+const FourthSection = () => {
   const classes = styles();
   const translations = useTranslations();
 
@@ -17,13 +17,22 @@ const SecondSection = () => {
       }}
     >
       <Grid className={classes.firstSection}>
-        <Grid className={classes.oddTxtSection}>
+        <Grid
+          sx={{
+            order: {
+              xs: 1,
+              md: 1
+            },
+            flex: 2,
+            padding: '13px 10px'
+          }}
+        >
           <Typography className={classes.title}>
-            {translations.dashboard.exploreTitle}
+            {translations.dashboard.createTitle}
           </Typography>
 
           <Typography className={classes.text}>
-            {translations.dashboard.exploreTxt}
+            {translations.dashboard.createTxt}
           </Typography>
         </Grid>
 
@@ -32,7 +41,7 @@ const SecondSection = () => {
             component="img"
             className={classes.image}
             sx={{ mixBlendMode: 'multiply' }}
-            src={SquirtleImg}
+            src={CharmanderImg}
             alt='Pokemon-logo'
           />
         </Grid>
@@ -41,4 +50,4 @@ const SecondSection = () => {
   );
 };
 
-export default SecondSection;
+export default FourthSection;

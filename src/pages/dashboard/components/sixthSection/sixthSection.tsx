@@ -4,7 +4,7 @@ import clsx from 'clsx';
 import { useTranslations } from 'hooks/useTranslations';
 import { styles } from 'pages/dashboard/css/sections.styles';
 
-const SecondSection = () => {
+const SixthSection = () => {
   const classes = styles();
   const translations = useTranslations();
 
@@ -17,14 +17,33 @@ const SecondSection = () => {
       }}
     >
       <Grid className={classes.firstSection}>
-        <Grid className={classes.oddTxtSection}>
+        <Grid
+          sx={{
+            order: {
+              xs: 1,
+              md: 1
+            },
+            flex: 2,
+            padding: '13px 10px'
+          }}
+        >
           <Typography className={classes.title}>
-            {translations.dashboard.exploreTitle}
+            {translations.dashboard.discoverTitle}
           </Typography>
 
-          <Typography className={classes.text}>
-            {translations.dashboard.exploreTxt}
-          </Typography>
+          <Grid display='flex' flexDirection='column'>
+            <Typography className={classes.text}>
+              {translations.dashboard.discoverTxt}
+            </Typography>
+
+            <Typography className={classes.text}>
+              {translations.dashboard.discoverTxt2}
+            </Typography>
+
+            <Typography className={classes.text}>
+              {translations.dashboard.discoverTxt3}
+            </Typography>
+          </Grid>
         </Grid>
 
         <Grid className={clsx(classes.imageContent, classes.oddImgSection)}>
@@ -41,4 +60,4 @@ const SecondSection = () => {
   );
 };
 
-export default SecondSection;
+export default SixthSection;

@@ -1,6 +1,7 @@
 import { ThemeProvider } from '@mui/material';
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
+import { StyledEngineProvider } from '@mui/material/styles';
 import ReactDOM from 'react-dom/client';
 import { ToastContainer } from 'react-toastify';
 import './index.css';
@@ -12,10 +13,12 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <BrowserRouter>
       <AuthProvider>
-        <ThemeProvider theme={theme}>
-          <ToastContainer autoClose={6000} />
-          <AppRoutes />
-        </ThemeProvider>
+        <StyledEngineProvider injectFirst>
+          <ThemeProvider theme={theme}>
+            <ToastContainer autoClose={6000} />
+            <AppRoutes />
+          </ThemeProvider>
+        </StyledEngineProvider>
       </AuthProvider>
     </BrowserRouter>
   </React.StrictMode>,

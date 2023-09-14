@@ -1,32 +1,40 @@
 import { Box, Grid, Typography } from '@mui/material';
-import PikachuImg from 'assets/images/Pikachu.png';
+import BulbaImg from 'assets/images/bulba.jpeg';
 import clsx from 'clsx';
 import { useTranslations } from 'hooks/useTranslations';
-import { styles } from '../../css/sections.styles';
+import { styles } from 'pages/dashboard/css/sections.styles';
 
-const FirstSection = () => {
+const ThirdSection = () => {
   const classes = styles();
   const translations = useTranslations();
 
   return (
     <Grid className={classes.mainSection}>
       <Grid className={classes.firstSection}>
-        <Grid className={classes.evenTxtSection}>
+        <Grid
+          sx={{
+            order: {
+              xs: 1,
+              md: 2
+            },
+            flex: 2,
+            padding: '13px 10px'
+          }}
+        >
           <Typography className={classes.title}>
-            {translations.dashboard.worldOfPokemonTitle}
+            {translations.dashboard.collectTitle}
           </Typography>
 
           <Typography className={classes.text}>
-            {translations.dashboard.worldOfPokemonTxt}
+            {translations.dashboard.collectTxt}
           </Typography>
         </Grid>
 
-        <Grid
-          className={clsx(classes.imageContent, classes.evenImgSection)}>
+        <Grid className={clsx(classes.imageContent, classes.evenImgSection)}>
           <Box
             component="img"
             className={classes.image}
-            src={PikachuImg}
+            src={BulbaImg}
             alt='Pokemon-logo'
           />
         </Grid>
@@ -35,4 +43,4 @@ const FirstSection = () => {
   );
 };
 
-export default FirstSection;
+export default ThirdSection;

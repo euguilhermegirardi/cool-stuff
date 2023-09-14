@@ -1,4 +1,4 @@
-import { createTheme, PaletteColorOptions } from '@mui/material/styles';
+import { createTheme, PaletteColorOptions, Theme } from '@mui/material/styles';
 
 declare module '@mui/material/styles' {
   interface CustomPalette {
@@ -24,7 +24,7 @@ declare module '@mui/material/Button' {
   }
 };
 
-const theme = createTheme({
+const theme: Theme = createTheme({
   breakpoints: {
     values: {
       xs: 320,
