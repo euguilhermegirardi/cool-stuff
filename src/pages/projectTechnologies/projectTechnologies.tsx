@@ -1,9 +1,8 @@
 import { Box, Grid, List, ListItem, Typography, useTheme } from '@mui/material';
 import { NavLink } from 'react-router-dom';
-import AlakazamImg from 'assets/images/alakazam.png';
+import CharizardsImg from 'assets/images/charizards.png';
 import CrystalBattleImg from 'assets/images/crystal.png';
 import GyaradosImg from 'assets/images/gyarados.png';
-import SquirtleImg from 'assets/images/squirtle.jpeg';
 import MuiToolbar from 'components/muiToolbar/muiToolbar';
 import { navbarPages } from 'shared/css/navbarPages.styles';
 import { projectTechnologies } from './models/projectTechnologies';
@@ -38,7 +37,8 @@ const ProjectTechnologies = () => {
             flexDirection: {
               xs: 'column',
               md: 'row'
-            }
+            },
+            flexWrap: 'wrap'
           }}
         >
           <Grid
@@ -47,6 +47,7 @@ const ProjectTechnologies = () => {
               display: 'flex',
               flexDirection: 'column',
               justifyContent: 'flex-start',
+              minWidth: 450,
               margin: 0,
               padding: 0,
             }}
@@ -123,59 +124,19 @@ const ProjectTechnologies = () => {
                 xs: 'none',
                 md: 'flex'
               },
-              alignItems: 'center',
-              justifyContent: 'space-around',
+              alignSelf: 'center',
+              minWidth: 450
             }}
           >
-            <Grid
+            <Box
+              component="img"
               sx={{
-                display: 'flex',
-                alignSelf: 'flex-end',
+                height: 'auto',
+                width: '100%',
               }}
-            >
-              <Grid
-                sx={{
-
-                  height: 250,
-                  width: 210,
-                }}
-              >
-                <Box
-                  component="img"
-                  sx={{
-                    height: '100%',
-                    width: '100%',
-                  }}
-                  src={AlakazamImg}
-                  alt='Pokemon-logo'
-                />
-              </Grid>
-            </Grid>
-
-            <Grid
-              sx={{
-                display: 'flex',
-                alignSelf: 'flex-start',
-              }}
-            >
-              <Grid
-                sx={{
-                  height: 180,
-                  width: 170,
-                }}
-              >
-                <Box
-                  component="img"
-                  sx={{
-                    height: '100%',
-                    width: '100%',
-                    mixBlendMode: 'multiply'
-                  }}
-                  src={SquirtleImg}
-                  alt='Pokemon-logo'
-                />
-              </Grid>
-            </Grid>
+              src={CharizardsImg}
+              alt='Pokemon-logo'
+            />
           </Grid>
         </Grid>
 
