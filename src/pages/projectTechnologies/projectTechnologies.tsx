@@ -101,6 +101,7 @@ const ProjectTechnologies = () => {
                 >
                   <NavLink
                     to={technology.url}
+                    target="_blank"
                     style={{
                       fontWeight: 'bold',
                       color: '#000',
