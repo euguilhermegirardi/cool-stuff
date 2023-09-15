@@ -3,7 +3,6 @@ import MenuIcon from '@mui/icons-material/Menu';
 import { MuiAppBarProps } from './interfaces/MuiAppBarProps';
 
 const MuiAppBar = ({
-  anchorElNav,
   anchorElUser,
   drawerWidth,
   mobileOpen,

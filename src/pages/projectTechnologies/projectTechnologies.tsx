@@ -1,8 +1,11 @@
-import { Box, Grid, List, ListItem, Toolbar, Typography, useTheme } from '@mui/material';
+import { Box, Grid, List, ListItem, Typography, useTheme } from '@mui/material';
 import { NavLink } from 'react-router-dom';
 import AlakazamImg from 'assets/images/alakazam.png';
+import CrystalBattleImg from 'assets/images/crystal.png';
 import GyaradosImg from 'assets/images/gyarados.png';
 import SquirtleImg from 'assets/images/squirtle.jpeg';
+import MuiToolbar from 'components/muiToolbar/muiToolbar';
+import { navbarPages } from 'shared/css/navbarPages.styles';
 import { projectTechnologies } from './models/projectTechnologies';
 
 type TechnologyType = {
@@ -14,6 +17,7 @@ type TechnologyType = {
 
 const ProjectTechnologies = () => {
   const theme = useTheme();
+  const classes = navbarPages();
 
   return (
     <Grid
@@ -25,29 +29,18 @@ const ProjectTechnologies = () => {
         height: '100%'
       }}
     >
-      <Toolbar
-        sx={{
-          minHeight: {
-            xs: '100px',
-            md: '120px',
-            lg: '110px'
-          }
-        }}
-      />
+      <MuiToolbar />
 
-      <Grid
-        sx={{
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'space-between',
-          width: '100%',
-          padding: theme.spacing(2),
-          border: '2px',
-          borderRadius: 3,
-          boxShadow: 'rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px',
-        }}
-      >
-        <Grid sx={{ display: 'flex' }}>
+      <Grid className={classes.mainContent}>
+        <Grid
+          sx={{
+            display: 'flex',
+            flexDirection: {
+              xs: 'column',
+              md: 'row'
+            }
+          }}
+        >
           <Grid
             sx={{
               flex: 2,
@@ -59,26 +52,50 @@ const ProjectTechnologies = () => {
             }}
           >
             <Grid>
-              <Typography
-                sx={{
-                  fontSize: 20,
-                  textTransform: 'uppercase',
-                  fontWeight: 600,
-                  marginBottom: 2,
-                }}
-              >
+              <Typography className={classes.title}>
                 Project Technologies
               </Typography>
             </Grid>
 
-            <List>
+            <Grid
+              sx={{
+                display: {
+                  xs: 'flex',
+                  md: 'none'
+                },
+                alignSelf: 'center',
+                width: '100%',
+              }}
+            >
+              <Box
+                component="img"
+                sx={{
+                  height: '100%',
+                  width: '100%',
+                }}
+                src={CrystalBattleImg}
+                alt='Pokemon-logo'
+              />
+            </Grid>
+
+            <List sx={{ marginTop: 2 }}>
               {projectTechnologies.map((technology: TechnologyType) => (
                 <ListItem
                   disablePadding
                   key={technology.id}
                   sx={{
+                    display: 'flex',
+                    flexDirection: {
+                      xs: 'column',
+                      md: 'row'
+                    },
+                    justifyContent: {
+                      xs: 'center',
+                      md: 'flex-start'
+                    },
+                    alignItems: 'flex-start',
                     marginBottom: 1.5,
-                    fontSize: 14.5,
+                    fontSize: 15,
                     fontWeight: 400,
                   }}
                 >
@@ -87,11 +104,12 @@ const ProjectTechnologies = () => {
                     style={{
                       fontWeight: 'bold',
                       color: '#000',
-                      marginRight: '5px'
                     }}
                   >
                     {technology.title}
-                  </NavLink>- {technology.description}
+                  </NavLink>
+
+                  <Typography>- {technology.description}</Typography>
                 </ListItem>
               ))}
             </List>
@@ -100,7 +118,10 @@ const ProjectTechnologies = () => {
           <Grid
             sx={{
               flex: 2,
-              display: 'flex',
+              display: {
+                xs: 'none',
+                md: 'flex'
+              },
               alignItems: 'center',
               justifyContent: 'space-around',
             }}
@@ -113,6 +134,7 @@ const ProjectTechnologies = () => {
             >
               <Grid
                 sx={{
+
                   height: 250,
                   width: 210,
                 }}
@@ -158,7 +180,10 @@ const ProjectTechnologies = () => {
 
         <Grid
           sx={{
-            display: 'flex',
+            display: {
+              xs: 'none',
+              md: 'flex'
+            },
             alignSelf: 'center',
             height: 190,
             width: 700,
@@ -175,7 +200,7 @@ const ProjectTechnologies = () => {
           />
         </Grid>
       </Grid>
-    </Grid>
+    </Grid >
   );
 };
 
