@@ -24,10 +24,12 @@ const SignUp = withErrorBoundary(({
     <LoginWrapper>
       <>
         <Grid
-          display={'flex'}
-          flexDirection={'column'}
-          alignItems={'center'}
-          sx={{ width: '100%' }}
+          sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            width: '100%'
+          }}
         >
           <LoginTitle
             title={translations.signUp.signUpToPokedex}
@@ -39,7 +41,11 @@ const SignUp = withErrorBoundary(({
 
         <form
           onSubmit={onSubmit()}
-          style={{ display: 'flex', justifyContent: 'center', width: '100%' }}
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            width: '100%'
+          }}
         >
           <Grid
             item

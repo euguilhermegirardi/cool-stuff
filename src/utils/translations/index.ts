@@ -17,6 +17,9 @@ const translations = {
     confirmPassword: 'confirm password',
     confirmPasswordId: 'confirmPassword',
   },
+  projectStatistics: {
+    title: 'Project Technologies',
+  },
   dashboard: {
     title: 'Dashboard',
     logout: 'logout',

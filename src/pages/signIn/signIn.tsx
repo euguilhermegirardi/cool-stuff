@@ -27,10 +27,12 @@ const SignIn = withErrorBoundary(({
     <LoginWrapper>
       <>
         <Grid
-          display={'flex'}
-          flexDirection={'column'}
-          alignItems={'center'}
-          sx={{ width: '100%' }}
+          sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            width: '100%'
+          }}
         >
           <LoginTitle
             title={translations.login.title}
@@ -43,7 +45,11 @@ const SignIn = withErrorBoundary(({
 
         <form
           onSubmit={onSubmit()}
-          style={{ display: 'flex', justifyContent: 'center', width: '100%' }}
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            width: '100%'
+          }}
         >
           <Grid
             item
@@ -72,6 +78,7 @@ const SignIn = withErrorBoundary(({
                 }}
               >
                 <DangerousIcon sx={{ color: `${theme.palette.error.main}` }} />
+
                 <Typography
                   sx={{
                     color: `${theme.palette.error.main}`,

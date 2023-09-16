@@ -4,6 +4,7 @@ import CharizardsImg from 'assets/images/charizards.png';
 import CrystalBattleImg from 'assets/images/crystal.png';
 import GyaradosImg from 'assets/images/gyarados.png';
 import MuiToolbar from 'components/muiToolbar/muiToolbar';
+import { useTranslations } from 'hooks/useTranslations';
 import { navbarPages } from 'shared/css/navbarPages.styles';
 import { projectTechnologies } from './models/projectTechnologies';
 
@@ -17,6 +18,7 @@ type TechnologyType = {
 const ProjectTechnologies = () => {
   const theme = useTheme();
   const classes = navbarPages();
+  const translations = useTranslations();
 
   return (
     <Grid
@@ -54,7 +56,7 @@ const ProjectTechnologies = () => {
           >
             <Grid>
               <Typography className={classes.title}>
-                Project Technologies
+                {translations.projectStatistics.title}
               </Typography>
             </Grid>
 

@@ -76,7 +76,7 @@ const MuiAppBar = ({
                 </IconButton>
               </Tooltip>
               <Menu
-                sx={{ mt: '45px' }}
+                sx={{ mt: 45 }}
                 id="menu-appbar"
                 anchorEl={anchorElUser}
                 anchorOrigin={{

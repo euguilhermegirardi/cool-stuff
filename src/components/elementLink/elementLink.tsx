@@ -28,7 +28,7 @@ const ElementLink = ({
           sx={{
             marginTop: 3,
             fontWeight: 'bold',
-            fontSize: '13px',
+            fontSize: 13,
             textDecoration: 'underline',
             '&:hover': {
               opacity: 0.5,

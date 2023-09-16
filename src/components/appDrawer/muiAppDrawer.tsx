@@ -22,20 +22,32 @@ const MuiAppDrawer = ({
           keepMounted: true, // Better open performance on mobile.
         }}
         sx={{
-          display: { xs: 'block', sm: 'none' },
-          '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
+          display: {
+            xs: 'block',
+            sm: 'none'
+          },
+          '& .MuiDrawer-paper': {
+            boxSizing: 'border-box',
+            width: drawerWidth
+          },
         }}
       >
         <DrawerMenu />
       </Drawer>
 
       <Drawer
+        open
         variant="permanent"
         sx={{
-          display: { xs: 'none', sm: 'block' },
-          '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
+          display: {
+            xs: 'none',
+            sm: 'block'
+          },
+          '& .MuiDrawer-paper': {
+            boxSizing: 'border-box',
+            width: drawerWidth
+          },
         }}
-        open
       >
         <DrawerMenu />
       </Drawer>
