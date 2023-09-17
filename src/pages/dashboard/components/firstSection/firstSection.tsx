@@ -1,7 +1,9 @@
-import { Box, Grid, Typography } from '@mui/material';
+import { Grid, Typography } from '@mui/material';
 import GengarImg from 'assets/images/gengar.png';
 import clsx from 'clsx';
+import MuiSkeleton from 'components/skeleton/muiSkeleton';
 import { useTranslations } from 'hooks/useTranslations';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { styles } from '../../css/sections.styles';
 
 const FirstSection = () => {
@@ -9,8 +11,8 @@ const FirstSection = () => {
   const translations = useTranslations();
 
   return (
-    <Grid className={classes.mainSection}>
-      <Grid className={classes.firstSection}>
+    <Grid className={classes.container}>
+      <Grid className={classes.section}>
         <Grid className={classes.evenTxtSection}>
           <Typography className={classes.title}>
             {translations.dashboard.worldOfPokemonTitle}
@@ -21,13 +23,20 @@ const FirstSection = () => {
           </Typography>
         </Grid>
 
-        <Grid
-          className={clsx(classes.imageContent, classes.evenImgSection)}>
-          <Box
-            component="img"
-            className={classes.image}
+        <Grid className={clsx(classes.imageContent, classes.evenImgSection)}>
+          <LazyLoadImage
             src={GengarImg}
-            alt='Pokemon-logo'
+            placeholder={
+              <MuiSkeleton
+                variant='rounded'
+                width={230}
+                height={230}
+              />
+            }
+            effect='blur'
+            width='100%'
+            height='auto'
+            alt='gengar-image'
           />
         </Grid>
       </Grid>

@@ -1,7 +1,9 @@
-import { Box, Grid, Typography } from '@mui/material';
+import { Grid, Typography } from '@mui/material';
 import CharizardImg from 'assets/images/charizard.png';
 import clsx from 'clsx';
+import MuiSkeleton from 'components/skeleton/muiSkeleton';
 import { useTranslations } from 'hooks/useTranslations';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { styles } from '../../css/sections.styles';
 
 const FifthSection = () => {
@@ -9,8 +11,8 @@ const FifthSection = () => {
   const translations = useTranslations();
 
   return (
-    <Grid className={classes.mainSection}>
-      <Grid className={classes.firstSection}>
+    <Grid className={classes.container}>
+      <Grid className={classes.section}>
         <Grid className={classes.evenTxtSection}>
           <Typography className={classes.title}>
             {translations.dashboard.connectTitle}
@@ -22,12 +24,19 @@ const FifthSection = () => {
         </Grid>
 
         <Grid className={clsx(classes.imageContent, classes.evenImgSection)}>
-          <Box
-            component="img"
-            className={classes.image}
-            sx={{ mixBlendMode: 'multiply' }}
+          <LazyLoadImage
             src={CharizardImg}
-            alt='Pokemon-logo'
+            placeholder={
+              <MuiSkeleton
+                variant='rounded'
+                width={180}
+                height={180}
+              />
+            }
+            effect='blur'
+            width='100%'
+            height='auto'
+            alt='charmander-image'
           />
         </Grid>
       </Grid>

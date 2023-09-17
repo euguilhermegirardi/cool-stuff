@@ -1,8 +1,10 @@
-import { Box, Grid, Typography } from '@mui/material';
+import { Grid, Typography } from '@mui/material';
 import AerodactylImg from 'assets/images/aerodactyl.png';
 import clsx from 'clsx';
+import MuiSkeleton from 'components/skeleton/muiSkeleton';
 import { useTranslations } from 'hooks/useTranslations';
 import { styles } from 'pages/dashboard/css/sections.styles';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 const SecondSection = () => {
   const classes = styles();
@@ -10,13 +12,13 @@ const SecondSection = () => {
 
   return (
     <Grid
-      className={classes.mainSection}
+      className={classes.container}
       sx={{
         backgroundColor: '#b3a1254d',
         color: 'darkGrey.main',
       }}
     >
-      <Grid className={classes.firstSection}>
+      <Grid className={classes.section}>
         <Grid className={classes.oddTxtSection}>
           <Typography className={classes.title}>
             {translations.dashboard.exploreTitle}
@@ -28,12 +30,19 @@ const SecondSection = () => {
         </Grid>
 
         <Grid className={clsx(classes.imageContent, classes.oddImgSection)}>
-          <Box
-            component="img"
-            className={classes.image}
-            sx={{ mixBlendMode: 'multiply' }}
+          <LazyLoadImage
             src={AerodactylImg}
-            alt='Pokemon-logo'
+            placeholder={
+              <MuiSkeleton
+                variant='rounded'
+                width={180}
+                height={180}
+              />
+            }
+            effect='blur'
+            width='100%'
+            height='auto'
+            alt='aerodactly-image'
           />
         </Grid>
       </Grid>

@@ -1,15 +1,16 @@
 import { makeStyles, Theme } from '@material-ui/core/styles';
 
-export const styles = makeStyles(({ breakpoints }: Theme) => ({
-  mainSection: {
-    paddingTop: 4,
-    paddingBottom: 3
+export const styles = makeStyles((theme: Theme) => ({
+  container: {
+    [theme.breakpoints.up('md')]: {
+      padding: theme.spacing(1, 2)
+    },
   },
-  firstSection: {
+  section: {
     display: 'flex',
     flexWrap: 'wrap',
     justifyContent: 'center',
-    [breakpoints.down('sm')]: {
+    [theme.breakpoints.down('sm')]: {
       flexDirection: 'column',
     },
     alignItems: 'flex-start',
@@ -17,38 +18,39 @@ export const styles = makeStyles(({ breakpoints }: Theme) => ({
     padding: '15px 0'
   },
   evenTxtSection: {
-    [breakpoints.down('xs')]: {
+    [theme.breakpoints.down('xs')]: {
       order: 1,
     },
-    [breakpoints.up('md')]: {
+    [theme.breakpoints.up('md')]: {
       order: 2,
     },
     flex: 2,
     padding: '13px 10px'
   },
   evenImgSection: {
-    [breakpoints.down('xs')]: {
+    [theme.breakpoints.down('xs')]: {
       order: 2,
     },
-    [breakpoints.up('md')]: {
+    [theme.breakpoints.up('md')]: {
       order: 1,
     },
   },
   oddTxtSection: {
-    [breakpoints.down('xs')]: {
+    [theme.breakpoints.down('xs')]: {
       order: 1,
     },
-    [breakpoints.up('md')]: {
+    [theme.breakpoints.up('md')]: {
       order: 1,
     },
     flex: 2,
     padding: '13px 10px'
   },
   oddImgSection: {
-    [breakpoints.down('xs')]: {
+    mixBlendMode: 'multiply',
+    [theme.breakpoints.down('xs')]: {
       order: 2,
     },
-    [breakpoints.up('md')]: {
+    [theme.breakpoints.up('md')]: {
       order: 2,
     },
   },
@@ -63,15 +65,10 @@ export const styles = makeStyles(({ breakpoints }: Theme) => ({
     fontSize: 17,
   },
   imageContent: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    flex: 1,
-    width: '100%'
+    display: 'grid',
+    placeSelf: 'center',
+    width: 230,
+    height: 'auto',
   },
-  image: {
-    maxHeight: 180,
-    maxWidth: 180,
-  }
 }),
 );

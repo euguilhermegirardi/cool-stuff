@@ -1,10 +1,12 @@
-import { Box, Grid, List, ListItem, Typography, useTheme } from '@mui/material';
+import { Grid, List, ListItem, Typography, useTheme } from '@mui/material';
 import { NavLink } from 'react-router-dom';
 import CharizardsImg from 'assets/images/charizards.png';
 import CrystalBattleImg from 'assets/images/crystal.png';
 import GyaradosImg from 'assets/images/gyarados.png';
 import MuiToolbar from 'components/muiToolbar/muiToolbar';
+import MuiSkeleton from 'components/skeleton/muiSkeleton';
 import { useTranslations } from 'hooks/useTranslations';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { navbarPages } from 'shared/css/navbarPages.styles';
 import { projectTechnologies } from './models/projectTechnologies';
 
@@ -38,7 +40,7 @@ const ProjectTechnologies = () => {
             display: 'flex',
             flexDirection: {
               xs: 'column',
-              md: 'row'
+              lg: 'row'
             },
             flexWrap: 'wrap'
           }}
@@ -49,7 +51,7 @@ const ProjectTechnologies = () => {
               display: 'flex',
               flexDirection: 'column',
               justifyContent: 'flex-start',
-              minWidth: 450,
+              width: '100%',
               margin: 0,
               padding: 0,
             }}
@@ -67,17 +69,21 @@ const ProjectTechnologies = () => {
                   md: 'none'
                 },
                 alignSelf: 'center',
-                width: '100%',
               }}
             >
-              <Box
-                component="img"
-                sx={{
-                  height: '100%',
-                  width: '100%',
-                }}
+              <LazyLoadImage
                 src={CrystalBattleImg}
-                alt='Pokemon-logo'
+                placeholder={
+                  <MuiSkeleton
+                    variant='rounded'
+                    width={400}
+                    height={281}
+                  />
+                }
+                effect='blur'
+                width='100%'
+                height='auto'
+                alt='crystal-game-image'
               />
             </Grid>
 
@@ -130,15 +136,33 @@ const ProjectTechnologies = () => {
               minWidth: 450
             }}
           >
-            <Box
-              component="img"
+            <Grid
               sx={{
-                height: 'auto',
-                width: '100%',
+                flex: 2,
+                display: {
+                  xs: 'none',
+                  md: 'flex'
+                },
+                alignSelf: 'center',
+                minWidth: 450,
+                maxWidth: 500
               }}
-              src={CharizardsImg}
-              alt='Pokemon-logo'
-            />
+            >
+              <LazyLoadImage
+                src={CharizardsImg}
+                placeholder={
+                  <MuiSkeleton
+                    variant='rounded'
+                    width={500}
+                    height={281}
+                  />
+                }
+                effect='blur'
+                width='100%'
+                height='auto'
+                alt='charizards-image'
+              />
+            </Grid>
           </Grid>
         </Grid>
 
@@ -146,21 +170,26 @@ const ProjectTechnologies = () => {
           sx={{
             display: {
               xs: 'none',
-              md: 'flex'
+              lg: 'flex'
             },
             alignSelf: 'center',
             height: 190,
-            width: 700,
+            maxWidth: 600,
           }}
         >
-          <Box
-            component="img"
-            sx={{
-              height: '100%',
-              width: '100%',
-            }}
+          <LazyLoadImage
             src={GyaradosImg}
-            alt='Pokemon-logo'
+            placeholder={
+              <MuiSkeleton
+                variant='rounded'
+                width={600}
+                height={208}
+              />
+            }
+            effect='blur'
+            width='100%'
+            height='auto'
+            alt='gyarados-image'
           />
         </Grid>
       </Grid>
