@@ -1,4 +1,5 @@
 import { Grid } from '@mui/material';
+import { useRef } from 'react';
 import { ErrorFallbackComponent } from 'components/errorFallbackComponent/errorFallbackComponent';
 import MuiButton from 'components/muiButton/muiButton';
 import MuiToolbar from 'components/muiToolbar/muiToolbar';
@@ -10,24 +11,27 @@ import FourthSection from './components/fourthSection/fourthSection';
 import SecondSection from './components/secondSection/secondSection';
 import SixthSection from './components/sixthSection/sixthSection';
 import ThirdSection from './components/thirdSection/thirdSection';
-
 const Dashboard = withErrorBoundary(({
+  contentInnerWidth,
+  componentRef,
   handleLogOut,
 }: {
+  contentInnerWidth: number;
+  componentRef: any;
   handleLogOut: () => void;
 }) => {
   const translations = useTranslations();
 
   return (
-    <Grid>
+    <Grid ref={componentRef}>
       <MuiToolbar />
 
-      <FirstSection />
-      <SecondSection />
-      <ThirdSection />
-      <FourthSection />
-      <FifthSection />
-      <SixthSection />
+      <FirstSection contentInnerWidth={contentInnerWidth} />
+      <SecondSection contentInnerWidth={contentInnerWidth} />
+      <ThirdSection contentInnerWidth={contentInnerWidth} />
+      <FourthSection contentInnerWidth={contentInnerWidth} />
+      <FifthSection contentInnerWidth={contentInnerWidth} />
+      <SixthSection contentInnerWidth={contentInnerWidth} />
 
       {/* <MuiButton
         type='button'

@@ -6,8 +6,8 @@ import { useTranslations } from 'hooks/useTranslations';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { styles } from '../../css/sections.styles';
 
-const FifthSection = () => {
-  const classes = styles();
+const FifthSection = (contentInnerWidth: any) => {
+  const classes = styles(contentInnerWidth);
   const translations = useTranslations();
 
   return (

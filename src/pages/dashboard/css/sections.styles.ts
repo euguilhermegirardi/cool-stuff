@@ -1,9 +1,13 @@
 import { makeStyles, Theme } from '@material-ui/core/styles';
 
-export const styles = makeStyles((theme: Theme) => ({
+export interface StyleProps {
+  contentInnerWidth: number;
+};
+
+export const styles = makeStyles<Theme, StyleProps>((theme: Theme) => ({
   container: {
-    [theme.breakpoints.up('md')]: {
-      padding: theme.spacing(1, 2)
+    [theme.breakpoints.up('lg')]: {
+      padding: ({ contentInnerWidth }) => `15px calc(${contentInnerWidth}px - (${contentInnerWidth}px - 100px))`
     },
   },
   section: {
@@ -18,14 +22,24 @@ export const styles = makeStyles((theme: Theme) => ({
     padding: '15px 0'
   },
   evenTxtSection: {
+    flex: 2,
     [theme.breakpoints.down('xs')]: {
       order: 1,
     },
     [theme.breakpoints.up('md')]: {
       order: 2,
     },
-    flex: 2,
-    padding: '13px 10px'
+    [theme.breakpoints.down('md')]: {
+      padding: '13px 10px'
+    },
+    [theme.breakpoints.up('md')]: {
+      order: 2,
+      padding: '13px 50px'
+    },
+    [theme.breakpoints.up('xl')]: {
+      order: 2,
+      padding: '13px 250px',
+    },
   },
   evenImgSection: {
     [theme.breakpoints.down('xs')]: {
@@ -36,14 +50,24 @@ export const styles = makeStyles((theme: Theme) => ({
     },
   },
   oddTxtSection: {
+    flex: 2,
     [theme.breakpoints.down('xs')]: {
       order: 1,
     },
     [theme.breakpoints.up('md')]: {
       order: 1,
     },
-    flex: 2,
-    padding: '13px 10px'
+    [theme.breakpoints.down('md')]: {
+      padding: '13px 10px'
+    },
+    [theme.breakpoints.up('md')]: {
+      order: 2,
+      padding: '13px 50px'
+    },
+    [theme.breakpoints.up('xl')]: {
+      order: 2,
+      padding: '13px 250px',
+    },
   },
   oddImgSection: {
     mixBlendMode: 'multiply',
@@ -62,7 +86,15 @@ export const styles = makeStyles((theme: Theme) => ({
   },
   text: {
     textAlign: 'justify',
-    fontSize: 17,
+    [theme.breakpoints.down('md')]: {
+      fontSize: 16,
+    },
+    [theme.breakpoints.up('md')]: {
+      fontSize: 17.5,
+    },
+    [theme.breakpoints.up('xl')]: {
+      letterSpacing: theme.spacing(0.15),
+    },
   },
   imageContent: {
     display: 'grid',
