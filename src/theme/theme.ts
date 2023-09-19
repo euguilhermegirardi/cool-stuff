@@ -41,6 +41,20 @@ const theme: Theme = createTheme({
           backgroundColor: '#3B4CCA'
         }
       }
+    },
+    MuiCircularProgress: {
+      styleOverrides: {
+        root: {
+          width: '50px',
+          height: '50px',
+          color: '#FF0000',
+          borderRadius: '50%',
+        },
+        svg: {
+          border: '3px solid #000',
+          borderRadius: '50%',
+        }
+      }
     }
   },
   palette: {

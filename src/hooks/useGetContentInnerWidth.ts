@@ -2,11 +2,9 @@ import { useCallback, useEffect, useState } from 'react';
 
 const useGetContentInnerWidth = (myRef: any) => {
   const [width, setWidth] = useState<number>(0);
-  const [height, setHeight] = useState<number>(0);
 
   const handleResize = useCallback(() => {
     setWidth(myRef.current.offsetWidth);
-    setHeight(myRef.current.offsetHeight);
   }, [myRef]);
 
   useEffect(() => {
@@ -19,7 +17,7 @@ const useGetContentInnerWidth = (myRef: any) => {
     }
   }, [myRef, handleResize]);
 
-  return { width, height };
+  return { width };
 };
 
 export default useGetContentInnerWidth;

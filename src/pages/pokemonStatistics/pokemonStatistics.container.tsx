@@ -1,6 +1,19 @@
+import { Suspense } from 'react';
+import FullPageLoading from 'components/fullPageLoading/fullPageLoading';
+import { FullLoadingPageWrapper } from 'shared/css/fullPageLoadingWrapper';
+import PokemonStatistics from './pokemonStatistics';
+
 const PokemonStatisticsContainer = () => {
   return (
-    <div>Pokemon Statistics</div>
+    <Suspense
+      fallback={
+        <FullLoadingPageWrapper>
+          <FullPageLoading />
+        </FullLoadingPageWrapper>
+      }
+    >
+      <PokemonStatistics />
+    </Suspense>
   )
 };
 
