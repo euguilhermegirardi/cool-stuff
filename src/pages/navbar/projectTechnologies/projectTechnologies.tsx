@@ -24,12 +24,12 @@ const ProjectTechnologies = () => {
 
   return (
     <Grid
+      display={'flex'}
+      flexDirection={'column'}
       sx={{
-        display: 'flex',
-        flexDirection: 'column',
         padding: theme.spacing(3),
         width: '100%',
-        height: '100%'
+        height: '100vh'
       }}
     >
       <MuiToolbar />
@@ -173,8 +173,8 @@ const ProjectTechnologies = () => {
               lg: 'flex'
             },
             alignSelf: 'center',
-            height: 190,
-            maxWidth: 600,
+            height: 'auto',
+            maxWidth: 400,
           }}
         >
           <LazyLoadImage
@@ -182,7 +182,7 @@ const ProjectTechnologies = () => {
             placeholder={
               <MuiSkeleton
                 variant='rounded'
-                width={600}
+                width={400}
                 height={208}
               />
             }
