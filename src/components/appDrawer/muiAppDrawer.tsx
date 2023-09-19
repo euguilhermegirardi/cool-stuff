@@ -7,7 +7,6 @@ const MuiAppDrawer = ({
   mobileOpen,
   handleDrawerToggle
 }: MuiAppDrawerProps) => {
-
   return (
     <Box
       component="nav"

@@ -15,7 +15,6 @@ const MuiAppBarContainer = ({
   const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
 
   const navigate = useNavigate();
-  const pages = ['Project Technologies', 'Contact Us'];
   const settings = ['Profile', 'Logout'];
 
   const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
@@ -33,7 +32,6 @@ const MuiAppBarContainer = ({
       anchorElUser={anchorElUser}
       drawerWidth={drawerWidth}
       mobileOpen={mobileOpen}
-      pages={pages}
       settings={settings}
       handleDrawerToggle={handleDrawerToggle}
       handleOpenUserMenu={handleOpenUserMenu}

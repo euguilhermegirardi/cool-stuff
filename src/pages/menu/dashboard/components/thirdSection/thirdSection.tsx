@@ -1,38 +1,31 @@
 import { Grid, Typography } from '@mui/material';
-import AerodactylImg from 'assets/images/aerodactyl.png';
+import MachampImg from 'assets/images/machamp.png';
 import clsx from 'clsx';
 import MuiSkeleton from 'components/skeleton/muiSkeleton';
 import { useTranslations } from 'hooks/useTranslations';
-import { styles } from 'pages/dashboard/css/sections.styles';
+import { styles } from 'pages/menu/dashboard/css/sections.styles';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 
-const SecondSection = (contentInnerWidth: any) => {
-  console.log(contentInnerWidth)
+const ThirdSection = (contentInnerWidth: any) => {
   const classes = styles(contentInnerWidth);
   const translations = useTranslations();
 
   return (
-    <Grid
-      className={classes.container}
-      sx={{
-        backgroundColor: '#b3a1254d',
-        color: 'darkGrey.main',
-      }}
-    >
+    <Grid className={classes.container}>
       <Grid className={classes.section}>
-        <Grid className={classes.oddTxtSection}>
+        <Grid className={classes.evenTxtSection}>
           <Typography className={classes.title}>
-            {translations.dashboard.exploreTitle}
+            {translations.dashboard.collectTitle}
           </Typography>
 
           <Typography className={classes.text}>
-            {translations.dashboard.exploreTxt}
+            {translations.dashboard.collectTxt}
           </Typography>
         </Grid>
 
-        <Grid className={clsx(classes.imageContent, classes.oddImgSection)}>
+        <Grid className={clsx(classes.imageContent, classes.evenImgSection)}>
           <LazyLoadImage
-            src={AerodactylImg}
+            src={MachampImg}
             placeholder={
               <MuiSkeleton
                 variant='rounded'
@@ -43,7 +36,7 @@ const SecondSection = (contentInnerWidth: any) => {
             effect='blur'
             width='100%'
             height='auto'
-            alt='aerodactly-image'
+            alt='machamp-image'
           />
         </Grid>
       </Grid>
@@ -51,4 +44,4 @@ const SecondSection = (contentInnerWidth: any) => {
   );
 };
 
-export default SecondSection;
+export default ThirdSection;

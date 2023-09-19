@@ -1,12 +1,13 @@
-import { AppBar, Avatar, Box, Button, Container, Drawer, IconButton, Menu, MenuItem, Toolbar, Tooltip, Typography } from '@mui/material';
+import { AppBar, Avatar, Box, Button, Container, Drawer, IconButton, List, ListItem, ListItemButton, ListItemText, Menu, MenuItem, Toolbar, Tooltip, Typography } from '@mui/material';
+import { NavLink } from 'react-router-dom';
 import MenuIcon from '@mui/icons-material/Menu';
 import { MuiAppBarProps } from './interfaces/MuiAppBarProps';
+import { appBarListItems } from './models/appBarListItem';
 
 const MuiAppBar = ({
   anchorElUser,
   drawerWidth,
   mobileOpen,
-  pages,
   settings,
   handleDrawerToggle,
   handleOpenUserMenu,
@@ -36,20 +37,32 @@ const MuiAppBar = ({
         </IconButton>
         {/* Hamburger menu for mobile ends */}
 
-        <Container maxWidth="xl">
+        <Container maxWidth='xl'>
           <Toolbar disableGutters sx={{ display: 'flex', justifyContent: 'space-between' }}>
-            {/* List items for desktop starts */}
-            <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-              {pages.map((page) => (
-                <Button
-                  key={page}
-                  onClick={handleCloseNavMenu}
-                  sx={{ my: 2, mx: 1.5, color: 'white', display: 'block' }}
-                >
-                  {page}
-                </Button>
+
+            <List>
+              {/* List items for desktop starts */}
+              {appBarListItems.map((item) => (
+                <ListItem key={item.id} disablePadding sx={{ display: 'block', minWidth: 'fit-content' }}>
+                  <NavLink to={item.path} style={{ textDecoration: 'none', color: '#000' }}>
+                    {({ isActive, isPending }) => (
+                      <ListItemButton
+                        disableRipple
+                        sx={{
+                          color: isPending ? '#000' : isActive ? 'goldenYellow.main' : '#000',
+                          "&:hover": {
+                            color: 'goldenFoil.main',
+                            background: 'none',
+                          }
+                        }}
+                      >
+                        <ListItemText primary={item.name} />
+                      </ListItemButton>
+                    )}
+                  </NavLink>
+                </ListItem>
               ))}
-            </Box>
+            </List>
             {/* List items for desktop ends */}
 
             {/* Icon and menu items for mobile starts */}

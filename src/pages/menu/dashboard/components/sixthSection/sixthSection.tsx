@@ -1,12 +1,12 @@
 import { Grid, Typography } from '@mui/material';
-import CharmanderImg from 'assets/images/char.jpeg';
+import SquirtleImg from 'assets/images/squirtle.jpeg';
 import clsx from 'clsx';
 import MuiSkeleton from 'components/skeleton/muiSkeleton';
 import { useTranslations } from 'hooks/useTranslations';
-import { styles } from 'pages/dashboard/css/sections.styles';
+import { styles } from 'pages/menu/dashboard/css/sections.styles';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 
-const FourthSection = (contentInnerWidth: any) => {
+const SixthSection = (contentInnerWidth: any) => {
   const classes = styles(contentInnerWidth);
   const translations = useTranslations();
 
@@ -21,17 +21,27 @@ const FourthSection = (contentInnerWidth: any) => {
       <Grid className={classes.section}>
         <Grid className={classes.oddTxtSection}>
           <Typography className={classes.title}>
-            {translations.dashboard.createTitle}
+            {translations.dashboard.discoverTitle}
           </Typography>
 
-          <Typography className={classes.text}>
-            {translations.dashboard.createTxt}
-          </Typography>
+          <Grid display='flex' flexDirection='column'>
+            <Typography className={classes.text}>
+              {translations.dashboard.discoverTxt}
+            </Typography>
+
+            <Typography className={classes.text}>
+              {translations.dashboard.discoverTxt2}
+            </Typography>
+
+            <Typography className={classes.text}>
+              {translations.dashboard.discoverTxt3}
+            </Typography>
+          </Grid>
         </Grid>
 
         <Grid className={clsx(classes.imageContent, classes.oddImgSection)}>
           <LazyLoadImage
-            src={CharmanderImg}
+            src={SquirtleImg}
             placeholder={
               <MuiSkeleton
                 variant='rounded'
@@ -42,7 +52,7 @@ const FourthSection = (contentInnerWidth: any) => {
             effect='blur'
             width='100%'
             height='auto'
-            alt='charmander-image'
+            alt='squirtle-image'
           />
         </Grid>
       </Grid>
@@ -50,4 +60,4 @@ const FourthSection = (contentInnerWidth: any) => {
   );
 };
 
-export default FourthSection;
+export default SixthSection;

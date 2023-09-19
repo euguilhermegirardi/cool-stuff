@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import MuiAppDrawer from './muiAppDrawer';
 
 const MuiAppDrawerContainer = ({

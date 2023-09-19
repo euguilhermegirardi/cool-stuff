@@ -1,12 +1,13 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
 import useAuth from 'hooks/useAuth';
-import AddCustomPokemon from 'pages/addCustomPokemon';
-import Dashboard from 'pages/dashboard';
+import AddCustomPokemon from 'pages/menu/addCustomPokemon';
+import Dashboard from 'pages/menu/dashboard';
+import PokemonCard from 'pages/menu/pokemonCard';
+import PokemonList from 'pages/menu/pokemonList';
+import PokemonStatistics from 'pages/menu/pokemonStatistics';
+import ContactUs from 'pages/navbar/contactUs';
+import ProjectTechnologies from 'pages/navbar/projectTechnologies';
 import NotFound from 'pages/notFound/notFound';
-import PokemonCard from 'pages/pokemonCard';
-import PokemonList from 'pages/pokemonList';
-import PokemonStatistics from 'pages/pokemonStatistics';
-import ProjectTechnologies from 'pages/projectTechnologies';
 import SignIn from 'pages/signIn';
 import SignUp from 'pages/signUp';
 import ApplicationRoutes from 'utils/navigation/applicationRoutes';
@@ -47,6 +48,15 @@ const AppRoutes = () => {
         element={
           <ProtectedRoutes>
             <ProjectTechnologies />
+          </ProtectedRoutes>
+        }
+      />
+
+      <Route
+        path={ApplicationRoutes.contactUs}
+        element={
+          <ProtectedRoutes>
+            <ContactUs />
           </ProtectedRoutes>
         }
       />
