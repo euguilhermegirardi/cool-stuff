@@ -2,12 +2,18 @@ import { Grid, InputAdornment, TextField, Typography, useTheme } from '@mui/mate
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import GhostImg from 'assets/images/ghost.png';
 import Pokeball from 'assets/images/pokeball.png';
+import MuiButton from 'components/muiButton/muiButton';
 import MuiToolbar from 'components/muiToolbar/muiToolbar';
 import MuiSkeleton from 'components/skeleton/muiSkeleton';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { navbarPages } from 'shared/css/navbarPages.styles';
+import { ContactUsProps } from './interfaces/contactUsProps';
 
-const ContactUs = () => {
+const ContactUs = ({
+  isLoading,
+  register,
+  onSubmit,
+}: ContactUsProps) => {
   const theme = useTheme();
   const classes = navbarPages();
 
@@ -59,7 +65,7 @@ const ContactUs = () => {
           >
             <Grid flex={2} width={'100%'} mb={2}>
               <form
-                // onSubmit={onsubmit()}
+                onSubmit={onSubmit()}
                 style={{
                   display: 'flex',
                   flexDirection: 'column',
@@ -71,7 +77,7 @@ const ContactUs = () => {
                   placeholder='name'
                   type='text'
                   defaultValue=''
-                  // {register('contact-us-name')}
+                  {...register('name')}
                   // error={!!formErrors?.message}
                   InputProps={{
                     style: {
@@ -94,7 +100,7 @@ const ContactUs = () => {
                   placeholder='email'
                   type='text'
                   defaultValue=''
-                  // {register('contact-us-email')}
+                  {...register('email')}
                   // error={!!formErrors?.message}
                   InputProps={{
                     style: {
@@ -115,12 +121,20 @@ const ContactUs = () => {
                 />
 
                 <TextField
-                  id="outlined-multiline-static"
+                  placeholder='Message...'
+                  type='text'
+                  defaultValue=' '
+                  {...register('message')}
                   multiline
                   minRows={4}
                   maxRows={10}
-                  placeholder='Message...'
-                  defaultValue=' '
+                />
+
+                <MuiButton
+                  type='submit'
+                  color={theme.palette.ceruleanBlue && 'ceruleanBlue'}
+                  text={'submit'}
+                  isLoading={isLoading}
                 />
               </form>
             </Grid>

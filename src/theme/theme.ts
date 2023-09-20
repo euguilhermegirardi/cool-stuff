@@ -47,7 +47,7 @@ const theme: Theme = createTheme({
         root: {
           width: '50px',
           height: '50px',
-          color: '#FF0000',
+          color: '#FF0000 !important',
           borderRadius: '50%',
         },
         svg: {
