@@ -5,6 +5,7 @@ import Pokeball from 'assets/images/pokeball.png';
 import MuiButton from 'components/muiButton/muiButton';
 import MuiToolbar from 'components/muiToolbar/muiToolbar';
 import MuiSkeleton from 'components/skeleton/muiSkeleton';
+import { useTranslations } from 'hooks/useTranslations';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { navbarPages } from 'shared/css/navbarPages.styles';
 import { ContactUsProps } from './interfaces/contactUsProps';
@@ -12,10 +13,12 @@ import { ContactUsProps } from './interfaces/contactUsProps';
 const ContactUs = ({
   isLoading,
   register,
+  formErrors,
   onSubmit,
 }: ContactUsProps) => {
   const theme = useTheme();
   const classes = navbarPages();
+  const translations = useTranslations();
 
   return (
     <Grid
@@ -42,14 +45,16 @@ const ContactUs = ({
             height: '100%'
           }}
         >
-          <Grid>
+          <Grid display={'flex'} flexDirection={'column'}>
             <Typography className={classes.title}>
-              Contact Us
+              {translations.contactUs.title}
             </Typography>
 
-            <Typography fontSize={22} my={3} sx={{ display: { xs: 'none', lg: 'block' } }}>
-              Do you have anything to discuss? Please, contact us! We will be happy to reach out and discuss what you have in mind!
-            </Typography>
+            <Grid maxWidth={'50%'}>
+              <Typography fontSize={22} mb={2} sx={{ display: { xs: 'none', lg: 'block' } }}>
+                {translations.contactUs.subtitle}
+              </Typography>
+            </Grid>
           </Grid>
 
           <Grid
@@ -60,11 +65,17 @@ const ContactUs = ({
               flexDirection: {
                 xs: 'column',
                 lg: 'row'
+              },
+              marginTop: {
+                sx: 0,
+                lg: 2
               }
             }}
           >
             <Grid flex={2} width={'100%'} mb={2}>
               <form
+                name='contact'
+                data-netlify='true'
                 onSubmit={onSubmit()}
                 style={{
                   display: 'flex',
@@ -73,12 +84,14 @@ const ContactUs = ({
                   width: '100%'
                 }}
               >
+                <input type="hidden" name="form-name" value="contact" />
+
                 <TextField
                   placeholder='name'
                   type='text'
                   defaultValue=''
                   {...register('name')}
-                  // error={!!formErrors?.message}
+                  error={!!formErrors?.name}
                   InputProps={{
                     style: {
                       height: 40,
@@ -101,7 +114,7 @@ const ContactUs = ({
                   type='text'
                   defaultValue=''
                   {...register('email')}
-                  // error={!!formErrors?.message}
+                  error={!!formErrors?.email}
                   InputProps={{
                     style: {
                       height: 40,
@@ -125,6 +138,12 @@ const ContactUs = ({
                   type='text'
                   defaultValue=' '
                   {...register('message')}
+                  error={!!formErrors?.message}
+                  InputProps={{
+                    style: {
+                      marginBottom: theme.spacing(3.5)
+                    },
+                  }}
                   multiline
                   minRows={4}
                   maxRows={10}
@@ -139,26 +158,38 @@ const ContactUs = ({
               </form>
             </Grid>
 
-            <Grid flex={2} display={'flex'} flexDirection={'column'} justifyContent={'flex-end'} width={'100%'}>
-              <Grid>
-                <LazyLoadImage
-                  src={GhostImg}
-                  placeholder={
-                    <MuiSkeleton
-                      variant='rounded'
-                      width={345}
-                      height={227}
-                    />
-                  }
-                  effect='blur'
-                  width='100%'
-                  height='auto'
-                  alt='ghost-pokemon'
-                  style={{
-                    maxWidth: '400px',
-                  }}
-                />
-              </Grid>
+            <Grid
+              flex={2}
+              display={'flex'}
+              flexDirection={'column'}
+              justifyContent={'flex-end'}
+              width={'100%'}
+              sx={{
+                '& > span': {
+                  display: 'flex !important',
+                  justifyContent: 'center'
+                }
+              }}
+            >
+              <LazyLoadImage
+                src={GhostImg}
+                placeholder={
+                  <MuiSkeleton
+                    variant='rounded'
+                    width={345}
+                    height={227}
+                  />
+                }
+                effect='blur'
+                width='100%'
+                height='auto'
+                alt='ghost-pokemon'
+                style={{
+                  display: 'flex',
+                  justifyContent: 'center',
+                  maxWidth: '400px',
+                }}
+              />
             </Grid>
           </Grid>
         </Grid>

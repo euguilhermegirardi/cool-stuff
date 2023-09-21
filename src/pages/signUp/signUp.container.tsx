@@ -50,7 +50,6 @@ const SignUpContainer = withErrorBoundary(() => {
       })
       .catch(() => {
         notify();
-
       })
       .finally(() => {
         setIsLoading(false);

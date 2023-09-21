@@ -20,6 +20,10 @@ const translations = {
   projectStatistics: {
     title: 'Project Technologies',
   },
+  contactUs: {
+    title: 'Contact us',
+    subtitle: 'Do you have anything to discuss? Please, contact us! We will be happy to reach out and discuss what you have in mind!'
+  },
   dashboard: {
     title: 'Dashboard',
     logout: 'logout',

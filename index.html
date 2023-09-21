@@ -7,6 +7,17 @@
     <title>cool stuff</title>
   </head>
   <body>
+    <form name="contact" netlify netlify-honeypot="bot-field" hidden>
+      <p class="hidden">
+        <label
+          >Do not fill this out if you're human: <input name="bot-field"
+        /></label>
+      </p>
+      <input type="text" name="name" />
+      <input type="email" name="email" />
+      <textarea name="message"></textarea>
+    </form>
+
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

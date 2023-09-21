@@ -35,5 +35,20 @@
       "password": "test123",
       "id": 8
     }
+  ],
+  "contact-us": [
+    {
+      "name": "Guilherme Girardi",
+      "email": "girardi.gui@icloud.com",
+      "message": " testing the email",
+      "id": 1
+    },
+    {
+      "form-name": "contact",
+      "name": "Guilherme Girardi",
+      "email": "girardi.gui@icloud.com",
+      "message": " testing the message from contact us page",
+      "id": 2
+    }
   ]
 }
