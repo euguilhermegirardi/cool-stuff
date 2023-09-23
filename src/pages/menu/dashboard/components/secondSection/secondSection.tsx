@@ -7,7 +7,6 @@ import { styles } from 'pages/menu/dashboard/css/sections.styles';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 const SecondSection = (contentInnerWidth: any) => {
-  console.log(contentInnerWidth)
   const classes = styles(contentInnerWidth);
   const translations = useTranslations();
 

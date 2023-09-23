@@ -38,9 +38,17 @@ const MuiAppBar = ({
         {/* Hamburger menu for mobile ends */}
 
         <Grid display={'flex'} sx={{ width: '100%' }}>
-          <Grid flex={2} display={'flex'}>
+          <Grid
+            flex={2}
+            sx={{
+              display: {
+                xs: 'none',
+                md: 'flex'
+              }
+            }}
+          >
             <Toolbar disableGutters sx={{ display: 'flex', justifyContent: 'space-between' }}>
-              <List>
+              <List sx={{ display: 'flex' }}>
                 {/* List items for desktop starts */}
                 {appBarListItems.map((item) => (
                   <ListItem key={item.id} disablePadding sx={{ display: 'block', minWidth: 'fit-content' }}>
@@ -67,13 +75,24 @@ const MuiAppBar = ({
             </Toolbar>
           </Grid>
 
-          <Grid flex={1} display={'flex'} justifyContent={'center'} alignItems={'center'}>
+          <Grid
+            flex={1}
+            display={'flex'}
+            alignItems={'center'}
+            sx={{
+              justifyContent: {
+                xs: 'flex-end',
+                md: 'center'
+              }
+            }}
+          >
             <Typography
               sx={{
                 fontFamily: 'cursive',
                 fontSize: 25,
                 letterSpacing: 3,
                 marginRight: {
+                  xs: 2,
                   md: 5
                 }
               }}

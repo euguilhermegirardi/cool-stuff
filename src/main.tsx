@@ -2,6 +2,7 @@ import { ThemeProvider } from '@mui/material';
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { StyledEngineProvider } from '@mui/material/styles';
+import PokemonProvider from 'providers/pokemon';
 import ReactDOM from 'react-dom/client';
 import { ToastContainer } from 'react-toastify';
 import './index.css';
@@ -13,12 +14,14 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <BrowserRouter>
       <AuthProvider>
-        <StyledEngineProvider injectFirst>
-          <ThemeProvider theme={theme}>
-            <ToastContainer autoClose={6000} />
-            <AppRoutes />
-          </ThemeProvider>
-        </StyledEngineProvider>
+        <PokemonProvider>
+          <StyledEngineProvider injectFirst>
+            <ThemeProvider theme={theme}>
+              <ToastContainer autoClose={6000} />
+              <AppRoutes />
+            </ThemeProvider>
+          </StyledEngineProvider>
+        </PokemonProvider>
       </AuthProvider>
     </BrowserRouter>
   </React.StrictMode>,
