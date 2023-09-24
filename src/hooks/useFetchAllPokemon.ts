@@ -1,36 +1,24 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
-const baseURL = 'https://pokeapi.co/api/v2/';
+const baseURL = 'https://pokeapi.co/api/v2/pokemon/?limit=151';
 
 export const useFetchAllPokemon = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [pokemonData, setPokemonData] = useState<any>([]);
 
-  useEffect(() => {
+  const handleFetchPokemon = (url: string) => {
     setIsLoading(true);
 
-    axios.get(`${baseURL}pokemon/?limit=151`)
-      .then(async (response: any) => {
-        const allPokemonData: [] = response.data.results;
-        let pokemonData: any = [];
-
-        if (!allPokemonData) return;
-
-        allPokemonData.map(async (pokemon: any) => {
-          await axios.get(pokemon.url)
-            .then((response) => {
-              pokemonData.push(response.data)
-            })
-            .catch((error) => {
-              console.log(error);
-              setIsLoading(false);
-            })
-            .finally(() => {
-              setPokemonData(pokemonData);
-              setIsLoading(false);
-            })
-        });
+    axios.get(url)
+      .then(async (pokemonList: any) => {
+        return pokemonList.data.results;
+      })
+      .then((pokemonList) => {
+        return Promise.all(pokemonList.map((pokemon: any) => axios.get(pokemon.url)))
+      })
+      .then((allPokemonData: any) => {
+        setPokemonData(allPokemonData.map((pokemon: any) => pokemon.data))
       })
       .catch((error: any) => {
         console.log(error);
@@ -39,7 +27,9 @@ export const useFetchAllPokemon = () => {
       .finally(() => {
         setIsLoading(false);
       })
-  }, []);
+  };
+
+  useEffect(() => { handleFetchPokemon(baseURL) }, []);
 
   return { isLoading, pokemonData }
 };
