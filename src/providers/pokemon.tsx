@@ -1,5 +1,4 @@
-import { ReactElement, useEffect, useMemo } from 'react';
-import axios from 'axios';
+import { ReactElement, useMemo } from 'react';
 import PokemonContext from 'context/pokemon.context';
 import { useFetchAllPokemon } from 'hooks/useFetchAllPokemon';
 
