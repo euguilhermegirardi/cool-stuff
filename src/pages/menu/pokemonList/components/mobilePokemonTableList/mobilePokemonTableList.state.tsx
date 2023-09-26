@@ -1,11 +1,11 @@
-export interface PokemonListStateProps {
+export interface MobilePokemonTableListStateProps {
   openMobileDrawer: {
     isOpen: boolean,
     selectedPokemon: []
   },
 };
 
-export const initialPokemonListState: PokemonListStateProps = {
+export const initialMobilePokemonTableListState: MobilePokemonTableListStateProps = {
   openMobileDrawer: {
     isOpen: false,
     selectedPokemon: []
