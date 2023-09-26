@@ -1,9 +1,10 @@
 import { useMediaQuery, useTheme } from '@mui/material';
-import { Suspense, useContext } from 'react';
+import { lazy, Suspense, useContext } from 'react';
 import FullPageLoading from 'components/fullPageLoading/fullPageLoading';
 import PokemonContext from 'context/pokemon.context';
 import { FullLoadingPageWrapper } from 'shared/css/fullPageLoadingWrapper';
-import PokemonList from './pokemonList';
+
+const PokemonList = lazy(() => import('./pokemonList'));
 
 const PokemonListContainer = () => {
   const theme = useTheme();

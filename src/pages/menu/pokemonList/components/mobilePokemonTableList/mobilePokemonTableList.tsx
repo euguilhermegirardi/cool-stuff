@@ -11,7 +11,6 @@ const MobilePokemonTableList = ({
   pokemonData,
   handleOpenMobileDrawer
 }: MobilePokemonTableListProps) => {
-
   return (
     <Grid
       sx={{

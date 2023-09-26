@@ -1,16 +1,20 @@
+import { lazy, Suspense } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { yupResolver } from '@hookform/resolvers/yup';
+import FullPageLoading from 'components/fullPageLoading/fullPageLoading';
 import { useCreateReducer } from 'hooks/useCreateReducer';
 import { useFetch } from 'hooks/useFetch';
 import { useTranslations } from 'hooks/useTranslations';
 import { toast } from 'react-toastify';
+import { FullLoadingPageWrapper } from 'shared/css/fullPageLoadingWrapper';
 import ApplicationRoutes from 'utils/navigation/applicationRoutes';
 import { v1 as uuidv1 } from 'uuid';
-import ContactUs from './contactUs';
 import { ContactUsStateProps, initialState } from './contactUs.state';
 import { ContactUsRequest } from './interfaces/contactUsRequest';
 import { contactUsSchema } from './validations/contactUsSchema';
+
+const ContactUs = lazy(() => import('./contactUs'));
 
 const ContactUsContainer = () => {
   const {
@@ -80,12 +84,20 @@ const ContactUsContainer = () => {
   const onSubmit = () => handleSubmit(handleOnSubmit);
 
   return (
-    <ContactUs
-      isLoading={isLoading}
-      register={register}
-      formErrors={formErrors}
-      onSubmit={onSubmit}
-    />
+    <Suspense
+      fallback={
+        <FullLoadingPageWrapper>
+          <FullPageLoading />
+        </FullLoadingPageWrapper>
+      }
+    >
+      <ContactUs
+        isLoading={isLoading}
+        register={register}
+        formErrors={formErrors}
+        onSubmit={onSubmit}
+      />
+    </Suspense>
   );
 };
 
