@@ -1,16 +1,21 @@
-import { Box, Grid, List, ListItem, Typography } from '@mui/material';
+import { Box, Grid, List, ListItem, Typography, useTheme } from '@mui/material';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
-import FullPageLoading from 'components/fullPageLoading/fullPageLoading';
 import MuiToolbar from 'components/muiToolbar/muiToolbar';
 import { MobilePokemonTableListProps } from './interfaces/mobilePokemonTableListProps';
+import MuiDrawer from './muiDrawer/muiDrawer';
 
 const MobilePokemonTableList = ({
   isLoading,
   isDrawerOpen,
   selectedPokemon,
   pokemonData,
-  handleOpenMobileDrawer
+  toggleDrawer,
 }: MobilePokemonTableListProps) => {
+  const theme = useTheme();
+
+  console.log('isDrawerOpen', isDrawerOpen)
+  console.log('selectedPokemon', selectedPokemon)
+
   return (
     <Grid
       sx={{
@@ -22,27 +27,47 @@ const MobilePokemonTableList = ({
     >
       <MuiToolbar />
 
-      <Box component={'div'} mt={2}>
-        <Typography>Pokemon - Header</Typography>
+      <Box
+        component='div'
+        mt={2}
+        padding={theme.spacing(2)}
+        borderBottom={'3px solid #ccc'}
+      >
+        <Typography fontSize={22} fontWeight='bold'>Pokemon</Typography>
       </Box>
 
-      <List sx={{ overflowY: 'auto' }}>
+      <List
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          overflowY: 'auto',
+        }}
+      >
         {pokemonData.map((pokemon: any) => {
           return (
             <ListItem
+              divider
               key={pokemon.id}
-              onClick={() => handleOpenMobileDrawer(pokemon.id)}
+              onClick={() => toggleDrawer(pokemon.id)}
+              sx={{
+                justifyContent: 'space-between',
+                padding: theme.spacing(2),
+              }}
             >
-              <Typography>
+              <Typography fontSize={18} textTransform='capitalize' letterSpacing={1}>
                 {pokemon.name}
               </Typography>
-              <Box component={'div'}>
-                <KeyboardArrowRightIcon fontSize={'medium'} />
+
+              <Box component='div' display='flex' alignItems='center'>
+                <KeyboardArrowRightIcon fontSize='medium' />
               </Box>
             </ListItem>
           );
         })}
       </List>
+
+      <MuiDrawer isDrawerOpen={isDrawerOpen} toggleDrawer={toggleDrawer} />
     </Grid>
   );
 };

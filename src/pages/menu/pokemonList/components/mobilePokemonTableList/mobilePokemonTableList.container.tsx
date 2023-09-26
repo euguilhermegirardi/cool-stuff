@@ -16,13 +16,14 @@ const MobilePokemonTableListContainer = ({
     initialState: initialMobilePokemonTableListState
   });
 
-  const handleOpenMobileDrawer = (id: number) => {
+  const toggleDrawer = (id?: number) => {
     dispatch({
       type: 'change',
       field: 'openMobileDrawer',
       value: {
-        isOpen: !openMobileDrawer,
-        selectedPokemon: pokemonData.find((pokemon: any) => { return pokemon.id === id })
+        isOpen: !openMobileDrawer.isOpen,
+        selectedPokemon: openMobileDrawer.isOpen ? [] :
+          pokemonData.find((pokemon: any) => { return pokemon.id === id })
       }
     });
   };
@@ -33,7 +34,7 @@ const MobilePokemonTableListContainer = ({
       isDrawerOpen={openMobileDrawer.isOpen}
       selectedPokemon={openMobileDrawer.selectedPokemon}
       pokemonData={pokemonData}
-      handleOpenMobileDrawer={handleOpenMobileDrawer}
+      toggleDrawer={toggleDrawer}
     />
   );
 };

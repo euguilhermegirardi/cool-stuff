@@ -7,5 +7,5 @@ export interface MobilePokemonTableListProps extends Pick<
 > {
   isDrawerOpen: boolean;
   selectedPokemon: any[];
-  handleOpenMobileDrawer: (id: number) => void;
+  toggleDrawer: (id?: number) => void;
 };
