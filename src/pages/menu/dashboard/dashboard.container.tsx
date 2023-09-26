@@ -1,4 +1,4 @@
-import { Suspense, useRef } from 'react';
+import { lazy, Suspense, useRef } from 'react';
 import { ErrorFallbackComponent } from 'components/errorFallbackComponent/errorFallbackComponent';
 import FullPageLoading from 'components/fullPageLoading/fullPageLoading';
 import useAuth from 'hooks/useAuth';
@@ -9,7 +9,8 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { FullLoadingPageWrapper } from 'shared/css/fullPageLoadingWrapper';
 import { v1 as uuidv1 } from 'uuid';
-import Dashboard from './dashboard';
+
+const Dashboard = lazy(() => import('./dashboard'));
 
 const DashboardContainer = withErrorBoundary(() => {
   const componentRef: any = useRef();
