@@ -1,3 +1,4 @@
+import DesktopTableList from './components/desktopPokemonTableList';
 import MobileTableList from './components/mobilePokemonTableList';
 import { PokemonListProps } from './interfaces/pokemonListProps';
 
@@ -14,7 +15,7 @@ const PokemonList = ({
           pokemonData={pokemonData}
         />
       ) : (
-        <div>Desktop</div>
+        <DesktopTableList />
       )}
     </>
   );
