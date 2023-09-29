@@ -13,9 +13,6 @@ const MobilePokemonTableList = ({
 }: MobilePokemonTableListProps) => {
   const theme = useTheme();
 
-  console.log('isDrawerOpen', isDrawerOpen)
-  console.log('selectedPokemon', selectedPokemon)
-
   return (
     <Grid
       sx={{
@@ -67,7 +64,11 @@ const MobilePokemonTableList = ({
         })}
       </List>
 
-      <MuiDrawer isDrawerOpen={isDrawerOpen} toggleDrawer={toggleDrawer} />
+      <MuiDrawer
+        isDrawerOpen={isDrawerOpen}
+        toggleDrawer={toggleDrawer}
+        selectedPokemon={selectedPokemon}
+      />
     </Grid>
   );
 };

@@ -2,14 +2,16 @@ import { Skeleton } from '@mui/material';
 
 type MuiSkeletonProps = {
   variant: 'circular' | 'rounded' | 'rectangular';
-  width: number;
-  height: number;
+  width: number | string;
+  height: number | string;
+  color?: string
 };
 
 const MuiSkeleton = ({
   variant,
   width,
   height,
+  color,
 }: MuiSkeletonProps) => {
   return (
     <Skeleton
@@ -17,6 +19,7 @@ const MuiSkeleton = ({
       width={width}
       height={height}
       animation='wave'
+      sx={{ backgroundColor: color }}
     />
   );
 };
