@@ -5,7 +5,7 @@ export type RequestModel = {
 };
 
 export type RequestWithBodyModel = RequestModel & {
-  body?: object | FormData;
+  body?: object | FormData | any;
 };
 
 export const useFetch = () => {

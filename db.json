@@ -49,6 +49,20 @@
       "email": "girardi.gui@icloud.com",
       "message": " testing the message from contact us page",
       "id": 2
+    },
+    {
+      "form-name": "contact",
+      "name": "Guilherme Girardi",
+      "email": "girardi.gui@icloud.com",
+      "message": " testing...",
+      "id": 3
+    },
+    {
+      "\"form-name": "contact",
+      "name": "Guilherme",
+      "email": "kai@icloud.com",
+      "message": " testing the contact us form\"",
+      "id": 4
     }
   ]
 }

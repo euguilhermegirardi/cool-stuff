@@ -5,7 +5,6 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import FullPageLoading from 'components/fullPageLoading/fullPageLoading';
 import { useCreateReducer } from 'hooks/useCreateReducer';
 import { useFetch } from 'hooks/useFetch';
-import { useTranslations } from 'hooks/useTranslations';
 import { toast } from 'react-toastify';
 import { FullLoadingPageWrapper } from 'shared/css/fullPageLoadingWrapper';
 import ApplicationRoutes from 'utils/navigation/applicationRoutes';
@@ -19,9 +18,6 @@ const ContactUs = lazy(() => import('./contactUs'));
 const ContactUsContainer = () => {
   const {
     state: {
-      name,
-      email,
-      message,
       isLoading
     },
     dispatch,
@@ -31,7 +27,6 @@ const ContactUsContainer = () => {
 
   const fetchService = useFetch();
   const navigate = useNavigate();
-  const translations = useTranslations();
 
   const notify = (error?: any) => {
     if (error) {
@@ -64,10 +59,14 @@ const ContactUsContainer = () => {
   const handleOnSubmit = ({ name, email, message }: ContactUsRequest) => {
     dispatch({ type: 'change', field: 'isLoading', value: true });
 
-    window.fetch("http://localhost:3000/contact-us", {
-      method: "POST",
+    return fetchService.post('contact-us', {
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: encode({ "form-name": "contact", name, email, message })
+      body: encode({
+        "form-name": "contact",
+        name,
+        email,
+        message
+      }),
     })
       .then(() => {
         notify();
@@ -77,7 +76,7 @@ const ContactUsContainer = () => {
       })
       .finally(() => {
         dispatch({ type: 'change', field: 'isLoading', value: false });
-        navigate(ApplicationRoutes.dashboard)
+        navigate(ApplicationRoutes.dashboard);
       });
   };
 
