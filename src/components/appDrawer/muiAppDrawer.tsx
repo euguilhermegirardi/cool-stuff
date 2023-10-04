@@ -1,4 +1,4 @@
-import { Box, Drawer, Toolbar } from '@mui/material';
+import { Box, Drawer } from '@mui/material';
 import DrawerMenu from './components/drawerMenu/drawerMenu';
 import { MuiAppDrawerProps } from './interfaces/muiAppDrawerProps';
 

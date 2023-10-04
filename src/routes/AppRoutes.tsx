@@ -1,10 +1,8 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
 import useAuth from 'hooks/useAuth';
-import AddCustomPokemon from 'pages/menu/addCustomPokemon';
 import Dashboard from 'pages/menu/dashboard';
 import PokemonCard from 'pages/menu/pokemonCard';
 import PokemonList from 'pages/menu/pokemonList';
-import PokemonStatistics from 'pages/menu/pokemonStatistics';
 import ContactUs from 'pages/navbar/contactUs';
 import ProjectTechnologies from 'pages/navbar/projectTechnologies';
 import NotFound from 'pages/notFound/notFound';
@@ -75,24 +73,6 @@ const AppRoutes = () => {
         element={
           <ProtectedRoutes>
             <PokemonCard />
-          </ProtectedRoutes>
-        }
-      />
-
-      <Route
-        path={ApplicationRoutes.pokemonStatistics}
-        element={
-          <ProtectedRoutes>
-            <PokemonStatistics />
-          </ProtectedRoutes>
-        }
-      />
-
-      <Route
-        path={ApplicationRoutes.addCustomPokemon}
-        element={
-          <ProtectedRoutes>
-            <AddCustomPokemon />
           </ProtectedRoutes>
         }
       />

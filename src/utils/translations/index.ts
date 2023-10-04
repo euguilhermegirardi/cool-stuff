@@ -51,9 +51,6 @@ const translations = {
   pokemonStatistics: {
     title: 'Pokemon Statistics',
   },
-  addCustomPokemon: {
-    title: 'Add Custom Pokemon',
-  },
   password: 'password',
   return: 'return',
   coolStuff: 'cool stuff',

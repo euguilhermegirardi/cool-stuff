@@ -23,9 +23,4 @@ export const drawerMenu: DrawerMenuProps[] = [
     path: ApplicationRoutes.pokemonCard,
     name: translations.pokemonCard.title
   },
-  {
-    id: 4,
-    path: ApplicationRoutes.pokemonStatistics,
-    name: translations.pokemonStatistics.title
-  },
 ];
