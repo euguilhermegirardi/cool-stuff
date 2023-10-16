@@ -1,7 +1,7 @@
 import DesktopTableList from './components/desktopPokemonTableList';
 import MobileTableList from './components/mobilePokemonTableList';
 
-const PokemonList = (isMobileView: boolean) => {
+const PokemonList = ({ isMobileView }: { isMobileView: boolean }) => {
   return (
     <>
       {isMobileView ? (
