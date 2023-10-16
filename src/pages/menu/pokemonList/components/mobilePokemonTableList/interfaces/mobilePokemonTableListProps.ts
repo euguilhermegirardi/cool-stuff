@@ -1,11 +1,6 @@
-import { PokemonListProps } from 'pages/menu/pokemonList/interfaces/pokemonListProps';
-
-export interface MobilePokemonTableListProps extends Pick<
-  PokemonListProps,
-  'isLoading' |
-  'pokemonData'
-> {
+export interface MobilePokemonTableListProps {
   isDrawerOpen: boolean;
   selectedPokemon: any[];
+  pokemonData: any[];
   toggleDrawer: (id?: number) => void;
 };

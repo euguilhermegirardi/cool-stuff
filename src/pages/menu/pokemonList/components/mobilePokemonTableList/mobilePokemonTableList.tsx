@@ -5,7 +5,6 @@ import { MobilePokemonTableListProps } from './interfaces/mobilePokemonTableList
 import MuiDrawer from './muiDrawer/muiDrawer';
 
 const MobilePokemonTableList = ({
-  isLoading,
   isDrawerOpen,
   selectedPokemon,
   pokemonData,

@@ -1,12 +1,10 @@
+import { useContext } from 'react';
+import PokemonContext from 'context/pokemon.context';
 import { useCreateReducer } from 'hooks/useCreateReducer';
-import { MobilePokemonTableListContainerProps } from './interfaces/mobilePokemonTableListContainer';
 import MobilePokemonTableList from './mobilePokemonTableList';
 import { initialMobilePokemonTableListState } from './mobilePokemonTableList.state';
 
-const MobilePokemonTableListContainer = ({
-  isLoading,
-  pokemonData,
-}: MobilePokemonTableListContainerProps) => {
+const MobilePokemonTableListContainer = () => {
   const {
     state: {
       openMobileDrawer,
@@ -15,6 +13,8 @@ const MobilePokemonTableListContainer = ({
   } = useCreateReducer({
     initialState: initialMobilePokemonTableListState
   });
+
+  const { pokemonData } = useContext(PokemonContext);
 
   const toggleDrawer = (id?: number) => {
     dispatch({
@@ -30,7 +30,6 @@ const MobilePokemonTableListContainer = ({
 
   return (
     <MobilePokemonTableList
-      isLoading={isLoading}
       isDrawerOpen={openMobileDrawer.isOpen}
       selectedPokemon={openMobileDrawer.selectedPokemon}
       pokemonData={pokemonData}
