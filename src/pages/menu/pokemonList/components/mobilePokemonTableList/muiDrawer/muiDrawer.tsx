@@ -17,8 +17,6 @@ const MuiDrawer = ({
     stats
   }: any = selectedPokemon;
 
-  console.log('selectedPokemon', selectedPokemon)
-
   return (
     <Drawer
       anchor='bottom'
