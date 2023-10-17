@@ -11,7 +11,12 @@ const FifthSection = (contentInnerWidth: any) => {
   const translations = useTranslations();
 
   return (
-    <Grid className={classes.container}>
+    <Grid className={classes.container}
+      sx={{
+        backgroundColor: '#b3a1254d',
+        color: 'darkGrey.main',
+      }}
+    >
       <Grid className={classes.section}>
         <Grid className={classes.evenTxtSection}>
           <Typography className={classes.title}>
@@ -23,7 +28,7 @@ const FifthSection = (contentInnerWidth: any) => {
           </Typography>
         </Grid>
 
-        <Grid className={clsx(classes.imageContent, classes.evenImgSection)}>
+        <Grid className={clsx(classes.imageContent, classes.oddImgSection)}>
           <LazyLoadImage
             src={CharizardImg}
             placeholder={

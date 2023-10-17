@@ -1,5 +1,5 @@
 import { Grid, Typography } from '@mui/material';
-import SquirtleImg from 'assets/images/squirtle.jpeg';
+import CharmanderImg from 'assets/images/char.jpeg';
 import clsx from 'clsx';
 import MuiSkeleton from 'components/skeleton/muiSkeleton';
 import { useTranslations } from 'hooks/useTranslations';
@@ -11,13 +11,7 @@ const SixthSection = (contentInnerWidth: any) => {
   const translations = useTranslations();
 
   return (
-    <Grid
-      className={classes.container}
-      sx={{
-        backgroundColor: '#b3a1254d',
-        color: 'darkGrey.main',
-      }}
-    >
+    <Grid className={classes.container}>
       <Grid className={classes.section}>
         <Grid className={classes.oddTxtSection}>
           <Typography className={classes.title}>
@@ -39,9 +33,9 @@ const SixthSection = (contentInnerWidth: any) => {
           </Grid>
         </Grid>
 
-        <Grid className={clsx(classes.imageContent, classes.oddImgSection)}>
+        <Grid className={clsx(classes.imageContent, classes.evenImgSection)}>
           <LazyLoadImage
-            src={SquirtleImg}
+            src={CharmanderImg}
             placeholder={
               <MuiSkeleton
                 variant='rounded'
@@ -52,7 +46,7 @@ const SixthSection = (contentInnerWidth: any) => {
             effect='blur'
             width='100%'
             height='auto'
-            alt='squirtle-image'
+            alt='charmander-image'
           />
         </Grid>
       </Grid>
