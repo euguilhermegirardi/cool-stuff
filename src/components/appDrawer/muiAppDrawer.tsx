@@ -31,7 +31,7 @@ const MuiAppDrawer = ({
           },
         }}
       >
-        <DrawerMenu />
+        <DrawerMenu handleDrawerToggle={handleDrawerToggle} />
       </Drawer>
 
       <Drawer
@@ -48,7 +48,7 @@ const MuiAppDrawer = ({
           },
         }}
       >
-        <DrawerMenu />
+        <DrawerMenu handleDrawerToggle={handleDrawerToggle} />
       </Drawer>
     </Box>
   )

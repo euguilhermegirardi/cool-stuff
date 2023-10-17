@@ -1,4 +1,4 @@
-import { Box, Toolbar } from '@mui/material';
+import { Box } from '@mui/material';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import MuiAppBar from 'components/appBar';
 import MuiAppDrawer from 'components/appDrawer';

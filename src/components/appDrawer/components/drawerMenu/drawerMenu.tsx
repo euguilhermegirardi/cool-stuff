@@ -5,9 +5,14 @@ import InboxIcon from '@mui/icons-material/MoveToInbox';
 import PokemonLogo from 'assets/images/pokemon-logo-png.png';
 import { drawerMenu, DrawerMenuProps } from './models/drawerMenu';
 
-const DrawerMenu = () => {
+const DrawerMenu = ({ handleDrawerToggle }: { handleDrawerToggle: () => void }) => {
   return (
-    <div>
+    <Box
+      sx={{ width: 'auto' }}
+      role="presentation"
+      onClick={handleDrawerToggle}
+      onKeyDown={handleDrawerToggle}
+    >
       <Grid sx={{ display: 'grid', placeItems: 'center' }}>
         <Box
           component="img"
@@ -48,7 +53,7 @@ const DrawerMenu = () => {
             </ListItem>
           ))}
       </List>
-    </div>
+    </Box>
   );
 };
 
