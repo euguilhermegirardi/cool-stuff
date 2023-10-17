@@ -27,11 +27,13 @@ describe('Project Technologies Component', () => {
     const materialUILink = await screen.findByRole('link', {
       name: /material ui/i
     });
-    const materialUIDescription = screen.getByText(/\- for a polished and customizable ui design\./i);
+    const materialUIDescription = await screen.findByText(/\- for a polished and customizable ui design\./i);
+    const charizardImg = await screen.findByRole('img', { name: /charizards\-image/i });
 
     expect(title).toBeInTheDocument();
     expect(materialUILink).toBeInTheDocument();
     expect(materialUIDescription).toBeInTheDocument();
+    expect(charizardImg).toBeInTheDocument();
   });
 
   it('should match the snapshot', () => {
