@@ -91,13 +91,12 @@ const ContactUs = ({
                   type='text'
                   defaultValue=''
                   {...register('name')}
-                  error={!!formErrors?.name}
+                  error={!!formErrors?.name?.message}
                   InputProps={{
                     style: {
                       height: 40,
                       paddingLeft: theme.spacing(0.5),
                       borderRadius: 0,
-                      marginBottom: theme.spacing(1)
                     },
                     startAdornment: (
                       <InputAdornment
@@ -109,18 +108,27 @@ const ContactUs = ({
                   }}
                 />
 
+                {formErrors?.name?.message ? (
+                  <Typography
+                    role='alert'
+                    color={theme.palette.error.main}
+                    sx={{ fontSize: 14, marginBottom: theme.spacing(1) }}
+                  >
+                    {formErrors?.name?.message}
+                  </Typography>
+                ) : null}
+
                 <TextField
                   placeholder='email'
                   type='text'
                   defaultValue=''
                   {...register('email')}
-                  error={!!formErrors?.email}
+                  error={!!formErrors?.email?.message}
                   InputProps={{
                     style: {
                       height: 40,
                       paddingLeft: theme.spacing(0.5),
                       borderRadius: 0,
-                      marginBottom: theme.spacing(1)
                     },
                     startAdornment: (
                       <InputAdornment
@@ -133,21 +141,36 @@ const ContactUs = ({
                   }}
                 />
 
+                {formErrors?.email?.message ? (
+                  <Typography
+                    role='alert'
+                    color={theme.palette.error.main}
+                    sx={{ fontSize: 14, marginBottom: theme.spacing(1) }}
+                  >
+                    {formErrors?.email?.message}
+                  </Typography>
+                ) : null}
+
                 <TextField
                   placeholder='Message...'
                   type='text'
                   defaultValue=' '
                   {...register('message')}
-                  error={!!formErrors?.message}
-                  InputProps={{
-                    style: {
-                      marginBottom: theme.spacing(3.5)
-                    },
-                  }}
+                  error={!!formErrors?.message?.message}
                   multiline
                   minRows={4}
                   maxRows={10}
                 />
+
+                {formErrors?.message?.message ? (
+                  <Typography
+                    role='alert'
+                    color={theme.palette.error.main}
+                    sx={{ fontSize: 14, marginBottom: theme.spacing(1) }}
+                  >
+                    {formErrors?.message?.message}
+                  </Typography>
+                ) : null}
 
                 <MuiButton
                   type='submit'
