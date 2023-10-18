@@ -22,6 +22,9 @@ const Dashboard = withErrorBoundary(({
 }) => {
   const translations = useTranslations();
 
+  console.log(contentInnerWidth)
+  console.log(componentRef)
+
   return (
     <Grid ref={componentRef}>
       <MuiToolbar />

@@ -4,7 +4,7 @@ const useGetContentInnerWidth = (myRef: any) => {
   const [width, setWidth] = useState<number>(0);
 
   const handleResize = useCallback(() => {
-    setWidth(myRef.current.offsetWidth);
+    setWidth(myRef.current?.offsetWidth);
   }, [myRef]);
 
   useEffect(() => {
