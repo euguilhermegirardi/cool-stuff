@@ -1,6 +1,7 @@
-import { PokemonListProps } from 'pages/menu/pokemonList/interfaces/pokemonListProps';
-
-export interface DesktopPokemonTableListProps extends Pick<
-  PokemonListProps,
-  'pokemonData'
-> { };
+export interface DesktopPokemonTableListProps {
+  page: number;
+  rowsPerPage: number;
+  rows: any;
+  handleChangePage: (event: unknown, newPage: number) => void;
+  handleChangeRowsPerPage: (event: React.ChangeEvent<HTMLInputElement>) => void;
+};
