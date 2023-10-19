@@ -5,5 +5,8 @@ export interface MuiDrawerProps extends Pick<
   'isDrawerOpen' |
   'toggleDrawer'
 > {
-  selectedPokemon: any;
+  name: string;
+  weight: number;
+  sprite: string;
+  stats: any[];
 };

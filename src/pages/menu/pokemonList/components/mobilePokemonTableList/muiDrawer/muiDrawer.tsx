@@ -1,5 +1,4 @@
 import { Box, Drawer, Grid, Typography } from '@mui/material';
-import CharizardImg from 'assets/images/charizard.png';
 import MuiSkeleton from 'components/skeleton/muiSkeleton';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { MuiDrawerProps } from './interfaces/muiDrawerProps';
@@ -7,16 +6,11 @@ import { MuiDrawerProps } from './interfaces/muiDrawerProps';
 const MuiDrawer = ({
   isDrawerOpen,
   toggleDrawer,
-  selectedPokemon
+  name,
+  weight,
+  sprite,
+  stats,
 }: MuiDrawerProps) => {
-
-  const {
-    name,
-    weight,
-    sprites,
-    stats
-  }: any = selectedPokemon;
-
   return (
     <Drawer
       anchor='bottom'
@@ -62,8 +56,8 @@ const MuiDrawer = ({
           </Box>
 
           <LazyLoadImage
-            src={sprites?.front_default}
-            alt={selectedPokemon.name}
+            src={sprite}
+            alt={name}
             placeholder={
               <MuiSkeleton
                 variant='rectangular'

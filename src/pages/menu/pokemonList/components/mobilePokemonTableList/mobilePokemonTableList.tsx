@@ -66,7 +66,10 @@ const MobilePokemonTableList = ({
       <MuiDrawer
         isDrawerOpen={isDrawerOpen}
         toggleDrawer={toggleDrawer}
-        selectedPokemon={selectedPokemon}
+        name={selectedPokemon.name}
+        weight={selectedPokemon.weight}
+        sprite={selectedPokemon.sprites?.front_default}
+        stats={selectedPokemon.stats}
       />
     </Grid>
   );
