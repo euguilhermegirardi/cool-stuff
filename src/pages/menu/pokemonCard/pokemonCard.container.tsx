@@ -1,9 +1,14 @@
-import { Suspense } from 'react';
+import { Suspense, useContext } from 'react';
 import FullPageLoading from 'components/fullPageLoading/fullPageLoading';
+import PokemonContext from 'context/pokemon.context';
 import { FullLoadingPageWrapper } from 'shared/css/fullPageLoadingWrapper';
 import PokemonCard from './pokemonCard';
 
 const PokemonCardContainer = () => {
+  const { pokemonData } = useContext(PokemonContext);
+
+  console.log(pokemonData)
+
   return (
 
     <Suspense
@@ -13,7 +18,7 @@ const PokemonCardContainer = () => {
         </FullLoadingPageWrapper>
       }
     >
-      <PokemonCard />
+      <PokemonCard pokemonData={pokemonData} />
     </Suspense>
   )
 };
