@@ -38,7 +38,7 @@ const Section = ({
       }}
     >
       <Grid className={classes.section}>
-        <Grid className={classes.evenTxtSection}>
+        <Grid className={classes.txtSection} sx={{ order: oddSection ? '1' : '2' }}>
           <Typography className={classes.title}>
             {title}
           </Typography>
@@ -56,7 +56,10 @@ const Section = ({
           </Typography>
         </Grid>
 
-        <Grid className={clsx(classes.imageContent, classes.evenImgSection)}>
+        <Grid
+          className={clsx(classes.imageContent, classes.ImgSection)}
+          sx={{ order: oddSection ? '2' : '1' }}
+        >
           <LazyLoadImage
             src={image}
             placeholder={

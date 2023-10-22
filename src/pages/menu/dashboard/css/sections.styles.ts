@@ -21,61 +21,24 @@ export const styles = makeStyles<Theme, StyleProps>((theme: Theme) => ({
     margin: '0 15px',
     padding: '15px 0'
   },
-  evenTxtSection: {
+  txtSection: {
     flex: 2,
-    [theme.breakpoints.down('xs')]: {
-      order: 1,
-    },
-    [theme.breakpoints.up('md')]: {
-      order: 2,
-    },
     [theme.breakpoints.down('md')]: {
       padding: '13px 10px'
     },
     [theme.breakpoints.up('md')]: {
-      order: 2,
       padding: '13px 50px'
     },
     [theme.breakpoints.up('xl')]: {
-      order: 2,
       padding: '13px 250px',
     },
   },
-  evenImgSection: {
+  ImgSection: {
     [theme.breakpoints.down('xs')]: {
       order: 2,
     },
     [theme.breakpoints.up('md')]: {
       order: 1,
-    },
-  },
-  oddTxtSection: {
-    flex: 2,
-    [theme.breakpoints.down('xs')]: {
-      order: 1,
-    },
-    [theme.breakpoints.up('md')]: {
-      order: 1,
-    },
-    [theme.breakpoints.down('md')]: {
-      padding: '13px 10px'
-    },
-    [theme.breakpoints.up('md')]: {
-      order: 2,
-      padding: '13px 50px'
-    },
-    [theme.breakpoints.up('xl')]: {
-      order: 2,
-      padding: '13px 250px',
-    },
-  },
-  oddImgSection: {
-    mixBlendMode: 'multiply',
-    [theme.breakpoints.down('xs')]: {
-      order: 2,
-    },
-    [theme.breakpoints.up('md')]: {
-      order: 2,
     },
   },
   title: {
