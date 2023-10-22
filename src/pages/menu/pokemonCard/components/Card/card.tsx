@@ -157,7 +157,7 @@ const Card = ({
             width='100%'
           >
             <Typography>Abilities: {abilities[0]?.ability.name}</Typography>
-            <Typography>{abilities[1]?.ability.name}</Typography>
+            <Typography marginLeft={1}>{abilities[1]?.ability.name}</Typography>
           </Box>
         </Box>
       </Grid>
