@@ -97,6 +97,7 @@ const ContactUs = ({
                       height: 40,
                       paddingLeft: theme.spacing(0.5),
                       borderRadius: 0,
+                      marginBottom: 20
                     },
                     startAdornment: (
                       <InputAdornment
@@ -129,6 +130,7 @@ const ContactUs = ({
                       height: 40,
                       paddingLeft: theme.spacing(0.5),
                       borderRadius: 0,
+                      marginBottom: 20
                     },
                     startAdornment: (
                       <InputAdornment
@@ -157,6 +159,11 @@ const ContactUs = ({
                   defaultValue=' '
                   {...register('message')}
                   error={!!formErrors?.message?.message}
+                  InputProps={{
+                    style: {
+                      marginBottom: 20
+                    }
+                  }}
                   multiline
                   minRows={4}
                   maxRows={10}
