@@ -1,10 +1,9 @@
 import { Box, Grid } from '@mui/material';
 import MuiToolbar from 'components/muiToolbar/muiToolbar';
 import Card from './components/Card/card';
+import { PokemonCardProps } from './interfaces/pokemonCardProps';
 
-const PokemonCard = ({ pokemonData }: { pokemonData: any }) => {
-  console.log(pokemonData)
-
+const PokemonCard = ({ pokemonData }: { pokemonData: PokemonCardProps[] }) => {
   return (
     <Grid
       sx={{
