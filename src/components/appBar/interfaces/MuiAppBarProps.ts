@@ -7,4 +7,5 @@ export interface MuiAppBarProps {
   handleOpenUserMenu: (event: React.MouseEvent<HTMLElement>) => void;
   handleCloseUserMenu: () => void;
   handleCloseNavMenu: () => void;
+  handleLogout: () => void;
 };

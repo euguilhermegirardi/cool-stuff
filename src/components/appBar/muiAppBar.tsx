@@ -14,6 +14,7 @@ const MuiAppBar = ({
   handleOpenUserMenu,
   handleCloseUserMenu,
   handleCloseNavMenu,
+  handleLogout
 }: MuiAppBarProps) => {
   return (
     <AppBar
@@ -132,8 +133,10 @@ const MuiAppBar = ({
                 onClose={handleCloseUserMenu}
               >
                 {settings.map((setting) => (
-                  <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                    <Typography textAlign="center">{setting}</Typography>
+                  <MenuItem key={setting} onClick={handleLogout}>
+                    <Typography textAlign="center">
+                      {setting}
+                    </Typography>
                   </MenuItem>
                 ))}
               </Menu>

@@ -70,21 +70,19 @@ const SignInContainer = withErrorBoundary(() => {
         notify(error);
       });
 
-    setTimeout(() => {
-      if (users?.length && (body.email && body.password)) {
-        users.forEach((user: any) => {
-          if (user.userEmail === body.email && user.userPassword === body.password) {
-            dispatch({ type: 'change', field: 'notSignedIn', value: false });
-            dispatch({ type: 'change', field: 'isLoading', value: false });
-            notify({ passwordIncorrect: false });
-            login();
-          } else {
-            dispatch({ type: 'change', field: 'isLoading', value: false });
-            dispatch({ type: 'change', field: 'notSignedIn', value: true });
-          }
-        });
-      }
-    }, 1500);
+    if (users?.length && (body.email && body.password)) {
+      users.forEach((user: any) => {
+        if (user.userEmail === body.email && user.userPassword === body.password) {
+          dispatch({ type: 'change', field: 'notSignedIn', value: false });
+          dispatch({ type: 'change', field: 'isLoading', value: false });
+          notify({ passwordIncorrect: false });
+          login();
+        } else {
+          dispatch({ type: 'change', field: 'isLoading', value: false });
+          dispatch({ type: 'change', field: 'notSignedIn', value: true });
+        }
+      });
+    }
   };
 
   const onSubmit = () => handleSubmit(handleOnSubmit);

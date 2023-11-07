@@ -23,10 +23,9 @@ const MuiAppBarContainer = ({
     setAnchorElUser(event.currentTarget);
   };
 
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
-    logout();
-  };
+  const handleCloseUserMenu = () => { setAnchorElUser(null) };
+
+  const handleLogout = () => { logout() };
 
   const handleCloseNavMenu = () => {
     navigate(ApplicationRoutes.projectTechnologies);
@@ -42,6 +41,7 @@ const MuiAppBarContainer = ({
       handleOpenUserMenu={handleOpenUserMenu}
       handleCloseUserMenu={handleCloseUserMenu}
       handleCloseNavMenu={handleCloseNavMenu}
+      handleLogout={handleLogout}
     />
   );
 };
