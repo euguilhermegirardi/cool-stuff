@@ -16,8 +16,8 @@ export const useFetch = () => {
     token?: string | number,
   ) => {
     const requestUrl = request?.params
-      ? `http://localhost:3000/${url}${request.params}`
-      : `http://localhost:3000/${url}`;
+      ? `https://cool-stuff-api.onrender.com/api/${url}${request.params}`
+      : 'https://cool-stuff-api.onrender.com/api/users';
 
     const requestBody = request?.body
       ? request.body instanceof FormData

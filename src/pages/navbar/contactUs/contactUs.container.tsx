@@ -30,7 +30,7 @@ const ContactUsContainer = () => {
 
   const notify = (error?: any) => {
     if (error) {
-      toast.success('Something went wrong: error', {
+      toast.error('Something went wrong: error', {
         toastId: uuidv1(),
       });
     } else {

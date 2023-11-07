@@ -83,12 +83,12 @@ const Dashboard = withErrorBoundary(({
         skeletonHeight={180}
       />
 
-      {/* <MuiButton
+      <MuiButton
         type='button'
         color='ceruleanBlue'
         text={translations.dashboard.logout}
         onClick={handleLogOut}
-      /> */}
+      />
     </Grid>
   );
 }, ErrorFallbackComponent);

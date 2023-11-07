@@ -32,10 +32,23 @@ const SignInContainer = withErrorBoundary(() => {
   const { login } = useAuth();
   const translations = useTranslations();
 
-  const notify = () => {
-    toast.error(translations.somethingWentWrong, {
-      toastId: uuidv1()
-    });
+  const notify = ({
+    error,
+    passwordIncorrect,
+  }: {
+    error?: any;
+    passwordIncorrect?: boolean;
+  }
+  ) => {
+    if (error) {
+      toast.error('Something went wrong: error', {
+        toastId: uuidv1(),
+      });
+    } else {
+      toast.success('Logged in!', {
+        toastId: uuidv1(),
+      });
+    }
   };
 
   const {
@@ -46,8 +59,16 @@ const SignInContainer = withErrorBoundary(() => {
     resolver: yupResolver(loginSchema),
   });
 
-  const handleOnSubmit = (body: LoginRequest) => {
+  const handleOnSubmit = async (body: LoginRequest) => {
     dispatch({ type: 'change', field: 'isLoading', value: true });
+
+    const users = await fetchService.get<UsersListResponse[]>('users')
+      .then((response: UsersListResponse[]) => {
+        return response;
+      })
+      .catch((error) => {
+        notify(error);
+      });
 
     setTimeout(() => {
       if (users?.length && (body.email && body.password)) {
@@ -55,6 +76,7 @@ const SignInContainer = withErrorBoundary(() => {
           if (user.userEmail === body.email && user.userPassword === body.password) {
             dispatch({ type: 'change', field: 'notSignedIn', value: false });
             dispatch({ type: 'change', field: 'isLoading', value: false });
+            notify({ passwordIncorrect: false });
             login();
           } else {
             dispatch({ type: 'change', field: 'isLoading', value: false });
@@ -62,24 +84,10 @@ const SignInContainer = withErrorBoundary(() => {
           }
         });
       }
-    }, 2000);
+    }, 1500);
   };
 
   const onSubmit = () => handleSubmit(handleOnSubmit);
-
-  const handleGetUsers = useCallback(() => {
-    return fetchService.get<UsersListResponse[]>('users')
-      .then((response: UsersListResponse[]) => {
-        dispatch({ type: 'change', field: 'users', value: response });
-      })
-      .catch(() => {
-        notify();
-      });
-  }, [fetchService]);
-
-  useEffect(() => {
-    handleGetUsers();
-  }, []);
 
   return (
     <SignIn
