@@ -7,8 +7,6 @@ import PokemonCard from './pokemonCard';
 const PokemonCardContainer = () => {
   const { pokemonData } = useContext(PokemonContext);
 
-  console.log(pokemonData)
-
   return (
 
     <Suspense

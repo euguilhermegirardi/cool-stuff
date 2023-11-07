@@ -14,11 +14,9 @@ import Section from './components/section/section';
 const Dashboard = withErrorBoundary(({
   contentInnerWidth,
   componentRef,
-  handleLogOut,
 }: {
   contentInnerWidth: number;
   componentRef: any;
-  handleLogOut: () => void;
 }) => {
   const translations = useTranslations();
 
@@ -81,13 +79,6 @@ const Dashboard = withErrorBoundary(({
         altImage={'charmander-image-png'}
         skeletonWidth={180}
         skeletonHeight={180}
-      />
-
-      <MuiButton
-        type='button'
-        color='ceruleanBlue'
-        text={translations.dashboard.logout}
-        onClick={handleLogOut}
       />
     </Grid>
   );

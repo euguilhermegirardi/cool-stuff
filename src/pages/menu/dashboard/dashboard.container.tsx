@@ -12,9 +12,6 @@ const Dashboard = lazy(() => import('./dashboard'));
 const DashboardContainer = withErrorBoundary(() => {
   const componentRef: any = useRef();
   const { width: contentInnerWidth } = useGetContentInnerWidth(componentRef);
-  const { logout } = useAuth();
-
-  const handleLogOut = () => logout();
 
   return (
     <Suspense
@@ -27,7 +24,6 @@ const DashboardContainer = withErrorBoundary(() => {
       <Dashboard
         contentInnerWidth={contentInnerWidth}
         componentRef={componentRef}
-        handleLogOut={handleLogOut}
       />
     </Suspense>
   );

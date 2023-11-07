@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import useAuth from 'hooks/useAuth';
 import ApplicationRoutes from 'utils/navigation/applicationRoutes';
 import MuiAppBar from './muiAppBar';
 
@@ -15,13 +16,17 @@ const MuiAppBarContainer = ({
   const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
 
   const navigate = useNavigate();
-  const settings = ['Profile', 'Logout'];
+  const { logout } = useAuth();
+  const settings = ['Logout'];
 
   const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElUser(event.currentTarget);
   };
 
-  const handleCloseUserMenu = () => setAnchorElUser(null);
+  const handleCloseUserMenu = () => {
+    setAnchorElUser(null);
+    logout();
+  };
 
   const handleCloseNavMenu = () => {
     navigate(ApplicationRoutes.projectTechnologies);

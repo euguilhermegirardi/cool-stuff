@@ -1,6 +1,7 @@
-import { AppBar, Avatar, Box, Button, Container, Drawer, Grid, IconButton, List, ListItem, ListItemButton, ListItemText, Menu, MenuItem, Toolbar, Tooltip, Typography } from '@mui/material';
+import { AppBar, Box, Grid, IconButton, List, ListItem, ListItemButton, ListItemText, Menu, MenuItem, Toolbar, Tooltip, Typography } from '@mui/material';
 import { NavLink } from 'react-router-dom';
 import MenuIcon from '@mui/icons-material/Menu';
+import PersonIcon from '@mui/icons-material/Person';
 import { MuiAppBarProps } from './interfaces/MuiAppBarProps';
 import { appBarListItems } from './models/appBarListItem';
 
@@ -102,14 +103,20 @@ const MuiAppBar = ({
 
             {/* Profile menu for desktop starts */}
             <Box sx={{ flexGrow: 0 }}>
-              <Tooltip title="Open settings">
-                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                  {/* <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" /> */}
-                  <p>AVATAR</p>
+              <Tooltip title="Logout">
+                <IconButton
+                  onClick={handleOpenUserMenu}
+                  sx={{
+                    p: 1,
+                    borderRadius: '50%'
+                  }}
+                >
+                  <PersonIcon fontSize='large' sx={{ color: 'goldenYellow.main' }} />
                 </IconButton>
               </Tooltip>
+
               <Menu
-                sx={{ mt: 45 }}
+                sx={{ mt: 5 }}
                 id="menu-appbar"
                 anchorEl={anchorElUser}
                 anchorOrigin={{
