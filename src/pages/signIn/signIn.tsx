@@ -1,4 +1,4 @@
-import { Grid, Typography, useTheme } from '@mui/material';
+import { Box, Grid, Typography, useTheme } from '@mui/material';
 import DangerousIcon from '@mui/icons-material/Dangerous';
 import ElementLink from 'components/elementLink/elementLink';
 import { ErrorFallbackComponent } from 'components/errorFallbackComponent/errorFallbackComponent';

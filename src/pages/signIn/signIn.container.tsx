@@ -1,4 +1,4 @@
-import { useCallback, useEffect } from 'react';
+import { Grid } from '@mui/material';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { ErrorFallbackComponent } from 'components/errorFallbackComponent/errorFallbackComponent';
@@ -90,13 +90,22 @@ const SignInContainer = withErrorBoundary(() => {
   const onSubmit = () => handleSubmit(handleOnSubmit);
 
   return (
-    <SignIn
-      isLoading={isLoading}
-      notSignedIn={notSignedIn}
-      formErrors={formErrors}
-      register={register}
-      onSubmit={onSubmit}
-    />
+    <Grid
+      sx={{
+        display: 'grid',
+        placeItems: 'center',
+        width: '100%',
+        height: '100%'
+      }}
+    >
+      <SignIn
+        isLoading={isLoading}
+        notSignedIn={notSignedIn}
+        formErrors={formErrors}
+        register={register}
+        onSubmit={onSubmit}
+      />
+    </Grid>
   )
 }, ErrorFallbackComponent);
 

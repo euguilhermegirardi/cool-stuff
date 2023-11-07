@@ -1,3 +1,4 @@
+import { Grid } from '@mui/material';
 import { useCallback, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
@@ -65,12 +66,21 @@ const SignUpContainer = withErrorBoundary(() => {
   const onSubmit = () => handleSubmit(handleOnSubmit);
 
   return (
-    <SignUp
-      isLoading={isLoading}
-      formErrors={formErrors}
-      register={register}
-      onSubmit={onSubmit}
-    />
+    <Grid
+      sx={{
+        display: 'grid',
+        placeItems: 'center',
+        width: '100%',
+        height: '100%'
+      }}
+    >
+      <SignUp
+        isLoading={isLoading}
+        formErrors={formErrors}
+        register={register}
+        onSubmit={onSubmit}
+      />
+    </Grid>
   );
 }, ErrorFallbackComponent);
 
