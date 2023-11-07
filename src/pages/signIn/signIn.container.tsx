@@ -41,7 +41,7 @@ const SignInContainer = withErrorBoundary(() => {
   }
   ) => {
     if (error) {
-      toast.error('Something went wrong: error', {
+      toast.error(translations.somethingWentWrong, {
         toastId: uuidv1(),
       });
     } else {

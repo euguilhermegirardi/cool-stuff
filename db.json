@@ -1,41 +1,5 @@
 {
-  "users": [
-    {
-      "userEmail": "gui@icloud.com",
-      "userPassword": "123456",
-      "id": 1
-    },
-    {
-      "userEmail": "kai@icloud.com",
-      "userPassword": "kaikai",
-      "id": 2
-    },
-    {
-      "userEmail": "raisa@icloud.com",
-      "userPassword": "teamo",
-      "id": 3
-    },
-    {
-      "userEmail": "test@test.com",
-      "userPassword": "testtest",
-      "id": 5
-    },
-    {
-      "userEmail": "girardi.gui@icloud.com",
-      "userPassword": "qweqwe",
-      "id": 6
-    },
-    {
-      "userEmail": "test@test.com",
-      "userPassword": "asdasd",
-      "id": 7
-    },
-    {
-      "email": "test@test.com",
-      "password": "test123",
-      "id": 8
-    }
-  ],
+  "users": [],
   "contact-us": [
     {
       "name": "Guilherme Girardi",

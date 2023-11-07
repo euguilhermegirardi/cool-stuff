@@ -21,10 +21,16 @@ const SignUpContainer = withErrorBoundary(() => {
   const navigate = useNavigate();
   const translations = useTranslations();
 
-  const notify = () => {
-    toast.error(translations.somethingWentWrong, {
-      toastId: uuidv1()
-    });
+  const notify = (error?: any) => {
+    if (error) {
+      toast.error(translations.somethingWentWrong, {
+        toastId: uuidv1(),
+      });
+    } else {
+      toast.success('Signed up!', {
+        toastId: uuidv1(),
+      });
+    }
   };
 
   const {
@@ -40,16 +46,16 @@ const SignUpContainer = withErrorBoundary(() => {
 
     return fetchService.post('users', {
       body: {
-        email: data.email,
-        password: data.password,
+        userEmail: data.email,
+        userPassword: data.password,
       }
     })
       .then(() => {
         setIsLoading(false);
         navigate(ApplicationRoutes.signIn);
       })
-      .catch(() => {
-        notify();
+      .catch((error) => {
+        notify(error);
       })
       .finally(() => {
         setIsLoading(false);
