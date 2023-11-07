@@ -1,4 +1,4 @@
-import { AppBar, Box, Grid, IconButton, List, ListItem, ListItemButton, ListItemText, Menu, MenuItem, Toolbar, Tooltip, Typography } from '@mui/material';
+import { AppBar, Box, Button, Grid, IconButton, List, ListItem, ListItemButton, ListItemText, Menu, MenuItem, Toolbar, Tooltip, Typography } from '@mui/material';
 import { NavLink } from 'react-router-dom';
 import MenuIcon from '@mui/icons-material/Menu';
 import PersonIcon from '@mui/icons-material/Person';
@@ -103,44 +103,23 @@ const MuiAppBar = ({
             </Typography>
 
             {/* Profile menu for desktop starts */}
-            <Box sx={{ flexGrow: 0 }}>
-              <Tooltip title="Logout">
-                <IconButton
-                  onClick={handleOpenUserMenu}
-                  sx={{
-                    p: 1,
-                    borderRadius: '50%'
-                  }}
-                >
+            <div>
+              <div>
+                <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleOpenUserMenu}>
                   <PersonIcon fontSize='large' sx={{ color: 'goldenYellow.main' }} />
-                </IconButton>
-              </Tooltip>
+                </Button>
 
+              </div>
               <Menu
-                sx={{ mt: 5 }}
-                id="menu-appbar"
+                id="simple-menu"
                 anchorEl={anchorElUser}
-                anchorOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
-                }}
                 keepMounted
-                transformOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
-                }}
                 open={Boolean(anchorElUser)}
                 onClose={handleCloseUserMenu}
               >
-                {settings.map((setting) => (
-                  <MenuItem key={setting} onClick={handleLogout}>
-                    <Typography textAlign="center">
-                      {setting}
-                    </Typography>
-                  </MenuItem>
-                ))}
+                <MenuItem onClick={handleLogout}>Logout</MenuItem>
               </Menu>
-            </Box>
+            </div>
             {/* Profile menu desktop ends */}
           </Grid>
         </Grid>
